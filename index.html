@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>Single Page App Without A Framework</title>
+
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+	<link href="assets/css/common.css" rel="stylesheet">
+    <link href="Template/assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="main-content">
+        <script id="contents-template" type="x-handlebars-template"> 
+		
+            {{#each this}}
+                <section id="section{{template}}" pageid="{{pageId}}" template="{{template}}" class="page-content"></section>
+            {{/each}}
+
+        </script>
+    </div>
+    
+    <video id="globalVideo" controls="controls" style="display:none;">
+        <source src="Template/assets/source/fullvideo1.mp4" type="video/mp4" />
+    </video>
+
+    <script src="assets/js/vendor/require.min.js"></script>
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
