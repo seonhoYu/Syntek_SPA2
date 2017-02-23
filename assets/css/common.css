@@ -25,3 +25,5 @@ body.type-portrait  {max-width:1080px; max-height:1920px;}
 }
 .main-content .page-current {visibility:visible;z-index:20;}
 .main-content .page-inside {height:100%;}
+
+#globalVideo {width:100%; height:100%;}
