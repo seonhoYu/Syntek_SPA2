@@ -2,9 +2,11 @@ var environment;
 var screenRollNo = 0;
 var transitionSpeed = 1000;
 var PageTransition;
+var PageUiAnimation;
+var animationCallback;
 var videohub;
 
-define( ['jquery', 'handlebars', 'contentTransition', 'videoSync'], function ($, Handlebars, Transition){
+define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'], function ($, Handlebars, Transition, UiAnimation){
 
     var contents = [];
 
@@ -108,4 +110,9 @@ define( ['jquery', 'handlebars', 'contentTransition', 'videoSync'], function ($,
 			}
 		}
 	};
+	
+    PageUiAnimation = new UiAnimation();
+    animationCallback = function(){
+        alert("animation 끝")
+    }
 });

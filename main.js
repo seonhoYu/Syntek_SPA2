@@ -8,13 +8,14 @@ require(
 		'handlebars',
 		'pageVideoPlayer',
 		'contentTransition',
+		'uiAnimation',
 		'commonScript',
 		'templateJs', 
 		'signalrcore', 
 		'signalrhubs', 
 		'videoSync'
 
-	], function($, TweenMax, Modernizr, _ , handlebars, PageVideoPlayer, Transition, commonScript){
+	], function($, TweenMax, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript){
 
 
 
