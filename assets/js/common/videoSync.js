@@ -1,4 +1,10 @@
-﻿require(["jquery", "signalrhubs"], function($)
+﻿/**
+* @file  /common/videoSync.js
+* @brief index page multiple video play/pause control
+* @see   /css/animation.css
+*/
+
+require(["jquery", "signalrhubs"], function($)
 {
     var hubUrl = '';
     var isMainBrowser = false;
@@ -11,8 +17,8 @@
         var hub = $.connection.video;
 
         hub.client.startVideo = function () {
-            $('.main-content').hide();
-            videoElem.show();
+            $('.main-content').fadeOut();
+            videoElem.fadeIn();
             videoElem[0].play();
         }
 
@@ -32,8 +38,8 @@
 
         hub.client.endVideo = function(){
             videoElem[0].pause();
-            videoElem.hide();
-            $('.main-content').show();
+            videoElem.fadeOut();
+            $('.main-content').fadeIn();
         }
 
         $.connection.hub.start().done(function () {

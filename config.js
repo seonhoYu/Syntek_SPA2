@@ -1,4 +1,8 @@
-// config.js
+/**
+* @file config.js
+* @brief require config setting
+*/
+
 require.config({
     baseUrl: '',
     paths: {

@@ -1,3 +1,8 @@
+/**
+* @file  /common/playVideoPlayer.js
+* @brief Subpage video list play/pause control 
+*/
+
 define( ['jquery'], function ( $ ){
     var defaults = {
 

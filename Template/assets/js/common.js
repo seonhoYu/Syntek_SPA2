@@ -1,3 +1,8 @@
+/**
+* @file  common.js
+* @brief Subpage motion
+*/
+
 define(['jquery'], function($){
     $("img.new").each(function() {
         var $ui = $(this);

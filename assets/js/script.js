@@ -1,3 +1,8 @@
+/**
+* @file  script.js
+* @brief Subpage common data/motion control
+*/
+
 var environment;
 var screenRollNo = 0;
 var transitionSpeed = 1000;
@@ -94,11 +99,12 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
         if (screenRollNo >= environment.screenRoller.length) {
             screenRollNo = 0;
         }
-
-		clearTimeout(transition);
+		
         PageTransition.test(environment.screenRoller[screenRollNo].id, environment.styleNumber);
 
+        clearTimeout(transition);
         setTimeout(transition, environment.screenRoller[screenRollNo].interval + 1000);
+        
         screenRollNo++;
     }
 	
