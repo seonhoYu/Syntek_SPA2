@@ -21,6 +21,7 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 
 
         $('section.page-content').each(function (idx) {
+            debugger;
             var template = $(this).attr('template');
             var list = $('#section' + template);
             var prefix = 'Template/' + template;

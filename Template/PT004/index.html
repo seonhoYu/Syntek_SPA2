@@ -1,175 +1,52 @@
 ﻿<!-- 보드 D -->
 <div class="comp_board">
-    <video class="bg" id="model_video" autoplay loop onerror=function(e){alert(e);}>
-        <source type="video/mp4" src="Template/assets/source/board_d_bg.mp4" onerror=function(e){alert(e);}>
+    <video class="bg" autoplay loop>
+        <source type="video/mp4" src="{{Background}}">
     </video>
     
     <!-- 내용 -->
     <div class="content">
         <!-- cool -->
         <section class="comp_menu">
-            <h2><img src="Template/assets/source/title_cool.png" alt="COOL BEVERAGE"></h2>
+            <h2><img src="{{PlateGroupImage}}" alt="COOL BEVERAGE"></h2>
             <p class="option">
                 <span>SMALL</span>
                 <span>REGULAR</span>
             </p>
             <ul class="list">
+                {{#each this.PlateGroup}}
                 <li>
                     <div class="inner">
+                        {{#each this.MenuList}}
                         <dl>
                             <dt>
-                                <span class="kor">레드온더비치</span>
-                                <span class="eng">Red On The Beach</span>
+                                <span class="kor">{{{Name}}}</span>
+                                <span class="eng">{{{SubName}}}</span>
                             </dt>
                             <dd>
-                                <ul class="price">
-                                    <li>3,900</li>
+                                {{#if Price3}}
+                                <ul class="price small">
+                                    <li><sub>S</sub> {{Price1}}</li>
+                                    <li><sub>R</sub> {{Price2}}</li>
+                                    <li><sub>L</sub> {{Price3}}</li>
                                 </ul>
-                                <span class="kcal">213 Kcal</span>
+                                {{else}}
+                                <ul class="price">
+                                    {{#if Price1 }}
+                                    <li>{{{Price1}}}</li>
+                                    {{/if}}
+                                    {{#if Price2}}
+                                    <li>{{{Price2}}}</li>
+                                    {{/if}}
+                                </ul>
+                                {{/if}}
+                                <span class="kcal">{{{Description}}}</span>
                             </dd>
                         </dl>
+                        {{/each}}
                     </div>
                 </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">레드 오렌지 에이드</span>
-                                <span class="eng">Red Orange Ade</span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>4,200</li>
-                                </ul>
-                                <span class="kcal">240 Kcal</span>
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
-                                <span class="kor">블루 레몬 에이드</span>
-                                <span class="eng">Red Orange Ade</span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>4,200</li>
-                                </ul>
-                                <span class="kcal">229 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">스파클링 에이드 <sup>(자몽)</sup></span>
-                                <span class="eng">sparkling Ade <sup>(Grapefruit)</sup></span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>4,200</li>
-                                    <li>4,700</li>
-                                </ul>
-                                <span class="kcal">225 | 270 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">요거트 스무디 <sup>(딸기)</sup></span>
-                                <span class="eng">Yogurt Smoothie <sup>(Strawberry)</sup></span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>5,200</li>
-                                    <li>&#160;</li>
-                                </ul>
-                                <span class="kcal">365 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">젤리에이드 <sup>(라임모히또)</sup></span>
-                                <span class="eng">Jelly Ade <sup>(Lime Mojito)</sup></span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>4,900</li>
-                                </ul>
-                                <span class="kcal">165 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">마시멜로 초코치노</span>
-                                <span class="eng">Mashmellow Chococcino</span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>4,900</li>
-                                </ul>
-                                <span class="kcal">413 Kcal</span>
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
-                                <span class="kor">피칸치노</span>
-                                <span class="eng">Pecanccino</span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>4,900</li>
-                                </ul>
-                                <span class="kcal">349 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">생과일 주스 <sup>(청포도)</sup></span>
-                                <span class="eng">Fruit Juice <sup>(Muscat)</sup></span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>5,000</li>
-                                    <li>&#160;</li>
-                                </ul>
-                                <span class="kcal">205 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
-                <li>
-                    <div class="inner">
-                        <dl>
-                            <dt>
-                                <span class="kor">휴롬주스 <sup>(오렌지)</sup></span>
-                                <span class="eng">Hurom Juice <sup>(Orange)</sup></span>
-                            </dt>
-                            <dd>
-                                <ul class="price">
-                                    <li>5,500</li>
-                                    <li>&#160;</li>
-                                </ul>
-                                <span class="kcal">150 Kcal</span>
-                            </dd>
-                        </dl>
-                    </div>
-                </li>
+                {{/each}}
             </ul>
         </section>
         <!-- // cool -->
