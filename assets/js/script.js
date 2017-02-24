@@ -70,7 +70,13 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 	
 	$(document).ready(function(){
 		setTimeout(function(){
-			videohub = $.signalVideo(true ,"http://localhost:8080/signalr");
+		    videohub = $.signalVideo(true, "http://localhost:8080/signalr");
+
+		    PageUiAnimation = new UiAnimation();
+		    animationCallback = function () {
+		        alert('animation end');
+		    }
+
 		}, 1000);
 		
 	});
@@ -111,8 +117,5 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 		}
 	};
 	
-    PageUiAnimation = new UiAnimation();
-    animationCallback = function(){
-        alert("animation 끝")
-    }
+    
 });
