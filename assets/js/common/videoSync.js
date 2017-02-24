@@ -12,12 +12,13 @@ require(["jquery", "signalrhubs"], function($)
         hubUrl = url;
         isMainBrowser = mainBrowser;
         var videoElem = $('#globalVideo');
+        var pageContent = $('.main-content > .page-content');
 
         $.connection.hub.url = hubUrl;
         var hub = $.connection.video;
 
         hub.client.startVideo = function () {
-            $('.main-content').fadeOut();
+            pageContent.fadeOut();
             videoElem.fadeIn();
             videoElem[0].play();
         }
@@ -39,7 +40,7 @@ require(["jquery", "signalrhubs"], function($)
         hub.client.endVideo = function(){
             videoElem[0].pause();
             videoElem.fadeOut();
-            $('.main-content').fadeIn();
+            pageContent.fadeIn();
         }
 
         $.connection.hub.start().done(function () {
