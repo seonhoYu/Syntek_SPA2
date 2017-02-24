@@ -4,30 +4,53 @@
 * @see   /css/animation.css
 */
 
+var aniHub;
+var videoHub;
+
 require(["jquery", "signalrhubs"], function($)
 {
     var hubUrl = '';
     var isMainBrowser = false;
-    $.signalVideo = function (mainBrowser, url) {
+    var currentScreenId;
+    $.signalClient = function (mainBrowser, screenId, url) {
         hubUrl = url;
         isMainBrowser = mainBrowser;
+        currentScreenId = screenId;
         var videoElem = $('#globalVideo');
         var pageContent = $('.main-content > .page-content');
 
         $.connection.hub.url = hubUrl;
-        var hub = $.connection.video;
+        
 
-        hub.client.startVideo = function () {
+        aniHub = $.connection.animation;
+
+        aniHub.client.startAnimation = function (screenId, animationNo) {
+            if (currentScreenId == screenId) {
+                PageUiAnimation.start(animationNo, function () {
+                    aniHub.server.startAnimation(screenId + 1, animationNo);
+                });
+            }
+        }
+
+        aniHub.client.stopAnimation = function () {
+            PageUiAnimation.stop(animationNo);
+        }
+
+
+        videoHub = $.connection.video;
+        videoHub.client.startVideo = function () {
             pageContent.fadeOut();
             videoElem.fadeIn();
             videoElem[0].play();
         }
 
-        hub.client.stopVideo = function () {
-            videoElem[0].pause();
+        videoHub.client.stopVideo = function () {
+            if (isMainBrowser == false) {
+                videoElem[0].pause();
+            }
         }
 
-        hub.client.syncVideo = function (time) {
+        videoHub.client.syncVideo = function (time) {
             if (isMainBrowser == false) {
                 var result = Math.abs(videoElem[0].currentTime - time)
                 if (result > 0.15) {
@@ -37,9 +60,11 @@ require(["jquery", "signalrhubs"], function($)
             }
         }
 
-        hub.client.endVideo = function(){
-            videoElem[0].pause();
-            videoElem.fadeOut();
+        videoHub.client.endVideo = function () {
+            if (mainBrowser == false) {
+                videoElem[0].pause();
+            }
+            videoElem.fadeOut();   
             pageContent.fadeIn();
         }
 
@@ -47,7 +72,7 @@ require(["jquery", "signalrhubs"], function($)
 
             videoElem[0].addEventListener("playing", function () {
                 if (isMainBrowser) {
-                    hub.server.startVideo();
+                    videoHub.server.startVideo();
                 }
                 console.log('playing');
             }, false);
@@ -55,7 +80,7 @@ require(["jquery", "signalrhubs"], function($)
             //video stop
             videoElem[0].addEventListener("pause", function () {
                 if (isMainBrowser) {
-                    hub.server.stopVideo();
+                    videoHub.server.stopVideo();
                 }
                 console.log('pause');
             }, false);
@@ -65,13 +90,15 @@ require(["jquery", "signalrhubs"], function($)
                 if (isMainBrowser) {
                     var vTime = videoElem[0].currentTime;
                     console.log('time : ' + vTime);
-                    hub.server.syncVideo(vTime);
+                    videoHub.server.syncVideo(vTime);
                 }
             }, false);
 
             videoElem[0].addEventListener("ended", function () {
-                console.log('end');
-                hub.server.endVideo();
+                if (isMainBrowser) {
+                    console.log('end');
+                    videoHub.server.endVideo();
+                }
             }, false);
 
             //get src 다른비디오를 load 
@@ -83,8 +110,6 @@ require(["jquery", "signalrhubs"], function($)
             //    video.play();
             //}
         });
-
-        return hub;
     }
 	
 	// $('#globalVideo').signalVideo(true ,"http://localhost:8080/signalr");

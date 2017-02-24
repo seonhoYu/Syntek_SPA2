@@ -23,7 +23,7 @@ require.config({
 		//signalR
 		signalrcore : 'assets/js/vendor/jquery.signalR-2.2.1.min',
 		signalrhubs : 'http://localhost:8080/signalr/hubs?',
-		videoSync : 'assets/js/common/videoSync'
+		signalSync: 'assets/js/common/SignalSync'
     },
 
     shim : {
@@ -37,7 +37,7 @@ require.config({
 		"signalrhubs": {
 			deps: ["signalrcore"],
 		},
-		"videoSync" : {
+		"signalSync": {
 			deps: ["signalrhubs"],
 		},
         'templateJs' : ['commonScript']

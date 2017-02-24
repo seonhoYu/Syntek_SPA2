@@ -8,10 +8,10 @@ var screenRollNo = 0;
 var transitionSpeed = 1000;
 var PageTransition;
 var PageUiAnimation;
-var animationCallback;
-var videohub;
+//var animationCallback;
 
-define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'], function ($, Handlebars, Transition, UiAnimation){
+
+define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync'], function ($, Handlebars, Transition, UiAnimation){
 
     var contents = [];
 
@@ -21,7 +21,6 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 
 
         $('section.page-content').each(function (idx) {
-            debugger;
             var template = $(this).attr('template');
             var list = $('#section' + template);
             var prefix = 'Template/' + template;
@@ -64,11 +63,9 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 
 			$.getJSON(prefix + "/data/data.json").done(function (data) {
 				var compiledHtml = theTemplate(data);
-				//compiledHtml = compiledHtml.replace(/assets\/+/g, "Template/assets/" template + "/assets/");
 				list.append(compiledHtml);
 			})
 			.fail(function () {
-				//var convertedHtml = html.replace(/assets\/+/g, template + "/assets/")
 				list.append(html);
 			});
 		});
@@ -76,13 +73,20 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 	
 	$(document).ready(function(){
 		setTimeout(function(){
-		    videohub = $.signalVideo(true, "http://localhost:8080/signalr");
-
-		    PageUiAnimation = new UiAnimation();
-		    animationCallback = function () {
-		        alert('animation end');
+		    var param = getUrlParameter('template');
+		    if (param == 'pt001') {
+		        environment.screenId = 1;
+		        environment.isHubDevice = true;
+		    }
+		    else if (param == 'pt002') {
+		        environment.screenId = 2;
+		        environment.isHubDevice = false;
 		    }
 
+		    $.signalClient(environment.isHubDevice, environment.screenId, "http://localhost:8080/signalr");
+
+		    PageUiAnimation = new UiAnimation();
+		    
 		}, 1000);
 		
 	});

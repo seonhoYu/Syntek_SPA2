@@ -32,12 +32,14 @@ define( ['jquery'], function ( $ ){
         var _this = this;
     };
 
-    UiAnimation.prototype.start = function(aniNumber) {
+    UiAnimation.prototype.start = function(aniNumber, callback) {
         var _this = this;
 
         _this.$el.find("#" + "animationNumber" + aniNumber).addClass(animationGrp[aniNumber]).one(_this.animEndEventName, function(){
             $(this).removeClass(animationGrp[aniNumber]);
-            animationCallback();
+            if (callback) {
+                callback();
+            }
         })    
     };
 

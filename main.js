@@ -17,7 +17,7 @@ require(
 		'templateJs', 
 		'signalrcore', 
 		'signalrhubs', 
-		'videoSync'
+		'signalSync'
 
 	], function($, TweenMax, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript){
 
