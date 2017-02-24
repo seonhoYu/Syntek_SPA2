@@ -3,7 +3,8 @@
 * @brief Subpage motion
 */
 
-define(['jquery'], function($){
+define(['jquery'], function ($) {
+    
     $("img.new").each(function() {
         var $ui = $(this);
 
@@ -70,7 +71,6 @@ define(['jquery'], function($){
 
     // 보드 C,D - 메뉴 텍스트 변경
     $(".comp_menu .inner").each(function() {
-        
         var $ui = $(this);
         var $content = $ui.children("dl");
         var total = $content.length;
