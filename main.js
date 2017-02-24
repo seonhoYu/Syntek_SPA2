@@ -1,4 +1,8 @@
-// common call
+/**
+* @file  main.js
+* @brief import common javascript file
+*/
+
 require(
 	[
 		'jquery',

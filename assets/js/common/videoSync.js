@@ -1,4 +1,10 @@
-﻿require(["jquery", "signalrhubs"], function($)
+﻿/**
+* @file  /common/videoSync.js
+* @brief index page multiple video play/pause control
+* @see   /css/animation.css
+*/
+
+require(["jquery", "signalrhubs"], function($)
 {
     var hubUrl = '';
     var isMainBrowser = false;

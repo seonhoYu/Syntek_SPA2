@@ -1,3 +1,9 @@
+/**
+* @file  /common/uiAnimation.js
+* @brief index page multiple animations
+* @see   /css/animation.css
+*/
+
 define( ['jquery'], function ( $ ){
     
     var animationGrp = {

@@ -1,3 +1,9 @@
+/**
+* @file  /common/transitions.js
+* @brief CSS3 common motions
+* @see  /css/transitions.css
+*/
+
 define(['jquery', 'lodash'], function($, _){
 
     var transitionGrp = {
