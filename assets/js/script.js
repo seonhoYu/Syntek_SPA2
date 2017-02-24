@@ -28,7 +28,7 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
             $.get(prefix + "/index.html", function (html) {
                 var theTemplate = Handlebars.compile(html);
 
-                $.getJSON(prefix + "/assets/data/data.json").done(function (data) {
+                $.getJSON(prefix + "/data/data.json").done(function (data) {
                     var compiledHtml = theTemplate(data);
                     list.append(compiledHtml);
                 })
@@ -61,7 +61,7 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 		$.get(prefix + "/index.html", function (html) {
 			var theTemplate = Handlebars.compile(html);
 
-			$.getJSON(prefix + "/assets/data/data.json").done(function (data) {
+			$.getJSON(prefix + "/data/data.json").done(function (data) {
 				var compiledHtml = theTemplate(data);
 				//compiledHtml = compiledHtml.replace(/assets\/+/g, "Template/assets/" template + "/assets/");
 				list.append(compiledHtml);
@@ -122,6 +122,14 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'videoSync'
 			}
 		}
 	};
+
+	Handlebars.registerHelper('ifvalue', function (conditional, options) {
+	    if (options.hash.value === conditional) {
+	        return options.fn(this)
+	    } else {
+	        return options.inverse(this);
+	    }
+	});
 	
     
 });

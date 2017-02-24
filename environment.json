@@ -1,14 +1,14 @@
 {
-  "screenId": 1,
+  "screenId": 2,
   "isHubDevice": true,
   "styleNumber" : 27,
   "screenRoller": [
     {
-      "id": 1,
+      "id": 2,
       "interval": 5000
     },
     {
-      "id": 2,
+      "id": 1,
       "interval": 5000
     },
     {
