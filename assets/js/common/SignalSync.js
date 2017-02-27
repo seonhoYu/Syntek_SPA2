@@ -39,7 +39,7 @@ require(["jquery", "signalrhubs"], function($)
                     aniHub.server.startAnimation(nextId, animationNo, direction);
                 });
             }
-            else if (screenId == 0 || direcntion == 0) {
+            else if (screenId == 0 || direction == 0) {
                 PageUiAnimation.start(animationNo);
             }
         }

@@ -31,6 +31,7 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync
                 $.getJSON(prefix + "/data/data.json").done(function (data) {
                     var compiledHtml = theTemplate(data);
                     list.append(compiledHtml);
+                    console.log('markupLoaded' + idx);
                 })
                 .fail(function () {
                     var convertedHtml = html;
@@ -38,6 +39,7 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync
                 });
             });
         })
+        
     });
 
     $.getJSON("environment.json", function (data) {

@@ -5,7 +5,19 @@
   "screenRoller": [
     {
       "id": 4,
-      "interval": 10000
+      "interval": 5000
+    },
+    {
+      "id": 1,
+      "interval": 5000
+    },
+    {
+      "id": 2,
+      "interval": 5000
+    },
+    {
+      "id": 3,
+      "interval": 5000
     }
   ],
   "videoPlayList": [
