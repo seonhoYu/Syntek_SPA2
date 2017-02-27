@@ -44,6 +44,7 @@ require.config({
 		},
 
 		"sakura" : ['jquery'],
-        "templateJs" : ['commonScript']
+		"templateJs": ['commonScript'],
+		"templateCommonJs": ["commonScript"]
     }
 });
