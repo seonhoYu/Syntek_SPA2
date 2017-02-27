@@ -5,19 +5,63 @@
   "screenRoller": [
     {
       "id": 4,
-      "interval": 600000
+      "interval": 10000
     },
     {
       "id": 1,
-      "interval": 5000
+      "interval": 10000
     },
     {
       "id": 2,
-      "interval": 5000
+      "interval": 10000
     },
     {
-      "id": 2,
-      "interval": 5000
+      "id": 3,
+      "interval": 10000
+    }
+  ],
+  "videoPlayList": [
+    {
+      "groupId": "1",
+      "list": [
+        {
+          "id": "1",
+          "src": "Template/assets/source/fullvideo1.mp4"
+        },
+        {
+          "id": "2",
+          "src": "Template/assets/source/fullvideo2.mp4"
+        },
+        {
+          "id": "3",
+          "src": "Template/assets/source/fullvideo3.mp4"
+        },
+        {
+          "id": "4",
+          "src": "Template/assets/source/fullvideo4.mp4"
+        }
+      ]
+    },
+    {
+      "groupId": "2",
+      "list": [
+        {
+          "id": "1",
+          "src": "Template/assets/source/fullvideo2.mp4"
+        },
+        {
+          "id": "2",
+          "src": "Template/assets/source/fullvideo1.mp4"
+        },
+        {
+          "id": "3",
+          "src": "Template/assets/source/fullvideo3.mp4"
+        },
+        {
+          "id": "4",
+          "src": "Template/assets/source/fullvideo4.mp4"
+        }
+      ]
     }
   ]
 }
