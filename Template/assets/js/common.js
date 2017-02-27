@@ -3,8 +3,8 @@
 * @brief Subpage motion
 */
 
-define(['jquery'], function ($) {
-    
+define(['jquery'], function($){
+
     $("img.new").each(function() {
         var $ui = $(this);
 
@@ -27,7 +27,7 @@ define(['jquery'], function ($) {
     });
 
     // 보드 B - 콤보
-    $(".combo").each(function() {
+    $(".aside .combo").each(function() {
         
         var $ui = $(this);
         var $content = $ui.find("li");
@@ -37,7 +37,9 @@ define(['jquery'], function ($) {
         var delayTime = 10; // 10초
         
         if ($content.length == 1) return;
-        //TweenMax.delayedCall(delayTime, img_change);
+
+        TweenMax.delayedCall(delayTime, img_change);
+
         balloon();
         
         function img_change() {
@@ -52,7 +54,6 @@ define(['jquery'], function ($) {
             
             $content.find(".balloon").attr("src", "Template/assets/source/empty.png");
             balloon();
-            
         }
         
         function balloon() {
@@ -64,8 +65,9 @@ define(['jquery'], function ($) {
                     $balloon.attr("src", "Template/assets/source/combo_balloon2.gif");
                 });
             }
-            
         }
+
+
         
     });
 
@@ -78,6 +80,7 @@ define(['jquery'], function ($) {
         var delayTime = 5; // 5초
         
         if ($content.length == 1) return;
+
         TweenMax.delayedCall(delayTime, menu_change);
         
         function menu_change() {
@@ -104,7 +107,9 @@ define(['jquery'], function ($) {
         var delayTime = 5; // 15초
         
         if ($content.length == 1) return;
+
         TweenMax.delayedCall(delayTime, img_change);
+
         text_change();
 
         function img_change() {
