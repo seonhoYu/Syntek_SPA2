@@ -85,7 +85,7 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync
 
             PageUiAnimation = new UiAnimation();
 
-		    $.signalClient(environment.isHubDevice, environment.screenId, "http://localhost:8080/signalr");
+            $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
 		}, 1000);
 		

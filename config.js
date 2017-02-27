@@ -23,7 +23,7 @@ require.config({
 		templateCommonJs : 'Template/assets/js/common',
 		
 		//signalR
-		signalrcore : 'assets/js/vendor/jquery.signalR-2.2.1.min',
+		signalrcore: 'assets/js/vendor/jquery.signalR-2.2.1',
 		signalrhubs : 'http://localhost:8080/signalr/hubs?',
 		signalSync: 'assets/js/common/SignalSync'
     },

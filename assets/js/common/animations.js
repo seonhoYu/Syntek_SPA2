@@ -88,7 +88,9 @@ define( ['jquery'], function ( $ ){
             $(this).removeClass(animationGrp[aniNumber]);
 
             /* @brief collback (/js/script.js) */
-            callback();
+            if (callback) {
+                callback();
+            }
         });
     };
 
