@@ -14,6 +14,14 @@ define( ['jquery'], function ( $ ){
         5 : 'sakura-fall'
     }
 
+    var animationTime = {
+        1: 8900,
+        2: 8900,
+        3: 0,
+        4: 7500,
+        5: 0
+    }
+
     var oAnimEndEventNames = {
         'WebkitAnimation' : 'webkitAnimationEnd',
         'OAnimation' : 'oAnimationEnd',
@@ -83,14 +91,21 @@ define( ['jquery'], function ( $ ){
                 break;
         }
 
+        if (animationTime[aniNumber] && animationTime[aniNumber] > 0) {
+            setTimeout(function () {
+                if (callback) {
+                    callback();
+                }
+            }, animationTime[aniNumber]);
+        }
 
         $target.addClass(animationGrp[aniNumber]).one(_this.animEndEventName, function(){
             $(this).removeClass(animationGrp[aniNumber]);
 
             /* @brief collback (/js/script.js) */
-            if (callback) {
-                callback();
-            }
+            //if (callback) {
+            //    //callback();
+            //}
         });
     };
 

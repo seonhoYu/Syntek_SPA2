@@ -36,7 +36,9 @@ require(["jquery", "signalrhubs"], function($)
                     else if(direction == 2){
                         nextId = screenId - 1;
                     }
-                    aniHub.server.startAnimation(nextId, animationNo, direction);
+                    if (nextId > 0) {
+                        aniHub.server.startAnimation(nextId, animationNo, direction);
+                    }
                 });
             }
             else if (screenId == 0 || direction == 0) {
@@ -57,9 +59,12 @@ require(["jquery", "signalrhubs"], function($)
                     $(this.list).each(function (innerIdx) {
                         if (this.id == currentScreenId) {
                             videoElem[0].setAttribute('src', this.src);
-                            pageContent.fadeOut();
-                            videoElem.fadeIn();
-                            videoElem[0].play();
+                            videoElem[0].load();
+                            videoElem[0].oncanplay = function () {
+                                pageContent.fadeOut();
+                                videoElem.fadeIn();
+                                videoElem[0].play();
+                            }
                         }
                     })
                 }

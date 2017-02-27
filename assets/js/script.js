@@ -31,7 +31,6 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync
                 $.getJSON(prefix + "/data/data.json").done(function (data) {
                     var compiledHtml = theTemplate(data);
                     list.append(compiledHtml);
-                    console.log('markupLoaded' + idx);
                 })
                 .fail(function () {
                     var convertedHtml = html;
@@ -82,6 +81,14 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync
 		    }
 		    else if (param == 'pt002') {
 		        environment.screenId = 2;
+		        environment.isHubDevice = false;
+		    }
+		    else if (param == 'pt003') {
+		        environment.screenId = 3;
+		        environment.isHubDevice = false;
+		    }
+		    else if (param == 'pt004') {
+		        environment.screenId = 4;
 		        environment.isHubDevice = false;
 		    }
 

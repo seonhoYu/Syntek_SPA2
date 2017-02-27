@@ -26,19 +26,19 @@
       "list": [
         {
           "id": "1",
-          "src": "Template/assets/source/fullvideo1.mp4"
+          "src": "assets/source/fullvideo1.mp4"
         },
         {
           "id": "2",
-          "src": "Template/assets/source/fullvideo2.mp4"
+          "src": "assets/source/fullvideo2.mp4"
         },
         {
           "id": "3",
-          "src": "Template/assets/source/fullvideo3.mp4"
+          "src": "assets/source/fullvideo3.mp4"
         },
         {
           "id": "4",
-          "src": "Template/assets/source/fullvideo4.mp4"
+          "src": "assets/source/fullvideo4.mp4"
         }
       ]
     },
@@ -47,19 +47,19 @@
       "list": [
         {
           "id": "1",
-          "src": "Template/assets/source/fullvideo2.mp4"
+          "src": "Template/assets/source/board_b_bg.mp4"
         },
         {
           "id": "2",
-          "src": "Template/assets/source/fullvideo1.mp4"
+          "src": "Template/assets/source/board_c_bg.mp4"
         },
         {
           "id": "3",
-          "src": "Template/assets/source/fullvideo3.mp4"
+          "src": "Template/assets/source/board_d_bg.mp4"
         },
         {
           "id": "4",
-          "src": "Template/assets/source/fullvideo4.mp4"
+          "src": "Template/assets/source/board_b_bg.mp4"
         }
       ]
     }

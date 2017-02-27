@@ -139,6 +139,5 @@ define(['jquery'], function($){
             }
 
         });
-        console.log('eventLoaded');
     },2000);
 })
