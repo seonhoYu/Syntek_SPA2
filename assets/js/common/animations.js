@@ -76,7 +76,7 @@ define( ['jquery'], function ( $ ){
         });
     };
 
-    UiAnimation.prototype.stop = function(aniNumber) {
+    UiAnimation.prototype.stop = function (aniNumber) {
         var _this = this;
 
         if(animationGrp[aniNumber] == "snow-flake"){

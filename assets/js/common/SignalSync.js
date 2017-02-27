@@ -26,11 +26,21 @@ require(["jquery", "signalrhubs"], function($)
 
         aniHub = $.connection.animation;
 
-        aniHub.client.startAnimation = function (screenId, animationNo) {
+        aniHub.client.startAnimation = function (screenId, animationNo, direction) {
             if (currentScreenId == screenId) {
                 PageUiAnimation.start(animationNo, function () {
-                    aniHub.server.startAnimation(screenId + 1, animationNo);
+                    var nextId;
+                    if (direction == 1) {
+                        nextId = screenId + 1;
+                    }
+                    else if(direction == 2){
+                        nextId = screenId - 1;
+                    }
+                    aniHub.server.startAnimation(nextId, animationNo, direction);
                 });
+            }
+            else if (screenId == 0 || direcntion == 0) {
+                PageUiAnimation.start(animationNo);
             }
         }
 
