@@ -13,7 +13,7 @@ require.config({
 
         tweenMax : 'assets/js/vendor/TweenMax-1.19.0.min',
         contentTransition : 'assets/js/common/transitions',
-		uiAnimation : 'assets/js/common/uiAnimation',
+		uiAnimation : 'assets/js/common/animations',
         pageVideoPlayer : 'assets/js/common/pageVideoPlayer',
         commonScript : 'assets/js/script',
 

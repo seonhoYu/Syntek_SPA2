@@ -50,7 +50,6 @@ define( ['jquery'], function ( $ ){
             // Snow flake
             case 3:
                 this.SnowAnimationStart(_this.$id + aniNumber);
-                console.log(2222)
                 break;
 
             // Snow flake
