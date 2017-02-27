@@ -19,6 +19,7 @@ require.config({
 
         // template js add
         templateJs : 'Template/assets/js/main',
+		templateCommonJs : 'Template/assets/js/common',
 		
 		//signalR
 		signalrcore : 'assets/js/vendor/jquery.signalR-2.2.1.min',
