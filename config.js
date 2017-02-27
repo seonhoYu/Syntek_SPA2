@@ -11,7 +11,8 @@ require.config({
         lodash : 'assets/js/vendor/lodash.min',
         handlebars : 'assets/js/vendor/handlebars.min',
 
-        tweenMax : 'assets/js/vendor/TweenMax-1.19.0.min',
+        tweenMax : 'assets/js/vendor/ui/TweenMax-1.19.0.min',
+        sakura : 'assets/js/vendor/ui/jquery-sakura.min',
         contentTransition : 'assets/js/common/transitions',
 		uiAnimation : 'assets/js/common/animations',
         pageVideoPlayer : 'assets/js/common/pageVideoPlayer',
@@ -41,6 +42,8 @@ require.config({
 		"signalSync": {
 			deps: ["signalrhubs"],
 		},
-        'templateJs' : ['commonScript']
+
+		"sakura" : ['jquery'],
+        "templateJs" : ['commonScript']
     }
 });

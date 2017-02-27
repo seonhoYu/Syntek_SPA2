@@ -7,6 +7,7 @@ require(
 	[
 		'jquery',
 		'tweenMax',
+		'sakura',
 		'modernizr',
 		'lodash',
 		'handlebars',
@@ -19,7 +20,7 @@ require(
 		'signalrhubs', 
 		'signalSync'
 
-	], function($, TweenMax, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript){
+	], function($, TweenMax, Sakura, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript){
 
 
 

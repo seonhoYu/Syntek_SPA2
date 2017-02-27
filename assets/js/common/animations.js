@@ -10,7 +10,8 @@ define( ['jquery'], function ( $ ){
         1 : 'left-move',
         2 : 'right-move',
         3 : 'snow-flake',
-        4 : 'cloud-move'
+        4 : 'cloud-move',
+        5 : 'sakura-fall'
     }
 
     var oAnimEndEventNames = {
@@ -52,7 +53,7 @@ define( ['jquery'], function ( $ ){
                 this.SnowAnimationStart(_this.$id + aniNumber);
                 break;
 
-            // Snow flake
+            // Cloud moving
             case 4:
                 if($target.find(".cloud").length) return;
 
@@ -63,6 +64,21 @@ define( ['jquery'], function ( $ ){
                 }
 
                 $target.html(itemHtml);
+
+                break;
+
+            // Sakura fall
+            case 5:
+                $target.sakura('start', {
+                    blowAnimations: [
+                        'blow-soft-right'
+                    ],                   // Horizontal movement animation names
+                    className: 'sakura', // Class name to use
+                    fallSpeed: 2,        // Factor for petal fall speed
+                    maxSize: 20,         // Maximum petal size
+                    minSize: 15,          // Minimum petal size
+                    newOn: 300          // Interval after which a new petal is added
+                });
 
                 break;
         }
@@ -78,9 +94,36 @@ define( ['jquery'], function ( $ ){
 
     UiAnimation.prototype.stop = function(aniNumber) {
         var _this = this;
+        var $target = _this.$el.find("#" + _this.$id + aniNumber);
 
-        if(animationGrp[aniNumber] == "snow-flake"){
-            this.SnowAnimationStop(_this.$id + aniNumber);
+        switch (aniNumber) {
+            // left start moving
+            case 1:
+                break;
+
+             // right start moving
+            case 2:
+                break;
+
+            // Snow flake
+            case 3:
+                $target.children().fadeOut(500, function(){
+                     $target.empty();
+                });
+                
+                break;
+
+            // Cloud moving
+            case 4:
+                $target.empty();
+
+                break;
+
+            // Sakura fall
+            case 5:
+                $target.sakura('stop');
+                
+                break;
         }
 
         _this.$el.find(_this.$id + aniNumber).removeClass(animationGrp[aniNumber])
@@ -170,16 +213,6 @@ define( ['jquery'], function ( $ ){
         }
 
         return init();
-    };
-
-    UiAnimation.prototype.SnowAnimationStop = function(aniNumber){
-        var _this = this;
-        var $target = _this.$el.find("#" + aniNumber);
-
-        $target.children().fadeOut(500, function(){
-            $target.empty();
-        });
-        
     };
 
     return UiAnimation;
