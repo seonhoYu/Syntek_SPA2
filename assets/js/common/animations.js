@@ -34,7 +34,7 @@ define( ['jquery'], function ( $ ){
         var _this = this;
     };
 
-    UiAnimation.prototype.start = function(aniNumber) {
+    UiAnimation.prototype.start = function(aniNumber, callback) {
         var _this = this;
         var $target = _this.$el.find("#" + _this.$id + aniNumber);
 
@@ -72,7 +72,7 @@ define( ['jquery'], function ( $ ){
             $(this).removeClass(animationGrp[aniNumber]);
 
             /* @brief collback (/js/script.js) */
-            animationCallback();
+            callback();
         });
     };
 

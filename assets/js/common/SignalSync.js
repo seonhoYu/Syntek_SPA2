@@ -34,7 +34,7 @@ require(["jquery", "signalrhubs"], function($)
             }
         }
 
-        aniHub.client.stopAnimation = function () {
+        aniHub.client.stopAnimation = function (animationNo) {
             PageUiAnimation.stop(animationNo);
         }
 
