@@ -138,15 +138,13 @@ define( ['jquery'], function ( $ ){
             case 7: 
                 _this.timer(aniNumber, timer);
 
-                if($target.find("span").length) return;
-
                 var itemHtml = "";
 
                 for(var item = 0; item <= 15; item++){
                     itemHtml += '<span></span>';
                 }
 
-                $target.html(itemHtml);
+                $target.empty().html(itemHtml);
 
                 break;
         }
