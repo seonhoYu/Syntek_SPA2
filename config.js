@@ -49,6 +49,6 @@ require.config({
 		"weather": ['jquery'],
 		"sakura" : ['jquery'],
 		"templateJs": ['commonScript'],
-		"templateCommonJs": ["commonScript"]
+		"templateCommonJs": ["tweenMax", "commonScript"]
     }
 });
