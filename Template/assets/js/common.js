@@ -139,5 +139,7 @@ define(['jquery'], function($){
 
     });
 
-    PageWaether.setWeather();
+    setTimeout(function(){
+        PageWaether.setWeather();
+    }, 2000)
 })
