@@ -9,17 +9,11 @@ define( ['jquery'], function ( $ ){
     var animationGrp = {
         1 : 'left-move',
         2 : 'right-move',
-        3 : 'snow-flake',
-        4 : 'cloud-move',
-        5 : 'sakura-fall'
-    }
-
-    var animationTime = {
-        1: 8900,
-        2: 8900,
-        3: 0,
-        4: 7500,
-        5: 0
+        3 : 'cloud-move-left',
+        4 : 'cloud-move-right',
+        5 : 'snow-flake',
+        6 : 'sakura-fall',
+        7 : 'leaves-falling',
     }
 
     var oAnimEndEventNames = {
@@ -29,10 +23,18 @@ define( ['jquery'], function ( $ ){
         'animation' : 'animationend'
     };
 
+    var oAnimStartEventNames = {
+        'WebkitAnimation' : 'webkitAnimationStart',
+        'OAnimation' : 'oAnimationStart',
+        'msAnimation' : 'MSAnimationStart',
+        'animation' : 'animationstart'
+    };
+
     function UiAnimation (el, option){
         var _this = this;
 
         _this.animEndEventName = oAnimEndEventNames[ Modernizr.prefixed( 'animation' ) ];
+        _this.animStartEventName = oAnimStartEventNames[ Modernizr.prefixed( 'animation' ) ];
 
         _this.$el = $(".ui-animation");
         _this.$id = 'animationNumber';
@@ -43,40 +45,82 @@ define( ['jquery'], function ( $ ){
         var _this = this;
     };
 
-    UiAnimation.prototype.start = function(aniNumber, callback) {
+    UiAnimation.prototype.start = function(aniNumber, timer, callback) {
         var _this = this;
         var $target = _this.$el.find("#" + _this.$id + aniNumber);
+        var _callbackTime = _this.$el.find("#" + _this.$id + aniNumber).data("callback-time") * 1000;
+
+        function CallbackTimeCheck(){
+            $target.addClass(animationGrp[aniNumber]).one(_this.animStartEventName, function(){
+                console.log("event start", _callbackTime);
+
+                if (callback) {
+                    setTimeout(function(){
+                        callback();
+                    }, _callbackTime);
+                }
+
+            }).one(_this.animEndEventName, function(){
+                 $target.removeClass(animationGrp[aniNumber]);
+
+                 console.log("event end");
+            });
+
+            return CallbackTimeCheck;
+        }
 
         switch (aniNumber) {
             // left start moving
             case 1:
+                CallbackTimeCheck();
+
                 break;
 
              // right start moving
             case 2:
+                CallbackTimeCheck();
+
                 break;
 
-            // Snow flake
+            // Cloud moving left
             case 3:
-                this.SnowAnimationStart(_this.$id + aniNumber);
-                break;
-
-            // Cloud moving
-            case 4:
-                if($target.find(".cloud").length) return;
+                CallbackTimeCheck();
 
                 var itemHtml = "";
 
                 for(var item = 0; item <= 4; item++){
-                    itemHtml += '<div class="cloud cloud-move'+(item+1)+'"></div>';
+                    itemHtml += '<div class="cloud cloud-move-left'+(item+1)+'"></div>';
                 }
 
-                $target.html(itemHtml);
+                $target.empty().html(itemHtml);
+
+                break;
+
+            // Cloud moving right
+            case 4:
+                CallbackTimeCheck();
+
+                var itemHtml = "";
+
+                for(var item = 0; item <= 4; item++){
+                    itemHtml += '<div class="cloud cloud-move-right'+(item+1)+'"></div>';
+                }
+
+                $target.empty().html(itemHtml);
+
+                break;
+
+            // Snow fall
+            case 5:
+                _this.timer(aniNumber, timer);
+                _this.SnowAnimationStart(_this.$id + aniNumber);
 
                 break;
 
             // Sakura fall
-            case 5:
+            case 6:
+                _this.timer(aniNumber, timer);
+
                 $target.sakura('start', {
                     blowAnimations: [
                         'blow-soft-right'
@@ -89,24 +133,22 @@ define( ['jquery'], function ( $ ){
                 });
 
                 break;
-        }
+                
+            // leaves fall
+            case 7: 
+                _this.timer(aniNumber, timer);
+                $target.addClass(animationGrp[aniNumber]);
 
-        if (animationTime[aniNumber] && animationTime[aniNumber] > 0) {
-            setTimeout(function () {
-                if (callback) {
-                    callback();
+                var itemHtml = "";
+
+                for(var item = 0; item <= 15; item++){
+                    itemHtml += '<span></span>';
                 }
-            }, animationTime[aniNumber]);
+
+                $target.empty().html(itemHtml);
+
+                break;
         }
-
-        $target.addClass(animationGrp[aniNumber]).one(_this.animEndEventName, function(){
-            $(this).removeClass(animationGrp[aniNumber]);
-
-            /* @brief collback (/js/script.js) */
-            //if (callback) {
-            //    //callback();
-            //}
-        });
     };
 
     UiAnimation.prototype.stop = function (aniNumber) {
@@ -116,34 +158,75 @@ define( ['jquery'], function ( $ ){
         switch (aniNumber) {
             // left start moving
             case 1:
+                CallbackTimeCheck();
+
                 break;
 
              // right start moving
             case 2:
+                CallbackTimeCheck();
+
                 break;
 
-            // Snow flake
+            // Cloud moving left
             case 3:
-                $target.children().fadeOut(500, function(){
-                     $target.empty();
-                });
-                
+                $target.empty();
+
                 break;
 
-            // Cloud moving
+            // Cloud moving right
             case 4:
                 $target.empty();
 
                 break;
 
-            // Sakura fall
+            // Snow fall
             case 5:
+                _this.timer(aniNumber);
+                $target.children().fadeOut(500, function(){
+                     $target.empty();
+                });
+
+                break;
+
+            // Sakura fall
+            case 6:
+                _this.timer(aniNumber);
                 $target.sakura('stop');
-                
+
+                break;
+
+            // leaves fall
+            case 7: 
+                 _this.timer(aniNumber);
+
+                $target.children().fadeOut(500, function(){
+                    $target.removeClass(animationGrp[aniNumber])
+                    $target.empty();
+                });
+
                 break;
         }
 
         _this.$el.find(_this.$id + aniNumber).removeClass(animationGrp[aniNumber])
+    };
+
+    UiAnimation.prototype.timer = function(aniNumber, timer) {
+       console.log("start timer")
+       var _this = this;
+       var animationTimeOut = function(){
+              _this.stop(aniNumber);
+              console.log("end timer")
+           }
+
+       if(timer){
+            var tid = timer * 60000;
+            setTimeout(animationTimeOut, tid);
+        } else {
+            clearTimeout(animationTimeOut);
+        }
+
+        return animationTimeOut;
     };
 
     UiAnimation.prototype.SnowAnimationStart = function(aniNumber) {

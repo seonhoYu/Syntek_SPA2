@@ -28,7 +28,7 @@ require(["jquery", "signalrhubs"], function($)
 
         aniHub.client.startAnimation = function (screenId, animationNo, direction, timer) {
             if (currentScreenId == screenId) {
-                PageUiAnimation.start(animationNo, function () {
+                PageUiAnimation.start(animationNo, timer, function () {
                     var nextId;
                     if (direction == 1) {
                         nextId = screenId + 1;
@@ -42,7 +42,7 @@ require(["jquery", "signalrhubs"], function($)
                 });
             }
             else if (screenId == 0 || direction == 0) {
-                PageUiAnimation.start(animationNo);
+                PageUiAnimation.start(animationNo, timer);
             }
         }
 
