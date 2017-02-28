@@ -25,7 +25,10 @@ require.config({
 		//signalR
 		signalrcore: 'assets/js/vendor/jquery.signalR-2.2.1',
 		signalrhubs : 'http://localhost:8080/signalr/hubs?',
-		signalSync: 'assets/js/common/SignalSync'
+		signalSync: 'assets/js/common/SignalSync',
+
+        //weather
+		weather: 'assets/js/common/weather'
     },
 
     shim : {
@@ -43,6 +46,7 @@ require.config({
 			deps: ["signalrhubs"],
 		},
 
+		"weather": ['jquery'],
 		"sakura" : ['jquery'],
 		"templateJs": ['commonScript'],
 		"templateCommonJs": ["commonScript"]

@@ -18,10 +18,8 @@ require(
 		'templateJs', 
 		'signalrcore', 
 		'signalrhubs', 
-		'signalSync'
+		'signalSync',
+        'weather'
 
-	], function($, TweenMax, Sakura, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript){
-
-
-
+	], function($, TweenMax, Sakura, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript, Weather){
 });

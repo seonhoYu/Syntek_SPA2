@@ -139,5 +139,9 @@ define(['jquery'], function($){
             }
 
         });
+
+        //weatherPage
+        PageWaether.setWeather();
+
     },2000);
 })

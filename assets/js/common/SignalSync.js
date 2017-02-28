@@ -26,7 +26,7 @@ require(["jquery", "signalrhubs"], function($)
 
         aniHub = $.connection.animation;
 
-        aniHub.client.startAnimation = function (screenId, animationNo, direction) {
+        aniHub.client.startAnimation = function (screenId, animationNo, direction, timer) {
             if (currentScreenId == screenId) {
                 PageUiAnimation.start(animationNo, function () {
                     var nextId;
@@ -37,7 +37,7 @@ require(["jquery", "signalrhubs"], function($)
                         nextId = screenId - 1;
                     }
                     if (nextId > 0) {
-                        aniHub.server.startAnimation(nextId, animationNo, direction);
+                        aniHub.server.startAnimation(nextId, animationNo, direction, timer);
                     }
                 });
             }
@@ -89,9 +89,10 @@ require(["jquery", "signalrhubs"], function($)
 
         //메인 영상 종료 시 하위 영상 종료
         videoHub.client.endVideo = function () {
-            if (mainBrowser == false) {
-                videoElem[0].pause();
-            }
+            //if (mainBrowser == false) {
+                
+            //}
+            videoElem[0].pause();
             videoElem.fadeOut();   
             pageContent.fadeIn();
         }

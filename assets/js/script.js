@@ -8,10 +8,10 @@ var screenRollNo = 0;
 var transitionSpeed = 1000;
 var PageTransition;
 var PageUiAnimation;
-//var animationCallback;
+var PageWaether;
 
 
-define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync'], function ($, Handlebars, Transition, UiAnimation){
+define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, Weather) {
 
     var contents = [];
 
@@ -93,12 +93,15 @@ define( ['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'signalSync
 		    }
 
             PageUiAnimation = new UiAnimation();
-
+            PageWaether = new Weather();
+            
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
 		}, 1000);
 		
 	});
+
+	
 
     function generateAllContentsHTML(data) {
         var list = $('.main-content');
