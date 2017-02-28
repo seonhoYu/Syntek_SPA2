@@ -301,11 +301,18 @@ define( ['jquery'], function ( $ ){
             snowflakeElement.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
             snowflakeElement.style.webkitAnimationDelay = flakeDelay;
 
+            snowflakeElement.style.msAnimationName = 'fade, drop';
+            snowflakeElement.style.msAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
+            snowflakeElement.style.msAnimationDelay = flakeDelay;
+
             /* Position the snowflake at a random location along the screen, anchored to either the left or the right*/
             snowflakeElement.style[anchorSide] = randomInteger(0, 60) + '%';
 
             snowflake.style.webkitAnimationName = spinAnimationName;
             snowflake.style.webkitAnimationDuration = spinDuration;
+
+            snowflake.style.msAnimationName = spinAnimationName;
+            snowflake.style.msAnimationDuration = spinDuration;
 
 
             /* Return this snowflake element so it can be added to the document */
