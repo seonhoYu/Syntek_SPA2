@@ -26,9 +26,9 @@ require(["jquery", "signalrhubs"], function($)
 
         aniHub = $.connection.animation;
 
-        aniHub.client.startAnimation = function (screenId, animationNo, direction) {
+        aniHub.client.startAnimation = function (screenId, animationNo, direction, timer) {
             if (currentScreenId == screenId) {
-                PageUiAnimation.start(animationNo, function () {
+                PageUiAnimation.start(animationNo, timer, function () {
                     var nextId;
                     if (direction == 1) {
                         nextId = screenId + 1;
@@ -37,12 +37,12 @@ require(["jquery", "signalrhubs"], function($)
                         nextId = screenId - 1;
                     }
                     if (nextId > 0) {
-                        aniHub.server.startAnimation(nextId, animationNo, direction);
+                        aniHub.server.startAnimation(nextId, animationNo, direction, timer);
                     }
                 });
             }
             else if (screenId == 0 || direction == 0) {
-                PageUiAnimation.start(animationNo);
+                PageUiAnimation.start(animationNo, timer);
             }
         }
 
