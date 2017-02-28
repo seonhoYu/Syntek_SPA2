@@ -137,6 +137,7 @@ define( ['jquery'], function ( $ ){
             // leaves fall
             case 7: 
                 _this.timer(aniNumber, timer);
+                $target.addClass(animationGrp[aniNumber]);
 
                 var itemHtml = "";
 
@@ -198,7 +199,11 @@ define( ['jquery'], function ( $ ){
             // leaves fall
             case 7: 
                  _this.timer(aniNumber);
-                $target.empty();
+
+                $target.children().fadeOut(500, function(){
+                    $target.removeClass(animationGrp[aniNumber])
+                    $target.empty();
+                });
 
                 break;
         }
