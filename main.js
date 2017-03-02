@@ -7,6 +7,7 @@ require(
 	[
 		'jquery',
 		'tweenMax',
+		'marquee',
 		'sakura',
 		'modernizr',
 		'lodash',
@@ -21,5 +22,7 @@ require(
 		'signalSync',
         'weather'
 
-	], function($, TweenMax, Sakura, Modernizr, _ , handlebars, Transition, UiAnimation, PageVideoPlayer, commonScript, Weather){
+	], function($){
+
+
 });
