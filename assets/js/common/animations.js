@@ -425,7 +425,20 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
         return init();
     };
 
+    UiAnimation.prototype.textChange = function(aniType, changeText){
+        var _this = this;
+        var $target = _this.$el.find("."+ animationGrp[aniType]);
 
+        console.log(aniType, changeText)
+
+        if(aniType == 100 || aniType == 101){
+            $target.empty().html(changeText);
+        }
+
+        if(aniType == 110){
+            $target.find(".alert p").empty().html(changeText);
+        }
+    };
 
     return UiAnimation;
 });
