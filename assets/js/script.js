@@ -147,6 +147,8 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 	        return options.inverse(this);
 	    }
 	});
+
+
 	
     
 });
