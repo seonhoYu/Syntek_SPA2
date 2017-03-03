@@ -140,7 +140,7 @@ define(['jquery'], function($){
     });
 
     setTimeout(function () {
-        PageWaether.setWeather();
+        PageWeather.setWeather();
 
         var forecast = $('#week-forecast');
         var params = $('#weather-params');
