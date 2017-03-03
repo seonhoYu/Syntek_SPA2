@@ -26,44 +26,50 @@
         }
     }
     function setLocation(position) {
-        alert();
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
 
         getWeatherData();
     }
 
+
+
     function getWeatherData() {
+        alert();
+        var stdTemp = 273.15;
         var apiUrl = currentUrl + getParameter();
         var data = {};
         
-        //$.getJSON(apiUrl, function (curRsp) {
-        //    data.description = curRsp.weather[0].main;
-        //    data.temp = curRsp.main.temp;
-        //    data.minTemp = curRsp.main.temp_min;
-        //    data.maxTemp = curRsp.main.temp_max;
-        //    data.pressure = curRsp.main.pressure;
-        //    data.humidity = curRsp.main.humidity;
-        //    data.windSpeed = curRsp.wind.speed;
-        //    data.windDegree = curRsp.wind.deg;
-        //    data.icon = getWeatherIcon(curRsp.weather[0].id, true);
-        //    data.weekly = [];
+        $.getJSON(apiUrl, function (curRsp) {
+            data.description = curRsp.weather[0].main;
+            data.temp = curRsp.main.temp - stdTemp;
+            data.minTemp = curRsp.main.temp_min - stdTemp;
+            data.maxTemp = curRsp.main.temp_max - stdTemp;
+            data.pressure = curRsp.main.pressure;
+            data.humidity = curRsp.main.humidity;
+            data.windSpeed = curRsp.wind.speed;
+            data.windDegree = curRsp.wind.deg;
+            data.icon = getWeatherIcon(curRsp.weather[0].id, true);
+            data.weekly = [];
+            debugger;
+            apiUrl = weeklyUrl + getParameter();
+            $.getJSON(apiUrl, function (weekRsp) {
+                $(weekRsp.list).each(function (idx) {
+                    var forecast = {};
 
-        //    apiUrl = weeklyUrl + getParameter();
-        //    $.getJSON(apiUrl, function (weekRsp) {
-        //        weekRsp.list.each(function (idx) {
-        //            var forecast = {};
-        //            forecast.minTemp = this.temp.min;
-        //            forecast.maxTemp = this.temp.max;
-        //            forecast.pressure = this.pressure;
-        //            forecast.humidity = this.humidity;
-        //            forecast.description = this.weather[0].main;
-        //            forecast.icon = getWeatherIcon(this.weather[0].id);
+                    forecast.date = this.dt;
+                    forecast.minTemp = this.temp.min - stdTemp;
+                    forecast.maxTemp = this.temp.max - stdTemp;
+                    forecast.pressure = this.pressure;
+                    forecast.humidity = this.humidity;
+                    forecast.description = this.weather[0].main;
+                    forecast.icon = getWeatherIcon(this.weather[0].id);
 
-        //            data.weekly.push(forecast);
-        //        });
-        //    });
-        //});
+                    data.weekly.push(forecast);
+                });
+                debugger;
+            });
+        });
     }
 
     function setCurrentWeather() {
