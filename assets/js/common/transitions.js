@@ -223,7 +223,7 @@ define(['jquery', 'lodash'], function($, _){
             $page.data( 'originClassList', $page.attr( 'class' ) );
         });
 
-        _this.$firstPage.addClass( 'page-current' );
+        //_this.$firstPage.addClass( 'page-current' );
         
         _this.$video = _this.$warp.find('.content video');
 
@@ -290,7 +290,7 @@ define(['jquery', 'lodash'], function($, _){
         var animation = (typeof animation == 'undefined');
         nextPageIndex = nextPageIndex-1;
 
-        
+
 
         var _this = this;
 
@@ -306,6 +306,9 @@ define(['jquery', 'lodash'], function($, _){
             _outClass = _this.option.outClass,
             _inClass = _this.option.inClass;
 
+        if(styleNum == undefined){
+            return;
+        }
 
         $currentPage.addClass( transitionGrp[styleNum].outClass ).one( _this.animEndEventName, function() {
             _this.endCurrPage = true;

@@ -46,13 +46,14 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 
         PageTransition = new Transition();
 
-        if (environment.screenRoller != undefined && environment.screenRoller.length > 0) {
+        if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
             transition();
         }
         else {
             PageTransition.test(environment.screenId);
         }
     });
+
 	
 	var template = getUrlParameter("template");
 	if(template != undefined){
@@ -119,8 +120,9 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 		
         PageTransition.test(environment.screenRoller[screenRollNo].id, environment.styleNumber);
 
-        clearTimeout(transition);
+        
         setTimeout(transition, environment.screenRoller[screenRollNo].interval + 1000);
+        clearTimeout(transition);
         
         screenRollNo++;
     }
