@@ -1983,7 +1983,7 @@
   left: 0;
 }
 
-.week-forecast > li:after {content:"";position:absolute;left:0;top:0;width:100%;height:100%;background: #fff;opacity: 0.3;z-index: 4;}
+.week-forecast > li:after {}
 
 .week-forecast > li:first-child {
   border-bottom-left-radius: 5px;
@@ -2018,6 +2018,7 @@
 .week-forecast > li > .inner {
   /* border-right: 1px solid rgba(0,0,0,0.1); */
   width: 146px;
+  opacity: 0;
   /* height: 100%; */
   padding: 0 20px;
   text-align: center;
@@ -2114,6 +2115,7 @@
   content: '-';
 }
 .temperature {
+  opacity:0;
   text-align: right;
   margin: 0;
   font-size: 130px;
@@ -2173,7 +2175,7 @@
   margin: -100px auto 0 auto;
   position: relative;
   top: 56%;
-  padding-left: 100px;
+  padding-left: 37px;
 }
 .weather-block-info > li {
   float: left;
@@ -2189,9 +2191,9 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  left: 0;
+  left: 20px;
   position: absolute;
-  top: 41%;
+  top: 37%;
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
   -o-transform: translate(0, -50%);
@@ -2200,6 +2202,7 @@
 }
 .weather-params > li {
   overflow: hidden;
+  opacity:0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -webkit-transform: translate(0, -10px);
@@ -2238,7 +2241,7 @@
   -o-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   transform: translate(0, 0);
-  margin-top:10px;
+  /* margin-top:10px; */
 }
 
 .weather-params .wi {
