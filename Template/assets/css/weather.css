@@ -1989,6 +1989,7 @@
   left: 0;
 }
 
+/*
 .week-forecast > li:after {}
 
 .week-forecast > li:first-child {
@@ -2020,7 +2021,7 @@
 .week-forecast > li.active.lightning {
   border-color: #fff;
   background: rgba(255,255,255,0.05);
-}
+} */
 .week-forecast > li > .inner {
   /* border-right: 1px solid rgba(0,0,0,0.1); */
   width: 146px;
