@@ -8,7 +8,7 @@ var screenRollNo = 0;
 var transitionSpeed = 1000;
 var PageTransition;
 var PageUiAnimation;
-var PageWaether;
+var PageWeather;
 
 
 define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, Weather) {
@@ -93,7 +93,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 		    }
 
             PageUiAnimation = new UiAnimation();
-            PageWaether = new Weather();
+            PageWeather = new Weather();
             
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
