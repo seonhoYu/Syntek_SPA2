@@ -70,7 +70,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 				list.append(html);
 			});
 		});
-	}
+	} 
 	
 	$(document).ready(function(){
 		setTimeout(function(){

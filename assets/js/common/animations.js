@@ -4,7 +4,7 @@
 * @see   /css/animation.css
 */
 
-define( ['jquery'], function ( $ ){
+define( ['jquery', 'marquee'], function ( $, marquee ){
     
     var animationGrp = {
         1 : 'left-move',
@@ -14,6 +14,11 @@ define( ['jquery'], function ( $ ){
         5 : 'snow-flake',
         6 : 'sakura-fall',
         7 : 'leaves-falling',
+
+        100 : 'notice-move-right',
+        101 : 'notice-move-left',
+        102 : 'notice-move-relay',
+        110 : 'notice-layer'
     }
 
     var oAnimEndEventNames = {
@@ -45,13 +50,86 @@ define( ['jquery'], function ( $ ){
         var _this = this;
     };
 
-    UiAnimation.prototype.start = function(aniNumber, timer, callback) {
+    UiAnimation.prototype.start = function(aniType, timer, callback) {
         var _this = this;
-        var $target = _this.$el.find("#" + _this.$id + aniNumber);
-        var _callbackTime = _this.$el.find("#" + _this.$id + aniNumber).data("callback-time") * 1000;
+        var $target = _this.$el.find("#" + _this.$id + aniType);
+        var _callbackTime = _this.$el.find("#" + _this.$id + aniType).data("callback-time") * 1000;
+
+        if(aniType == 100 || aniType == 101){
+            var $notice = _this.$el.find("#notice");
+            var $noticeTarget = $notice.find("."+ animationGrp[aniType]);
+
+            if($notice.is(":hidden")) {
+                 $notice.fadeIn();
+            }
+
+            if($noticeTarget.find(".js-marquee").length){
+                $noticeTarget.marquee('destroy');
+                $notice.children().hide();
+            } else {
+                $notice.children().hide();
+            }
+
+            var innerwidth = $noticeTarget.innerWidth;
+
+            $noticeTarget.fadeIn().width(innerwidth).marquee();
+
+            _this.timer(aniType, timer);
+
+            return;
+        }
+
+        if(aniType == 102){
+            var $notice = _this.$el.find("#notice");
+            var $noticeTarget = $notice.find("."+ animationGrp[aniType]);
+            var _callbackTime = $noticeTarget.data("callback-time") * 1000;
+
+            if($notice.is(":hidden")) {
+                 $notice.fadeIn();
+            }
+
+            if($noticeTarget.find(".js-marquee").length){
+                $noticeTarget.marquee('destroy');
+                $notice.children().hide();
+            } else {
+                $notice.children().hide();
+            }
+
+            var innerwidth = $noticeTarget.innerWidth;
+
+            $noticeTarget.fadeIn().width(innerwidth).marquee().bind("finished", function(){
+                 $noticeTarget.marquee('destroy'); 
+                 $notice.hide();
+
+                 console.log("end");
+            });
+
+            if (callback) {
+                setTimeout(function(){
+                    callback();
+                }, _callbackTime);
+            }
+
+            return;
+        }
+
+        if(aniType == 110){
+            var $noticeLayer = _this.$el.find("#noticeLayer");
+
+            if($noticeLayer.is(":hidden")) {
+                 $noticeLayer.fadeIn(function(){
+                    $(this).find(".alert").fadeIn();
+                 });
+            }
+
+            _this.timer(aniType, timer);
+
+            return;
+
+        }
 
         function CallbackTimeCheck(){
-            $target.addClass(animationGrp[aniNumber]).one(_this.animStartEventName, function(){
+            $target.addClass(animationGrp[aniType]).one(_this.animStartEventName, function(){
                 console.log("event start", _callbackTime);
 
                 if (callback) {
@@ -61,7 +139,7 @@ define( ['jquery'], function ( $ ){
                 }
 
             }).one(_this.animEndEventName, function(){
-                 $target.removeClass(animationGrp[aniNumber]);
+                 $target.removeClass(animationGrp[aniType]);
 
                  console.log("event end");
             });
@@ -69,7 +147,7 @@ define( ['jquery'], function ( $ ){
             return CallbackTimeCheck;
         }
 
-        switch (aniNumber) {
+        switch (aniType) {
             // left start moving
             case 1:
                 CallbackTimeCheck();
@@ -112,14 +190,14 @@ define( ['jquery'], function ( $ ){
 
             // Snow fall
             case 5:
-                _this.timer(aniNumber, timer);
-                _this.SnowAnimationStart(_this.$id + aniNumber);
+                _this.timer(aniType, timer);
+                _this.SnowAnimationStart(_this.$id + aniType);
 
                 break;
 
             // Sakura fall
             case 6:
-                _this.timer(aniNumber, timer);
+                _this.timer(aniType, timer);
 
                 $target.sakura('start', {
                     blowAnimations: [
@@ -136,8 +214,8 @@ define( ['jquery'], function ( $ ){
                 
             // leaves fall
             case 7: 
-                _this.timer(aniNumber, timer);
-                $target.addClass(animationGrp[aniNumber]);
+                _this.timer(aniType, timer);
+                $target.addClass(animationGrp[aniType]);
 
                 var itemHtml = "";
 
@@ -151,11 +229,35 @@ define( ['jquery'], function ( $ ){
         }
     };
 
-    UiAnimation.prototype.stop = function (aniNumber) {
+    UiAnimation.prototype.stop = function (aniType) {
         var _this = this;
-        var $target = _this.$el.find("#" + _this.$id + aniNumber);
+        var $target = _this.$el.find("#" + _this.$id + aniType);
 
-        switch (aniNumber) {
+        if(aniType == 100 || aniType == 101 || aniType == 102){
+            var $notice = _this.$el.find("#notice");
+            var $noticeTarget = $notice.find("."+ animationGrp[aniType]);
+
+            if($notice.is(":visible")) {
+                 $notice.fadeOut(function(){
+                    $noticeTarget.marquee('destroy').hide();
+                 })
+            }
+
+            return;
+        }
+
+        if(aniType == 110){
+            var $noticeLayer = _this.$el.find("#noticeLayer");
+            if($noticeLayer.is(":visible")) {
+                 $noticeLayer.fadeOut(function(){
+                    $(this).find(".alert").hide();
+                 });
+            }
+
+            return;
+        }
+
+        switch (aniType) {
             // left start moving
             case 1:
                 CallbackTimeCheck();
@@ -182,7 +284,7 @@ define( ['jquery'], function ( $ ){
 
             // Snow fall
             case 5:
-                _this.timer(aniNumber);
+                _this.timer(aniType);
                 $target.children().fadeOut(500, function(){
                      $target.empty();
                 });
@@ -191,35 +293,36 @@ define( ['jquery'], function ( $ ){
 
             // Sakura fall
             case 6:
-                _this.timer(aniNumber);
+                _this.timer(aniType);
                 $target.sakura('stop');
 
                 break;
 
             // leaves fall
             case 7: 
-                 _this.timer(aniNumber);
+                 _this.timer(aniType);
 
                 $target.children().fadeOut(500, function(){
-                    $target.removeClass(animationGrp[aniNumber])
+                    $target.removeClass(animationGrp[aniType])
                     $target.empty();
                 });
 
                 break;
         }
 
-        _this.$el.find(_this.$id + aniNumber).removeClass(animationGrp[aniNumber])
+        _this.$el.find(_this.$id + aniType).removeClass(animationGrp[aniType])
     };
 
-    UiAnimation.prototype.timer = function(aniNumber, timer) {
-       console.log("start timer")
+    UiAnimation.prototype.timer = function(aniType, timer) {
        var _this = this;
        var animationTimeOut = function(){
-              _this.stop(aniNumber);
+              _this.stop(aniType);
               console.log("end timer")
            }
 
        if(timer){
+            console.log("start timer")
+
             var tid = timer * 60000;
             setTimeout(animationTimeOut, tid);
         } else {
@@ -229,7 +332,7 @@ define( ['jquery'], function ( $ ){
         return animationTimeOut;
     };
 
-    UiAnimation.prototype.SnowAnimationStart = function(aniNumber) {
+    UiAnimation.prototype.SnowAnimationStart = function(aniType) {
        /* Define the number of snowflakes to be used in the animation */
         var SNOWFLAKES = 200;
 
@@ -238,7 +341,7 @@ define( ['jquery'], function ( $ ){
             /* Fill the empty container with freshly driven snow */
             var first = true;
             for (var i = 0; i < SNOWFLAKES; i++) {
-                document.getElementById(aniNumber).appendChild(createASnowflake(first));
+                document.getElementById(aniType).appendChild(createASnowflake(first));
                 first = false;
             }
         }
@@ -301,11 +404,18 @@ define( ['jquery'], function ( $ ){
             snowflakeElement.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
             snowflakeElement.style.webkitAnimationDelay = flakeDelay;
 
+            snowflakeElement.style.msAnimationName = 'fade, drop';
+            snowflakeElement.style.msAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
+            snowflakeElement.style.msAnimationDelay = flakeDelay;
+
             /* Position the snowflake at a random location along the screen, anchored to either the left or the right*/
             snowflakeElement.style[anchorSide] = randomInteger(0, 60) + '%';
 
             snowflake.style.webkitAnimationName = spinAnimationName;
             snowflake.style.webkitAnimationDuration = spinDuration;
+
+            snowflake.style.msAnimationName = spinAnimationName;
+            snowflake.style.msAnimationDuration = spinDuration;
 
 
             /* Return this snowflake element so it can be added to the document */
@@ -313,6 +423,21 @@ define( ['jquery'], function ( $ ){
         }
 
         return init();
+    };
+
+    UiAnimation.prototype.textChange = function(aniType, changeText){
+        var _this = this;
+        var $target = _this.$el.find("."+ animationGrp[aniType]);
+
+        console.log(aniType, changeText)
+
+        if(aniType == 100 || aniType == 101){
+            $target.empty().html(changeText);
+        }
+
+        if(aniType == 110){
+            $target.find(".alert p").empty().html(changeText);
+        }
     };
 
     return UiAnimation;

@@ -12,6 +12,7 @@ require.config({
         handlebars : 'assets/js/vendor/handlebars.min',
 
         tweenMax : 'assets/js/vendor/ui/TweenMax-1.19.0.min',
+        marquee : 'assets/js/vendor/ui/jquery.marquee.min',
         sakura : 'assets/js/vendor/ui/jquery-sakura.min',
         contentTransition : 'assets/js/common/transitions',
 		uiAnimation : 'assets/js/common/animations',
@@ -47,8 +48,9 @@ require.config({
 		},
 
 		"weather": ['jquery'],
+		"marquee" : ['jquery'],
 		"sakura" : ['jquery'],
 		"templateJs": ['commonScript'],
-		"templateCommonJs": ["commonScript"]
+		"templateCommonJs": ["tweenMax", "commonScript"]
     }
 });
