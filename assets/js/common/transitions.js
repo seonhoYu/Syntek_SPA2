@@ -202,7 +202,7 @@ define(['jquery', 'lodash'], function($, _){
         this.endCurrPage = false;
         this.endNextPage = false;
         this.activeClassName = 'page-current';
-        this.option = $.extend( {}, defaults , option );
+        this.option = $.extend( {}, defaults , option);
         this.animEndEventName = oAnimEndEventNames[ Modernizr.prefixed( 'animation' ) ];
 
         this.init();
