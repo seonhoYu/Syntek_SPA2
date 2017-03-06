@@ -46,10 +46,11 @@ require.config({
 		"signalSync": {
 			deps: ["signalrhubs"],
 		},
-
 		"weather": ['jquery'],
 		"marquee" : ['jquery'],
 		"sakura" : ['jquery'],
+
+		// template
 		"templateJs": ['commonScript'],
 		"templateCommonJs": ["tweenMax", "commonScript"]
     }
