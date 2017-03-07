@@ -5,8 +5,7 @@
 var aniHub;
 var videoHub;
 
-require(["jquery", "signalrhubs"], function($)
-{
+require(["jquery", "signalrhubs"], function($){
     var hubUrl = '';
     var isMainBrowser = false;
     var videoPlayList;
