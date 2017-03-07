@@ -11,11 +11,10 @@ define( ['jquery'], function ( $ ){
     PageVideoController.prototype.load = function(content){
         var _this = this;
 
-        $(content).find("video").each(function(){
-            var $target = $(this).find("source");
-            var _url = $target.data("src");
+        $(content).find("source").each(function(){
+            var _url = $(this).data("src");
 
-            $target.attr("src", _url);
+            $(this).attr("src", _url);
         })
     };
 

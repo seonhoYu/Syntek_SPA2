@@ -20,6 +20,9 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 
         PageVideo = new PageVideoController();
 
+        // global video load
+        PageVideo.load("#globalVideo");
+
         $('section.page-content').each(function (idx) {
             var template = $(this).attr('template');
             var list = $('#section' + template);
