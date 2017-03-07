@@ -21,7 +21,6 @@ define(['jquery'], function($){
             TweenMax.delayedCall(3, new_in);
 
         }
-
         $ui.css({ visibility: "visible" });
         new_in();
     });
