@@ -55,7 +55,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
             transition();
         }
         else {
-            PageTransition.test(environment.screenId);
+            PageTransition.start(environment.screenId);
         }
     });
 
@@ -123,7 +123,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
             screenRollNo = 0;
         }
 		
-        PageTransition.test(environment.screenRoller[screenRollNo].id, environment.styleNumber);
+        PageTransition.start(environment.screenRoller[screenRollNo].id, environment.styleNumber);
 
         
         setTimeout(transition, environment.screenRoller[screenRollNo].interval + 1000);

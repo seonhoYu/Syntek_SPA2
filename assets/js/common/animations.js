@@ -4,7 +4,7 @@
 * @see   /css/animation.css
 */
 
-define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
+define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
     
     var animationGrp = {
         1 : 'left-move',
@@ -44,89 +44,89 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
         'animation' : 'animationstart'
     };
 
-    function UiAnimation (el, option){
-        var _this = this;
+    function UiAnimation (el, option ){
+        var that = this;
 
-        _this.animEndEventName = oAnimEndEventNames[ Modernizr.prefixed('animation')];
-        _this.animStartEventName = oAnimStartEventNames[ Modernizr.prefixed('animation')];
+        that.animEndEventName = oAnimEndEventNames[ Modernizr.prefixed('animation')];
+        that.animStartEventName = oAnimStartEventNames[ Modernizr.prefixed('animation')];
 
-        _this.$el = $('.ui-animation');
-        _this.$id = 'animationNumber';
+        that.$el = $('.ui-animation');
+        that.$id = 'animationNumber';
 
-        _this.init();
+        that.init();
     }
 
     UiAnimation.prototype.init = function(){
-        var _this = this;
+        var that = this;
     };
 
-    UiAnimation.prototype.isNotice = function(aniType){
-        var _this = this;
+    UiAnimation.prototype.isNotice = function( aniType ){
+        var that = this;
 
-        _this.$notice = _this.$el.find('#notice'),
-        _this.$noticeTarget = _this.$el.find('.'+ animationGrp[aniType]);
-        _this.$noticeLayer = _this.$el.find('#noticeLayer');
+        that.$notice = that.$el.find('#notice'),
+        that.$noticeTarget = that.$el.find('.'+ animationGrp[aniType]);
+        that.$noticeLayer = that.$el.find('#noticeLayer');
 
-        _this.isNoticeText = animationGrp[aniType].indexOf('notice-move-left') > -1 || animationGrp[aniType].indexOf('notice-move-right') > -1,
-        _this.isNoticeRelay = animationGrp[aniType].indexOf('notice-move-relay') > -1,
-        _this.isNoticeLayer = animationGrp[aniType].indexOf('notice-layer') > -1;
+        that.isNoticeText = animationGrp[aniType].indexOf('notice-move-left') > -1 || animationGrp[aniType].indexOf('notice-move-right') > -1;
+        that.isNoticeRelay = animationGrp[aniType].indexOf('notice-move-relay') > -1;
+        that.isNoticeLayer = animationGrp[aniType].indexOf('notice-layer') > -1;
 
-        return _this.$notice, _this.$noticeTarget, _this.$noticeLayer, _this.isNoticeText, _this.isNoticeRelay, _this.isNoticeLayer;
+        return that.$notice, that.$noticeTarget, that.$noticeLayer, that.isNoticeText, that.isNoticeRelay, that.isNoticeLayer;
     };
 
-    UiAnimation.prototype.start = function(aniType, timer, callback) {
-        var _this = this,
-            $target = _this.$el.find('#' + _this.$id + aniType),
-            _callbackTime = _this.$el.find('#' + _this.$id + aniType).data('callback-time') * 1000;
+    UiAnimation.prototype.start = function( aniType, timer, callback ) {
+        var that = this,
+            $target = that.$el.find('#' + that.$id + aniType),
+            _callbackTime = that.$el.find('#' + that.$id + aniType).data('callback-time') * 1000;
 
 
-        _this.isNotice(aniType);
+        that.isNotice(aniType);
 
-        if(_this.isNoticeText){
-            if(_this.$notice.is(':hidden')) {
-                 _this.$notice.fadeIn();
+        if( that.isNoticeText ){
+            if( that.$notice.is(':hidden') ) {
+                 that.$notice.fadeIn();
             }
 
-            if(_this.$noticeTarget.find('.js-marquee').length){
-                _this.$noticeTarget.marquee('destroy');
-                _this.$notice.children().hide();
+            if( that.$noticeTarget.find('.js-marquee').length ){
+                that.$noticeTarget.marquee('destroy');
+                that.$notice.children().hide();
             } else {
-                _this.$notice.children().hide();
+                that.$notice.children().hide();
             }
 
-            var innerwidth = _this.$noticeTarget.innerWidth;
+            var innerwidth = that.$noticeTarget.innerWidth;
 
-            _this.$noticeTarget.fadeIn().width(innerwidth).marquee();
+            that.$noticeTarget.fadeIn().width(innerwidth).marquee();
 
-            _this.timer(aniType, timer);
+            that.timer(aniType, timer);
 
             return;
         }
 
-        if(_this.isNoticeRelay){
-            var _callbackTime = _this.$noticeTarget.data('callback-time') * 1000;
+        if( that.isNoticeRelay ){
+            var _callbackTime = that.$noticeTarget.data('callback-time') * 1000;
 
-            if(_this.$notice.is(':hidden')) {
-                 _this.$notice.fadeIn();
+            if( that.$notice.is(':hidden') ) {
+                 that.$notice.fadeIn();
             }
 
-            if(_this.$noticeTarget.find('.js-marquee').length){
-                _this.$noticeTarget.marquee('destroy');
-                _this.$notice.children().hide();
+            if( that.$noticeTarget.find('.js-marquee').length ){
+                that.$noticeTarget.marquee('destroy');
+                that.$notice.children().hide();
             } else {
-                _this.$notice.children().hide();
+                that.$notice.children().hide();
             }
 
-            var innerwidth = _this.$noticeTarget.innerWidth;
+            var innerwidth = that.$noticeTarget.innerWidth;
 
-            _this.$noticeTarget.fadeIn().width(innerwidth).marquee().bind('finished', function(){
-                 _this.$noticeTarget.marquee('destroy'); 
-                 _this.$notice.hide();
+            that.$noticeTarget.fadeIn().width(innerwidth).marquee().bind('finished', function(){
+                 that.$noticeTarget.marquee('destroy'); 
+                 that.$notice.hide();
 
                  console.log('end');
             });
 
-            if (callback) {
+            if ( callback ) {
                 setTimeout(function(){
                     callback();
                 }, _callbackTime);
@@ -135,30 +135,30 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
             return;
         }
 
-        if(_this.isNoticeLayer){
-            if(_this.$noticeLayer.is(':hidden')) {
-                 _this.$noticeLayer.fadeIn(function(){
+        if( that.isNoticeLayer ){
+            if( that.$noticeLayer.is(':hidden') ) {
+                 that.$noticeLayer.fadeIn(function(){
                     $(this).find('.alert').fadeIn();
                  });
             }
 
-            _this.timer(aniType, timer);
+            that.timer(aniType, timer);
 
             return;
 
         }
 
         function CallbackTimeCheck(){
-            $target.addClass(animationGrp[aniType]).one(_this.animStartEventName, function(){
+            $target.addClass(animationGrp[aniType]).one(that.animStartEventName, function(){
                 console.log('event start', _callbackTime);
 
-                if (callback) {
+                if ( callback ) {
                     setTimeout(function(){
                         callback();
                     }, _callbackTime);
                 }
 
-            }).one(_this.animEndEventName, function(){
+            }).one(that.animEndEventName, function(){
                  $target.removeClass(animationGrp[aniType]);
 
                  console.log('event end');
@@ -167,7 +167,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
             return CallbackTimeCheck;
         }
 
-        switch (aniType) {
+        switch ( aniType ) {
             // left start moving
             case 1:
                 CallbackTimeCheck();
@@ -186,7 +186,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
 
                 var itemHtml = "";
 
-                for(var item = 0; item <= 4; item++){
+                for( var item = 0; item <= 4; item++ ){
                     itemHtml += '<div class="cloud cloud-move-left'+(item+1)+'"></div>';
                 }
 
@@ -200,7 +200,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
 
                 var itemHtml = "";
 
-                for(var item = 0; item <= 4; item++){
+                for( var item = 0; item <= 4; item++ ){
                     itemHtml += '<div class="cloud cloud-move-right'+(item+1)+'"></div>';
                 }
 
@@ -210,14 +210,14 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
 
             // Snow fall
             case 5:
-                _this.timer(aniType, timer);
-                _this.SnowAnimationStart(_this.$id + aniType);
+                that.timer(aniType, timer);
+                that.SnowAnimationStart(that.$id + aniType);
 
                 break;
 
             // Sakura fall
             case 6:
-                _this.timer(aniType, timer);
+                that.timer(aniType, timer);
 
                 $target.sakura('start', {
                     blowAnimations: [
@@ -234,12 +234,12 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
                 
             // leaves fall
             case 7: 
-                _this.timer(aniType, timer);
+                that.timer(aniType, timer);
                 $target.addClass(animationGrp[aniType]);
 
                 var itemHtml = "";
 
-                for(var item = 0; item <= 15; item++){
+                for( var item = 0; item <= 15; item++ ){
                     itemHtml += '<span></span>';
                 }
 
@@ -249,31 +249,31 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
         }
     };
 
-    UiAnimation.prototype.stop = function (aniType) {
-        var _this = this,
-            $target = _this.$el.find('#' + _this.$id + aniType);
+    UiAnimation.prototype.stop = function (aniType ) {
+        var that = this,
+            $target = that.$el.find('#' + that.$id + aniType);
 
-        _this.isNotice(aniType);
+        that.isNotice(aniType);
 
-        if(_this.isNoticeText || _this.isNoticeRelay){
-            if(_this.$notice.is(':visible')) {
-                 _this.$notice.fadeOut(function(){
-                    _this.$noticeTarget.marquee('destroy').hide();
+        if( that.isNoticeText || that.isNoticeRelay ){
+            if( that.$notice.is(':visible') ) {
+                 that.$notice.fadeOut(function(){
+                    that.$noticeTarget.marquee('destroy').hide();
                  })
             }
 
             return;
         }
 
-        if(_this.isNoticeLayer){
-            if(_this.$noticeLayer.is(':visible')) {
-                 _this.$noticeLayer.fadeOut();
+        if( that.isNoticeLayer ){
+            if( that.$noticeLayer.is(':visible') ) {
+                 that.$noticeLayer.fadeOut();
             }
 
             return;
         }
 
-        switch (aniType) {
+        switch ( aniType ) {
             // left start moving
             case 1:
                 CallbackTimeCheck();
@@ -300,7 +300,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
 
             // Snow fall
             case 5:
-                _this.timer(aniType);
+                that.timer(aniType);
                 $target.children().fadeOut(500, function(){
                      $target.empty();
                 });
@@ -309,14 +309,14 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
 
             // Sakura fall
             case 6:
-                _this.timer(aniType);
+                that.timer(aniType);
                 $target.sakura('stop');
 
                 break;
 
             // leaves fall
             case 7: 
-                 _this.timer(aniType);
+                 that.timer(aniType);
 
                 $target.children().fadeOut(500, function(){
                     $target.removeClass(animationGrp[aniType])
@@ -326,17 +326,17 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
                 break;
         }
 
-        _this.$el.find(_this.$id + aniType).removeClass(animationGrp[aniType])
+        that.$el.find(that.$id + aniType).removeClass(animationGrp[aniType])
     };
 
-    UiAnimation.prototype.timer = function(aniType, timer) {
-       var _this = this;
-       var animationTimeOut = function(){
-              _this.stop(aniType);
+    UiAnimation.prototype.timer = function( aniType, timer ) {
+       var that = this,
+           animationTimeOut = function(){
+              that.stop(aniType);
               console.log('end timer')
            }
 
-       if(timer){
+       if( timer ){
             console.log('start timer')
 
             var tid = timer * 60000;
@@ -348,7 +348,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
         return animationTimeOut;
     };
 
-    UiAnimation.prototype.SnowAnimationStart = function(aniType) {
+    UiAnimation.prototype.SnowAnimationStart = function( aniType ) {
        /* Define the number of snowflakes to be used in the animation */
         var SNOWFLAKES = 200;
 
@@ -356,7 +356,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
             
             /* Fill the empty container with freshly driven snow */
             var first = true;
-            for (var i = 0; i < SNOWFLAKES; i++) {
+            for ( var i = 0; i < SNOWFLAKES; i++ ) {
                 document.getElementById(aniType).appendChild(createASnowflake(first));
                 first = false;
             }
@@ -366,7 +366,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
             Receives the lowest and highest values of a range and
             returns a random integer that falls within that range.
         */
-        function randomInteger(low, high) {
+        function randomInteger( low, high ) {
             return low + Math.floor(Math.random() * (high - low));
         }
 
@@ -374,20 +374,20 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
            Receives the lowest and highest values of a range and
            returns a random float that falls within that range.
         */
-        function randomFloat(low, high) {
+        function randomFloat( low, high ) {
             return low + Math.random() * (high - low);
         }
 
-        function randomItem(items) {
+        function randomItem( items ) {
             return items[randomInteger(0, items.length - 1)]
         }
 
         /* Returns a duration value for the falling animation.*/
-        function durationValue(value) {
+        function durationValue( value ) {
             return value + 's';
         }
 
-        function createASnowflake(is_first) {
+        function createASnowflake( is_first ) {
             var flakes = ['2746', '2745', '2744', '2733'];
             var superFlakes = ['2746', '2745', '2744', 'fc7', '274b', '2749', '2747', '2746', '273c', '273b', '2734', '2733', '2732', '2731', '2725'];
             var sizes = ['tiny', 'tiny', 'tiny', 'small', 'small', 'small', 'small', 'medium', 'medium', 'medium', 'medium', 'medium', 'medium', 'large', 'massive'];
@@ -441,17 +441,17 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
         return init();
     };
 
-    UiAnimation.prototype.textChange = function(aniType, changeText){
-        var _this = this;
+    UiAnimation.prototype.textChange = function( aniType, changeText ){
+        var that = this;
 
-        _this.isNotice(aniType);
+        that.isNotice(aniType);
 
-        if(_this.isNoticeText || _this.isNoticeRelay){
-            _this.$noticeTarget.empty().html(changeText);
+        if( that.isNoticeText || that.isNoticeRelay ){
+            that.$noticeTarget.empty().html(changeText);
         }
 
-        if(_this.isNoticeLayer){
-            _this.$noticeTarget.find('.alert p').empty().html(changeText);
+        if( that.isNoticeLayer ){
+            that.$noticeTarget.find('.alert p').empty().html(changeText);
         }
     };
 

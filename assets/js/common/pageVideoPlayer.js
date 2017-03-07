@@ -5,11 +5,11 @@
 
 define( ['jquery'], function ( $ ){
     function PageVideoController ( el, option ){
-        var _this = this;
+        var that = this;
     }
 
     PageVideoController.prototype.load = function(content){
-        var _this = this;
+        var that = this;
 
         $(content).find("source").each(function(){
             var _url = $(this).data("src");
@@ -19,19 +19,19 @@ define( ['jquery'], function ( $ ){
     };
 
     PageVideoController.prototype.play = function() {
-        var _this = this;
+        var that = this;
     };
 
     PageVideoController.prototype.on = function() {
-        var _this = this;
+        var that = this;
         //console.log( 'PageVideoController.prototype.on ');
-        //_this.play();
+        //that.play();
     };
 
     PageVideoController.prototype.off = function() {
-        var _this = this;
+        var that = this;
         //console.log( 'PageVideoController.prototype.off ');
-        //_this.video.pause();
+        //that.video.pause();
     };
 
 
