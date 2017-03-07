@@ -32,11 +32,14 @@ body.type-portrait  {max-width:1080px; max-height:1920px;}
 
 #globalVideo {width:100%; height:100%; position: absolute; left:0; top:0; z-index:100;}
 
-.notice-text {display:none; position:absolute; bottom:0; left:0; width:100%; padding:10px; font-size:30px; box-sizing:border-box; overflow:hidden; color:#fff;}
-.notice-text p {position:relative;}
-.notice-text .notice-move-right {left:-10px;}
-.notice-text .notice-move-left {right:-10px;}
-.notice-text .notice-move-relay {left:-10px;}
+.notice-text {display:none; width:100%; font-size:30px; box-sizing:border-box; overflow:hidden; color:#000;}
+.notice-text p {position:absolute; left:0; background: #fff; height: 50px;line-height: 50px; width:102%;}
+.notice-text [class^="notice-move-right"] {left:-10px;}
+.notice-text [class^="notice-move-left"] {right:-10px;}
+.notice-text [class^="notice-move-relay"] {left:-10px;}
+.notice-text [class*="-top"] {top:0;}
+.notice-text [class*="-center"] {top:50%; margin-top:-25px}
+.notice-text [class*="-bottom"] {bottom:0;}
 
 #noticeLayer {display:none; position:absolute; width:100%; height:100%;}
 .notice-layer {

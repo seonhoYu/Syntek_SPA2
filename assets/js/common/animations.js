@@ -15,9 +15,18 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
         6 : 'sakura-fall',
         7 : 'leaves-falling',
 
-        100 : 'notice-move-right',
-        101 : 'notice-move-left',
-        102 : 'notice-move-relay',
+        100 : 'notice-move-right-top',
+        101 : 'notice-move-left-top',
+        102 : 'notice-move-relay-top',
+
+        103 : 'notice-move-right-center',
+        104 : 'notice-move-left-center',
+        105 : 'notice-move-relay-center',
+
+        106 : 'notice-move-right-bottom',
+        107 : 'notice-move-left-bottom',
+        108 : 'notice-move-relay-bottom',
+
         110 : 'notice-layer'
     }
 
@@ -38,11 +47,12 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
     function UiAnimation (el, option){
         var _this = this;
 
-        _this.animEndEventName = oAnimEndEventNames[ Modernizr.prefixed( 'animation' ) ];
-        _this.animStartEventName = oAnimStartEventNames[ Modernizr.prefixed( 'animation' ) ];
+        _this.animEndEventName = oAnimEndEventNames[ Modernizr.prefixed('animation')];
+        _this.animStartEventName = oAnimStartEventNames[ Modernizr.prefixed('animation')];
 
-        _this.$el = $(".ui-animation");
+        _this.$el = $('.ui-animation');
         _this.$id = 'animationNumber';
+
         _this.init();
     }
 
@@ -50,58 +60,70 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
         var _this = this;
     };
 
-    UiAnimation.prototype.start = function(aniType, timer, callback) {
+    UiAnimation.prototype.isNotice = function(aniType){
         var _this = this;
-        var $target = _this.$el.find("#" + _this.$id + aniType);
-        var _callbackTime = _this.$el.find("#" + _this.$id + aniType).data("callback-time") * 1000;
 
-        if(aniType == 100 || aniType == 101){
-            var $notice = _this.$el.find("#notice");
-            var $noticeTarget = $notice.find("."+ animationGrp[aniType]);
+        _this.$notice = _this.$el.find('#notice'),
+        _this.$noticeTarget = _this.$el.find('.'+ animationGrp[aniType]);
+        _this.$noticeLayer = _this.$el.find('#noticeLayer');
 
-            if($notice.is(":hidden")) {
-                 $notice.fadeIn();
+        _this.isNoticeText = animationGrp[aniType].indexOf('notice-move-left') > -1 || animationGrp[aniType].indexOf('notice-move-right') > -1,
+        _this.isNoticeRelay = animationGrp[aniType].indexOf('notice-move-relay') > -1,
+        _this.isNoticeLayer = animationGrp[aniType].indexOf('notice-layer') > -1;
+
+        return _this.$notice, _this.$noticeTarget, _this.$noticeLayer, _this.isNoticeText, _this.isNoticeRelay, _this.isNoticeLayer;
+    };
+
+    UiAnimation.prototype.start = function(aniType, timer, callback) {
+        var _this = this,
+            $target = _this.$el.find('#' + _this.$id + aniType),
+            _callbackTime = _this.$el.find('#' + _this.$id + aniType).data('callback-time') * 1000;
+
+
+        _this.isNotice(aniType);
+
+        if(_this.isNoticeText){
+            if(_this.$notice.is(':hidden')) {
+                 _this.$notice.fadeIn();
             }
 
-            if($noticeTarget.find(".js-marquee").length){
-                $noticeTarget.marquee('destroy');
-                $notice.children().hide();
+            if(_this.$noticeTarget.find('.js-marquee').length){
+                _this.$noticeTarget.marquee('destroy');
+                _this.$notice.children().hide();
             } else {
-                $notice.children().hide();
+                _this.$notice.children().hide();
             }
 
-            var innerwidth = $noticeTarget.innerWidth;
+            var innerwidth = _this.$noticeTarget.innerWidth;
 
-            $noticeTarget.fadeIn().width(innerwidth).marquee();
+            _this.$noticeTarget.fadeIn().width(innerwidth).marquee();
 
             _this.timer(aniType, timer);
 
             return;
         }
 
-        if(aniType == 102){
-            var $notice = _this.$el.find("#notice");
-            var $noticeTarget = $notice.find("."+ animationGrp[aniType]);
-            var _callbackTime = $noticeTarget.data("callback-time") * 1000;
+        if(_this.isNoticeRelay){
+            var _callbackTime = _this.$noticeTarget.data('callback-time') * 1000;
 
-            if($notice.is(":hidden")) {
-                 $notice.fadeIn();
+            if(_this.$notice.is(':hidden')) {
+                 _this.$notice.fadeIn();
             }
 
-            if($noticeTarget.find(".js-marquee").length){
-                $noticeTarget.marquee('destroy');
-                $notice.children().hide();
+            if(_this.$noticeTarget.find('.js-marquee').length){
+                _this.$noticeTarget.marquee('destroy');
+                _this.$notice.children().hide();
             } else {
-                $notice.children().hide();
+                _this.$notice.children().hide();
             }
 
-            var innerwidth = $noticeTarget.innerWidth;
+            var innerwidth = _this.$noticeTarget.innerWidth;
 
-            $noticeTarget.fadeIn().width(innerwidth).marquee().bind("finished", function(){
-                 $noticeTarget.marquee('destroy'); 
-                 $notice.hide();
+            _this.$noticeTarget.fadeIn().width(innerwidth).marquee().bind('finished', function(){
+                 _this.$noticeTarget.marquee('destroy'); 
+                 _this.$notice.hide();
 
-                 console.log("end");
+                 console.log('end');
             });
 
             if (callback) {
@@ -113,12 +135,10 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
             return;
         }
 
-        if(aniType == 110){
-            var $noticeLayer = _this.$el.find("#noticeLayer");
-
-            if($noticeLayer.is(":hidden")) {
-                 $noticeLayer.fadeIn(function(){
-                    $(this).find(".alert").fadeIn();
+        if(_this.isNoticeLayer){
+            if(_this.$noticeLayer.is(':hidden')) {
+                 _this.$noticeLayer.fadeIn(function(){
+                    $(this).find('.alert').fadeIn();
                  });
             }
 
@@ -130,7 +150,7 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
 
         function CallbackTimeCheck(){
             $target.addClass(animationGrp[aniType]).one(_this.animStartEventName, function(){
-                console.log("event start", _callbackTime);
+                console.log('event start', _callbackTime);
 
                 if (callback) {
                     setTimeout(function(){
@@ -141,7 +161,7 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
             }).one(_this.animEndEventName, function(){
                  $target.removeClass(animationGrp[aniType]);
 
-                 console.log("event end");
+                 console.log('event end');
             });
 
             return CallbackTimeCheck;
@@ -230,28 +250,24 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
     };
 
     UiAnimation.prototype.stop = function (aniType) {
-        var _this = this;
-        var $target = _this.$el.find("#" + _this.$id + aniType);
+        var _this = this,
+            $target = _this.$el.find('#' + _this.$id + aniType);
 
-        if(aniType == 100 || aniType == 101 || aniType == 102){
-            var $notice = _this.$el.find("#notice");
-            var $noticeTarget = $notice.find("."+ animationGrp[aniType]);
+        _this.isNotice(aniType);
 
-            if($notice.is(":visible")) {
-                 $notice.fadeOut(function(){
-                    $noticeTarget.marquee('destroy').hide();
+        if(_this.isNoticeText || _this.isNoticeRelay){
+            if(_this.$notice.is(':visible')) {
+                 _this.$notice.fadeOut(function(){
+                    _this.$noticeTarget.marquee('destroy').hide();
                  })
             }
 
             return;
         }
 
-        if(aniType == 110){
-            var $noticeLayer = _this.$el.find("#noticeLayer");
-            if($noticeLayer.is(":visible")) {
-                 $noticeLayer.fadeOut(function(){
-                    $(this).find(".alert").hide();
-                 });
+        if(_this.isNoticeLayer){
+            if(_this.$noticeLayer.is(':visible')) {
+                 _this.$noticeLayer.fadeOut();
             }
 
             return;
@@ -317,11 +333,11 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
        var _this = this;
        var animationTimeOut = function(){
               _this.stop(aniType);
-              console.log("end timer")
+              console.log('end timer')
            }
 
        if(timer){
-            console.log("start timer")
+            console.log('start timer')
 
             var tid = timer * 60000;
             setTimeout(animationTimeOut, tid);
@@ -427,16 +443,15 @@ define( ['jquery', 'marquee'], function ( $, marquee ){
 
     UiAnimation.prototype.textChange = function(aniType, changeText){
         var _this = this;
-        var $target = _this.$el.find("."+ animationGrp[aniType]);
 
-        console.log(aniType, changeText)
+        _this.isNotice(aniType);
 
-        if(aniType == 100 || aniType == 101){
-            $target.empty().html(changeText);
+        if(_this.isNoticeText || _this.isNoticeRelay){
+            _this.$noticeTarget.empty().html(changeText);
         }
 
-        if(aniType == 110){
-            $target.find(".alert p").empty().html(changeText);
+        if(_this.isNoticeLayer){
+            _this.$noticeTarget.find('.alert p').empty().html(changeText);
         }
     };
 
