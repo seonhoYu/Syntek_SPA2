@@ -9,16 +9,16 @@ var transitionSpeed = 1000;
 var PageTransition;
 var PageUiAnimation;
 var PageWeather;
+var PageVideo;
 
-
-define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, Weather) {
+define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPlayer',  'weather', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, PageVideoController, Weather) {
 
     var contents = [];
-
     $.getJSON("contents.json", function (data) {
         contents = data;
         generateAllContentsHTML(contents);
 
+        PageVideo = new PageVideoController();
 
         $('section.page-content').each(function (idx) {
             var template = $(this).attr('template');
@@ -31,6 +31,9 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
                 $.getJSON(prefix + "/data/data.json").done(function (data) {
                     var compiledHtml = theTemplate(data);
                     list.append(compiledHtml);
+
+                    // video load
+					PageVideo.load(list);
                 })
                 .fail(function () {
                     var convertedHtml = html;
@@ -38,7 +41,6 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
                 });
             });
         })
-        
     });
 
     $.getJSON("environment.json", function (data) {
@@ -95,11 +97,11 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 
             PageUiAnimation = new UiAnimation();
             PageWeather = new Weather();
-            
+
+
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
-		}, 1000);
-		
+		}, 1000);		
 	});
 
 	
@@ -149,8 +151,4 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation',  'weather', 
 	        return options.inverse(this);
 	    }
 	});
-
-
-	
-    
 });

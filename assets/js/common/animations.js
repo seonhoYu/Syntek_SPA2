@@ -4,7 +4,7 @@
 * @see   /css/animation.css
 */
 
-define( ['jquery', 'marquee'], function ( $, marquee ){
+define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura ){
     
     var animationGrp = {
         1 : 'left-move',

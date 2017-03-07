@@ -5,24 +5,12 @@
 
 require(
 	[
-		'jquery',
 		'tweenMax',
-		'marquee',
-		'sakura',
+		'jquery',
 		'modernizr',
-		'lodash',
-		'handlebars',
-		'pageVideoPlayer',
-		'contentTransition',
-		'uiAnimation',
 		'commonScript',
-		'templateJs', 
-		'signalrcore', 
-		'signalrhubs', 
-		'signalSync',
-        'weather'
+		'templateJs'
 
-	], function($){
-
+	], function($, TweenMax, Modernizr){
 
 });

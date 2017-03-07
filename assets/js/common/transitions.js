@@ -290,9 +290,11 @@ define(['jquery', 'lodash'], function($, _){
         var animation = (typeof animation == 'undefined');
         nextPageIndex = nextPageIndex-1;
 
-
-
         var _this = this;
+        var $currentPage = _this.$pages.eq( _this.nCurrent );
+        var $nextPage = _this.$pages.eq( nextPageIndex ).addClass( _this.activeClassName ),
+            _outClass = _this.option.outClass,
+            _inClass = _this.option.inClass;
 
         _this.$video = _this.$pages.find('.content video');
 
@@ -301,10 +303,6 @@ define(['jquery', 'lodash'], function($, _){
         }
         _this.isAnimating = true;
 
-        var $currentPage = _this.$pages.eq( _this.nCurrent );
-        var $nextPage = _this.$pages.eq( nextPageIndex ).addClass( _this.activeClassName ),
-            _outClass = _this.option.outClass,
-            _inClass = _this.option.inClass;
 
         if(styleNum == undefined){
             return;
