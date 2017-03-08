@@ -388,33 +388,22 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
         }
 
         function createASnowflake( is_first ) {
-            var flakes = ['2746', '2745', '2744', '2733'];
-            var superFlakes = ['2746', '2745', '2744', 'fc7', '274b', '2749', '2747', '2746', '273c', '273b', '2734', '2733', '2732', '2731', '2725'];
-            var sizes = ['tiny', 'tiny', 'tiny', 'small', 'small', 'small', 'small', 'medium', 'medium', 'medium', 'medium', 'medium', 'medium', 'large', 'massive'];
+            var flakes = ['2746', '2745', '2744', '2733'],
+                superFlakes = ['2746', '2745', '2744', 'fc7', '274b', '2749', '2747', '2746', '273c', '273b', '2734', '2733', '2732', '2731', '2725'],
+                sizes = ['tiny', 'tiny', 'tiny', 'small', 'small', 'small', 'small', 'medium', 'medium', 'medium', 'medium', 'medium', 'medium', 'large', 'massive'],
+                snowflakeElement = document.createElement('div'),
+                snowflake = document.createElement('span'),
+                spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpin',
+                anchorSide = (Math.random() < 0.5) ? 'left' : 'right',
+                fadeAndDropDuration = durationValue(randomFloat(5, 11)),
+                spinDuration = durationValue(randomFloat(4, 8)),
+                flakeDelay = is_first ? 0 : durationValue(randomFloat(0, 10));
 
-            /* Start by creating a wrapper div, and an empty span  */
-            var snowflakeElement = document.createElement('div');
+
+            
             snowflakeElement.className = 'snow-flake-item ' + randomItem(sizes);
-
-            var snowflake = document.createElement('span');
             snowflake.innerHTML = '&#x' + randomItem(flakes) + ';';
-
             snowflakeElement.appendChild(snowflake);
-
-            /* Randomly choose a spin animation */
-            var spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpin';
-
-            /* Randomly choose a side to anchor to, keeps the middle more dense and fits liquid layout */
-            var anchorSide = (Math.random() < 0.5) ? 'left' : 'right';
-
-            /* Figure out a random duration for the fade and drop animations */
-            var fadeAndDropDuration = durationValue(randomFloat(5, 11));
-
-            /* Figure out another random duration for the spin animation */
-            var spinDuration = durationValue(randomFloat(4, 8));
-
-            // how long to wait before the flakes arrive
-            var flakeDelay = is_first ? 0 : durationValue(randomFloat(0, 10));
 
             snowflakeElement.style.webkitAnimationName = 'fade, drop';
             snowflakeElement.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
