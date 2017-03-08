@@ -6,6 +6,22 @@
     {
       "id": 1,
       "interval": 5000
+    },
+    {
+      "id": 2,
+      "interval": 5000
+    },
+    {
+      "id": 3,
+      "interval": 5000
+    },
+    {
+      "id": 4,
+      "interval": 5000
+    },
+    {
+      "id": 5,
+      "interval": 5000
     }
   ],
   "videoPlayList": [

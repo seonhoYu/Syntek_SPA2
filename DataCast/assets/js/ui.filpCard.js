@@ -9,7 +9,7 @@ define( ['jquery','lodash'], function( $, _ ){
         frontClassName : 'front',
         backClassName : 'back',
         showItemLen : 9,
-        durationSec : 5
+        durationSec : 10
     };
 
     function Card( el, option ){
@@ -29,19 +29,20 @@ define( ['jquery','lodash'], function( $, _ ){
     };
 
     Card.prototype.change = function( staticIndex ){
-        var base = this;
-        var _targetPage = base.pageIdx+1;
-        if( typeof staticIndex != 'undefined' ){
-            _targetPage = staticIndex;
-        }
-        if( _targetPage >= base.pageLen ){
-            _targetPage = 0;
-        }
-        var _rangeStart = _targetPage * base.option.showItemLen,
-            _rangeEnd = _rangeStart + base.option.showItemLen;
 
-        base.$item.addClass('back').slice( _rangeStart, _rangeEnd ).removeClass('back');
-        base.pageIdx = _targetPage;
+        //var base = this;
+        //var _targetPage = base.pageIdx+1;
+        //if( typeof staticIndex != 'undefined' ){
+        //    _targetPage = staticIndex;
+        //}
+        //if( _targetPage >= base.pageLen ){
+        //    _targetPage = 0;
+        //}
+        //var _rangeStart = _targetPage * base.option.showItemLen,
+        //    _rangeEnd = _rangeStart + base.option.showItemLen;
+
+        //base.$item.addClass('back').slice( _rangeStart, _rangeEnd ).removeClass('back');
+        //base.pageIdx = _targetPage;
     };
 
     Card.prototype.update = function(){
@@ -52,7 +53,7 @@ define( ['jquery','lodash'], function( $, _ ){
         }
     };
 
-    Card.prototype.on = function(){
+    Card.prototype.on = function () {
         var base = this,
             _duration = base.option.durationSec * 1000;
 

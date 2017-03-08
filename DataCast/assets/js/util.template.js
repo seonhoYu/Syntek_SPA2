@@ -7,20 +7,20 @@ define( ['jquery', 'lodash' ],  function( $, _  ){
         var jsonPath = 'data/';
         return ($.when(
             $.getJSON( jsonPath+'config.json' ),
-            $.getJSON( jsonPath+'tv.json' ),
-            $.getJSON( jsonPath+'executive.json' ),
-            $.getJSON( jsonPath+'weather.json' )
+            $.getJSON( jsonPath+'tv.json' )
+            //$.getJSON( jsonPath+'executive.json' ),
+            //$.getJSON( jsonPath+'weather.json' )
         ).done(function( config, tv, executive, weather ){
 
             window.__DATA = window.__DATA || {};
             window.__DATA.config = config[0];
             window.__DATA.tv = tv[0];
-            window.__DATA.executive = executive[0];
-            window.__DATA.weather = weather[0];
+            //window.__DATA.executive = executive[0];
+            //window.__DATA.weather = weather[0];
 
             _render( tv[0] );
-            _render( executive[0] );
-            _render( weather[0] );
+            //_render( executive[0] );
+            //_render( weather[0] );
         }));
     };
 

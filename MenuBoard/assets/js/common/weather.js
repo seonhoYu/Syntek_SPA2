@@ -39,7 +39,6 @@ define(['jquery'], function ($) {
 
 
     function getWeatherData() {
-        alert();
         var stdTemp = 273.15;
         var apiUrl = currentUrl + getParameter();
         var data = {};

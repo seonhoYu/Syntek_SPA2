@@ -6,7 +6,7 @@ require( ['jquery', 'lodash', 'modernizr', 'template', 'uiActivePage', 'modelObs
      */
     var weatherTimer = function(){
 
-        var timer = new Worker('js/ww.timer.js');
+        var timer = new Worker('assets/js/ww.timer.js');
         var $time = $('#weather-time'),
             $days = $('#weather-days');
 
@@ -20,7 +20,7 @@ require( ['jquery', 'lodash', 'modernizr', 'template', 'uiActivePage', 'modelObs
      * 페이지 전환 타이머
      */
     var pageChange = function( initIndex ){
-        var page = new Worker('js/ww.pageChange.js');
+        var page = new Worker('assets/js/ww.pageChange.js');
         var param = $.extend({},window.__DATA.config, {startIdx : initIndex} );
 
         page.postMessage( JSON.stringify( param ) );

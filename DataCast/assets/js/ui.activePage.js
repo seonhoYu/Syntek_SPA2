@@ -24,19 +24,23 @@ define(['jquery','lodash','uiTransition', 'uiSS', 'uiFlipCard'], function( $, _,
                 var _moduleName = $this.data('module'),
                     _pageList = page.list[index+1] = {} ;
 
-                ({
-                    'tv' : function(){
-                        _pageList.TV = new SS( _this , {
-                            mode : window.__DATA.tv.transitionMode
-                        });
-                    },
+                _pageList.TV = new SS(_this, {
+                    mode: window.__DATA.tv.transitionMode
+                });
 
-                    'executive' : function(){
-                        _pageList.FlipCard = new FlipCard( _this ,{
-                            durationSec : window.__DATA.executive.transitionSec
-                        });
-                    }
-                })[_moduleName]();
+                //({
+                //    'tv' : function(){
+                //        _pageList.TV = new SS( _this , {
+                //            mode : window.__DATA.tv.transitionMode
+                //        });
+                //    }
+
+                //    //'executive' : function(){
+                //    //    _pageList.FlipCard = new FlipCard( _this ,{
+                //    //        durationSec : window.__DATA.executive.transitionSec
+                //    //    });
+                //    //}
+                //})();
 
             });
         },
@@ -49,7 +53,7 @@ define(['jquery','lodash','uiTransition', 'uiSS', 'uiFlipCard'], function( $, _,
 
             //현재페이지와 이전페이지가 같으면 중지
             if( _beforePageIdx == _initPage ){
-             //   return false;
+                return false;
             }
 
             //이전페이지 스크립트들 off
@@ -69,7 +73,8 @@ define(['jquery','lodash','uiTransition', 'uiSS', 'uiFlipCard'], function( $, _,
             transition.go( _initPage, isAnimation );
         },
 
-        reset : function(){
+        reset: function () {
+            alert();
             var _this = this;
             _.forEach( _this.list[_beforePageIdx] , function( item ){
                 item.off();

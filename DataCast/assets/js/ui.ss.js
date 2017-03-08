@@ -178,7 +178,7 @@ define(['jquery', 'lodash'],function( $ , _ ){
         itemClassName : 'tv-item',
         lifeCycleTime : 100000,
         itemDurationTime : {
-            html : 5,
+            html : 10,
             image : 5,
             video : 5,
             etc : 10
