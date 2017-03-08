@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: 'js',
+    baseUrl: 'assets/js',
     paths: {
         jquery : 'vendor/jquery.2.1.3.min',
         lodash : 'vendor/lodash.min',
