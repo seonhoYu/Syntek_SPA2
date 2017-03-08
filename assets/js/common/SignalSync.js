@@ -1,14 +1,11 @@
 ﻿/**
-* @file  /common/videoSync.js
-* @brief index page multiple video play/pause control
-* @see   /css/animation.css
+* @file  /common/SignalSync.js
 */
 
 var aniHub;
 var videoHub;
 
-require(["jquery", "signalrhubs"], function($)
-{
+require(["jquery", "signalrhubs"], function($){
     var hubUrl = '';
     var isMainBrowser = false;
     var videoPlayList;

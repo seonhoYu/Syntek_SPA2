@@ -1,0 +1,21 @@
+<% _.forEach( obj.data , function( item, index ) { %>
+
+    <% if( item.FileType == 'image' ){ %>
+        <li id="tv-item-<%= item.id %>" class="tv-item" data-type="image" data-time="<%= item.RotationTime %>">
+            <img class="tv-item-atom" data-src="<%= item.FilePath %>" src="<%- (index == 0) ? item.FilePath : '' %>" alt=""/>
+            <div class="tv-item_subtitle"><p><%= item.Subtitle %></p></div>
+        </li>
+    <% } else if ( item.FileType == 'video' ){ %>
+        <li id="tv-item-<%= item.id %>" class="tv-item" data-type="video" data-time="<%= item.RotationTime %>">
+            <video class="tv-item-atom" data-src="<%= item.FilePath %>" src="<%- (index == 0) ? item.FilePath : '' %>" preload="none"></video>
+            <div class="tv-item_subtitle"><p><%= item.Subtitle %></p></div>
+        </li>
+    <% } else { %>
+        <li id="tv-item-<%= item.id %>" class="tv-item" data-type="html" data-time="<%= item.RotationTime %>">
+            <iframe class="tv-item-atom" data-src="<%= item.FilePath %>" src="<%- (index == 0) ? item.FilePath : '' %>" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" ></iframe>
+            <div class="tv-item_subtitle"><p><%= item.Subtitle %></p></div>
+        </li>
+    <% } %>
+
+<% }); %>
+

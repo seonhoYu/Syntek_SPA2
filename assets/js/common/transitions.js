@@ -213,23 +213,23 @@ define(['jquery', 'lodash'], function($, _){
      * initialize
      */
     Transition.prototype.init = function(){
-        var _this = this;
-        _this.$pages = _this.$warp.find('> .page-content');
-        _this.nPageLen = _this.$pages.length;
-        _this.$firstPage = _this.$pages.eq( _this.nCurrent );
+        var that = this;
+        that.$pages = that.$warp.find('> .page-content');
+        that.nPageLen = that.$pages.length;
+        that.$firstPage = that.$pages.eq( that.nCurrent );
 
-        _this.$pages.each( function (){
+        that.$pages.each(function (){
             var $page = $( this );
             $page.data( 'originClassList', $page.attr( 'class' ) );
         });
 
-        _this.$firstPage.addClass( 'page-current' );
+        //that.$firstPage.addClass( 'page-current' );
         
-        _this.$video = _this.$warp.find('.content video');
+        that.$video = that.$warp.find('.content video');
 
         setTimeout(function(){
-            if(_this.$firstPage.find("video").length){
-                _this.$firstPage.find("video").each(function(){
+            if( that.$firstPage.find("video").length ){
+                that.$firstPage.find("video").each(function(){
                     $(this).get(0).play();
                 })
             }
@@ -237,96 +237,61 @@ define(['jquery', 'lodash'], function($, _){
     };
 
     Transition.prototype.onEndAnimation = function ( $outpage, $inpage , targetIndex ){
-        var _this = this;
+        var that = this;
 
-        _this.nCurrent = targetIndex;
-        _this.endCurrPage = false;
-        _this.endNextPage = false;
+        that.nCurrent = targetIndex;
+        that.endCurrPage = false;
+        that.endNextPage = false;
 
         $outpage.attr( 'class', $outpage.data( 'originClassList' ) );
-        $inpage.attr( 'class', $inpage.data( 'originClassList' ) + ' ' + _this.activeClassName );
-        _this.isAnimating = false;
-        //console.log('transition End');
+        $inpage.attr( 'class', $inpage.data( 'originClassList' ) + ' ' + that.activeClassName );
+        that.isAnimating = false;
 
-    };
-
-
-    Transition.prototype.go = function( nextPageIndex , animation ){
-        animation = (typeof animation == 'undefined');
-        nextPageIndex = nextPageIndex-1;
-
-        var _this = this;
-        if( _this.isAnimating  || ( _this.nCurrent == nextPageIndex ) )  {
-            return false;
-        }
-        _this.isAnimating = true;
-
-        var $currentPage = _this.$pages.eq( _this.nCurrent );
-        var $nextPage = _this.$pages.eq( nextPageIndex ).addClass( _this.activeClassName ),
-            _outClass = _this.option.outClass,
-            _inClass = _this.option.inClass;
-
-        $currentPage.addClass( _outClass ).one( _this.animEndEventName, function() {
-            _this.endCurrPage = true;
-            if( _this.endNextPage ) {
-                _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
-            }
-        });
-
-        $nextPage.addClass( _inClass ).one( _this.animEndEventName, function() {
-            _this.endNextPage = true;
-            if( _this.endCurrPage ) {
-                _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
-            }
-        });
-
-        if( !animation ){
-            _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex);
-        }
     };
 
     //TODO : 트랜지션 테스트
-    Transition.prototype.test = function( nextPageIndex , styleNum ){
+    Transition.prototype.start = function( nextPageIndex , styleNum ){
         var animation = (typeof animation == 'undefined');
         nextPageIndex = nextPageIndex-1;
 
-        
+        var that = this;
+        var $currentPage = that.$pages.eq( that.nCurrent );
+        var $nextPage = that.$pages.eq( nextPageIndex ).addClass( that.activeClassName ),
+            _outClass = that.option.outClass,
+            _inClass = that.option.inClass;
 
-        var _this = this;
+        that.$video = that.$pages.find('.content video');
 
-        _this.$video = _this.$pages.find('.content video');
-
-        if( _this.isAnimating  || ( _this.nCurrent == nextPageIndex ) )  {
+        if( that.isAnimating  || ( that.nCurrent == nextPageIndex ) )  {
             return false;
         }
-        _this.isAnimating = true;
-
-        var $currentPage = _this.$pages.eq( _this.nCurrent );
-        var $nextPage = _this.$pages.eq( nextPageIndex ).addClass( _this.activeClassName ),
-            _outClass = _this.option.outClass,
-            _inClass = _this.option.inClass;
+        that.isAnimating = true;
 
 
-        $currentPage.addClass( transitionGrp[styleNum].outClass ).one( _this.animEndEventName, function() {
-            _this.endCurrPage = true;
-            if( _this.endNextPage ) {
-                _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
+        if( styleNum == undefined ){
+            return;
+        }
+
+        $currentPage.addClass( transitionGrp[styleNum].outClass ).one( that.animEndEventName, function() {
+            that.endCurrPage = true;
+            if( that.endNextPage ) {
+                that.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
             }
         });
 
 
-        _this.$video.each(function(){
+        that.$video.each(function(){
             $(this).get(0).pause();
             $(this).get(0).load();
         })
 
-        $nextPage.addClass( transitionGrp[styleNum].inClass ).one( _this.animEndEventName, function() {
-            _this.endNextPage = true;
-            if( _this.endCurrPage ) {
-                _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
+        $nextPage.addClass( transitionGrp[styleNum].inClass ).one( that.animEndEventName, function() {
+            that.endNextPage = true;
+            if( that.endCurrPage ) {
+                that.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
             }
 
-            if($nextPage.find(".content video").length){
+            if( $nextPage.find(".content video").length){
                 $nextPage.find(".content video").each(function(){
                     $(this).get(0).play();
                 })
@@ -334,7 +299,7 @@ define(['jquery', 'lodash'], function($, _){
         });
 
         if( !animation ){
-            _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex);
+            that.onEndAnimation($currentPage, $nextPage , nextPageIndex);
         }
     };
 

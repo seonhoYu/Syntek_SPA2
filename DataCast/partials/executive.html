@@ -1,0 +1,25 @@
+
+    <%
+        var statusCode = {
+            '001' : '재실',
+            '002' : '부재',
+            '003' : '회의',
+            '004' : '출장',
+            '005' : '휴가'
+        }
+      var listIndex = 0;
+    %>
+
+
+
+    <% _.forEach( obj.data , function( member, index ){
+            listIndex++;
+            if( listIndex > 9 ) listIndex = 1;
+    %>
+            <li id="executive<%= member.id %>" class="executive-item position-<%= listIndex %>">
+                <div class="member member-<%= member.ExecutiveStatus %> ">
+                    <span class="name"><%= member.ExecutiveInfo %></span>
+                    <span class="status"><%- statusCode[member.ExecutiveStatus] %></span>
+                </div>
+            </li>
+    <% });%>

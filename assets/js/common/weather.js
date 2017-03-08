@@ -1,4 +1,8 @@
-﻿define(['jquery'], function ($) {
+﻿/**
+* @file  /common/weather.js
+*/
+
+define(['jquery'], function ($) {
     var appId = 'ff30206bd4b4f65a8319912dd13f3902';
     //var forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast?';
     var weeklyUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily?';

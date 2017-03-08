@@ -1925,9 +1925,16 @@
 }
 .weather-icon .wi {
   font-size:200px;
+  animation: iconBounce 2s infinite;
+  -webkit-animation: iconBounce 2s infinite;
+  -moz-animation: iconBounce 2s infinite;
+  -o-animation: iconBounce 2s infinite;
+  -ms-animation: iconBounce 2s infinite;
 }
 
 .weather-icon .wi-day-sunny {color: #ffd633}
+.weather-icon .wi-cloudy {color: #0ff}
+
 
 
 .img-area {
@@ -1983,6 +1990,7 @@
   left: 0;
 }
 
+/*
 .week-forecast > li:after {}
 
 .week-forecast > li:first-child {
@@ -2014,7 +2022,7 @@
 .week-forecast > li.active.lightning {
   border-color: #fff;
   background: rgba(255,255,255,0.05);
-}
+} */
 .week-forecast > li > .inner {
   /* border-right: 1px solid rgba(0,0,0,0.1); */
   width: 146px;
@@ -2283,4 +2291,21 @@
   border-radius: 8px;
   font-size: 45px;
   font-weight: normal;
+}
+
+@-webkit-keyframes iconBounce {
+ 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+ 40% {-webkit-transform: translateY(-30px);}
+ 60% {-webkit-transform: translateY(-15px);}
+}
+ 
+@-ms-keyframes iconBounce {
+ 0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+ 40% {transform: translateY(-30px);}
+ 60% {transform: translateY(-15px);}
+}
+@keyframes iconBounce {
+ 0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+ 40% {transform: translateY(-30px);}
+ 60% {transform: translateY(-15px);}
 }

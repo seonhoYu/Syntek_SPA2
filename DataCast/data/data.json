@@ -1,0 +1,113 @@
+{
+    "transition": {
+        "transitionType" : "10",
+        "TvBoardPostTime" : "120",
+        "ExecutiveInformationPostTime" : "120"
+    },
+
+    "tv" : {
+        "module" : "tv",
+        "pageDuration" : "120",
+        "data" : [
+            {
+                "RotationTime" : "10",
+                "FileType" : "image",
+                "FilePath" : "assets/source/@tmp/1.png",
+                "Subtitle" : " 자막1 자막1 자막1 자막1 자막1 자막1 자막1 자막1 자막1 자막1"
+            },
+            {
+                "RotationTime" : "5",
+                "FileType" : "video",
+                "FilePath" : "assets/source/@tmp/2.mp4",
+                "Subtitle" : ""
+            },
+            {
+                "RotationTime" : "10",
+                "FileType" : "html",
+                "FilePath" : "assets/source/@tmp/2.png",
+                "Subtitle" : "자막"
+            }
+        ]
+    },
+
+    "executive" : {
+        "module" : "executive",
+        "pageDuration" : "120",
+        "transitionTime" : "3",
+        "data" : [
+            {
+                "ExecutiveInformationNo" : "17",
+                "ExecutiveInfo" : "오균택1",
+                "ExecutiveStatus" : "001"
+            },
+            {
+                "ExecutiveInformationNo" : "18",
+                "ExecutiveInfo" : "오훈택2",
+                "ExecutiveStatus" : "002"
+            },
+            {
+                "ExecutiveInformationNo" : "19",
+                "ExecutiveInfo" : "오균택3",
+                "ExecutiveStatus" : "003"
+            },
+            {
+                "ExecutiveInformationNo" : "20",
+                "ExecutiveInfo" : "오균택4",
+                "ExecutiveStatus" : "004"
+            },
+            {
+                "ExecutiveInformationNo" : "21",
+                "ExecutiveInfo" : "오균택5",
+                "ExecutiveStatus" : "005"
+            },
+            {
+                "ExecutiveInformationNo" : "22",
+                "ExecutiveInfo" : "오균택6",
+                "ExecutiveStatus" : "001"
+            },
+            {
+                "ExecutiveInformationNo" : "23",
+                "ExecutiveInfo" : "오균택7",
+                "ExecutiveStatus" : "002"
+            },
+            {
+                "ExecutiveInformationNo" : "24",
+                "ExecutiveInfo" : "오균택8",
+                "ExecutiveStatus" : "003"
+            },
+            {
+                "ExecutiveInformationNo" : "25",
+                "ExecutiveInfo" : "오균택9",
+                "ExecutiveStatus" : "004"
+            },
+            {
+                "ExecutiveInformationNo" : "26",
+                "ExecutiveInfo" : "오균택10",
+                "ExecutiveStatus" : "005"
+            },
+            {
+                "ExecutiveInformationNo" : "27",
+                "ExecutiveInfo" : "오균택11",
+                "ExecutiveStatus" : "001"
+            },
+            {
+                "ExecutiveInformationNo" : "28",
+                "ExecutiveInfo" : "오균택12",
+                "ExecutiveStatus" : "001"
+            },
+            {
+                "ExecutiveInformationNo" : "29",
+                "ExecutiveInfo" : "오훈택13",
+                "ExecutiveStatus" : "002"
+            }
+        ]
+    },
+
+    "weather" : {
+        "WeatherSky" : "구름 조금",
+        "Temperature" : "31.8",
+        "Sky" : "2",
+        "Pty" : "1",
+        "Region" : "구로구"
+    }
+}
