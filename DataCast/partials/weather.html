@@ -1,0 +1,8 @@
+<%
+    var imgPath = 'assets/source/weather/',
+        fileName = 'sky'+ ( parseInt(obj.Sky,10)-1 ) + '_pty'+obj.Pty+'.png';
+%>
+<div class="img"><img id="weather-img" src="<%- imgPath %><%- fileName %>" alt=""/></div>
+<span id="weather-region" class="region"><%= obj.Region %></span>
+<strong id="weather-temp" class="temp"><%= obj.Temperature %>&#176;</strong>
+<span id="weather-sky" class="sky"><%= obj.WeatherSky %></span>

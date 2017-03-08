@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html class="no-js" lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <link rel="stylesheet" href="assets/css/common.css">
+        
+       <script>
+		  function FnPopupOn(text) {
+				$('.layerArea').fadeIn();
+				//FnEnd();
+				popupDuration = setTimeout(function () {
+					$('.layerArea').fadeOut();
+				}, 100000);
+				OverlayPop(text);
+			}
+
+			function FnPopupOff() {
+				$('.layerArea').fadeOut();
+			}
+
+			function OverlayPop(text) {
+				if (text == null || text == '') {
+					$('.layerArea').text('');
+					$('.layerArea').append('<ul><li>Overay Popup Test</li><li>BeeCast</li><li>Syntek</li><li>SaaS</li></ul>');
+				} else {
+			$('.layerArea').text('');
+					$('.layerArea').append(text);
+				}
+			}
+		</script>
+		<style>
+		 .layerArea {
+				height:100%;
+				width:100%;
+				transform:scale(0.85);
+				background-color:rgba(0,0,0,0.6);
+				position:absolute;
+				z-index:9999;
+				padding:30px 50px;
+				box-sizing:border-box;
+				display:none;
+				border-radius: 90px;
+				border: 10px solid black;
+			}
+			.layer_text {
+				color: white;
+				font-size: 76pt;
+				text-shadow: 5px 5px 11px black;
+				font-weight: bold;
+			}
+		</style>
+    </head>
+	<body bgcolor="#000000">
+		<div class="l-wrap" id="l-wrap">
+			<!-- [PAGE] TV Board -->
+			<section data-module="tv" class="page page-tv">
+				<ul id="tv" class="tv"></ul>
+			   <div class="layerArea layer_text"></div>
+			</section>
+			<!-- //[PAGE] TV Board -->
+			<!-- [PAGE] Executive Status -->
+			<section data-module="executive" class="page page-status">
+				<div class="executive">
+					<ul id="executive" class="executive-list"></ul>
+				</div>
+				<div class="weather">
+					<div class="weather-today">
+						<strong id="weather-time" class="time"></strong>
+						<p id="weather-days" class="days"></p>
+					</div>
+					<div id="weather" class="weather-info"></div>
+				</div>
+			</section>
+			<!-- //[PAGE] Executive Status -->
+		</div>
+		<script src="assets/js/vendor/require.min.js"></script>
+		<script src="config.js"></script>
+		<script src="main.js"></script>
+		<script>
+			function PageChange(index) {
+				alert(index);
+				UI.PAGE.on(index);
+			}
+
+			function ItemChange(castType) {
+				alert(castTYpe);
+				UI.OBSERVE(castType);
+			}
+
+		</script>
+	</body>
+</html>
