@@ -10,9 +10,10 @@ var PageTransition;
 var PageUiAnimation;
 var PageWeather;
 var PageVideo;
+var PageCommonTimer, TimerConnection;
 
-define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPlayer',  'weather', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, PageVideoController, Weather) {
-
+define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPlayer', 'weather', 'commonTimer', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, PageVideoController, Weather, Timer) {
+    
     var contents = [];
     $.getJSON("contents.json", function (data) {
         contents = data;
@@ -115,6 +116,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 		    
             PageUiAnimation = new UiAnimation();
             PageWeather = new Weather();
+            
 
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
@@ -133,29 +135,26 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
     }
 
     function transition(rollingSetting) {
-
         //node.js websocket을 통한 타이머를 사용한 경우
-        window.WebSocket = window.WebSocket || window.MozWebSocket;
+        PageCommonTimer = new Timer({
+            serverAddress: 'ws://localhost:8989/',
+            protocol: 'echo-protocol'
 
-        var connection = new WebSocket('ws://localhost:8989/', 'echo-protocol');
+        });
 
-        connection.onopen = function () {
-            console.log('open');
-            if (environment.isHubDevice) {
-                connection.send(JSON.stringify(environment.screenRoller));
+        TimerConnection = PageCommonTimer.connect(
+            function () {
+                if (environment.isHubDevice) {
+                    TimerConnection.send(JSON.stringify(environment.screenRoller));
+                }
+            },
+            function (message) {
+                var data = JSON.parse(message.data);
+                if (environment.screenId == data.target) {
+                    PageTransition.start(data.page, environment.styleNumber);
+                }
             }
-        };
-
-        connection.onerror = function (error) {
-            console.log('error');
-        };
-
-        connection.onmessage = function (message) {
-            var data = JSON.parse(message.data);
-            if (environment.screenId == data.target) {
-                PageTransition.start(data.page, environment.styleNumber);
-            }
-        };
+        );
 
         //단독으로 실행할 경우
         //if (screenRollNo >= rollingSetting.schedule.length) {

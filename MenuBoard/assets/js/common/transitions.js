@@ -237,7 +237,6 @@ define(['jquery', 'lodash'], function($, _){
     };
 
     Transition.prototype.onEndAnimation = function ( $outpage, $inpage , targetIndex ){
-        console.log('transition end start');
         var that = this;
 
         that.nCurrent = targetIndex;
@@ -247,7 +246,6 @@ define(['jquery', 'lodash'], function($, _){
         $outpage.attr( 'class', $outpage.data( 'originClassList' ) );
         $inpage.attr( 'class', $inpage.data( 'originClassList' ) + ' ' + that.activeClassName );
         that.isAnimating = false;
-        console.log('transition end');
     };
 
     //TODO : 트랜지션 테스트
@@ -273,7 +271,6 @@ define(['jquery', 'lodash'], function($, _){
         }
 
         that.isAnimating = true;
-        console.log('transition start');
 
         $currentPage.addClass( transitionGrp[styleNum].outClass ).one( that.animEndEventName, function() {
             that.endCurrPage = true;

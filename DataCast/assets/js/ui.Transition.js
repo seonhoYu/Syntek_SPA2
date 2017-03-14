@@ -232,7 +232,6 @@ define(['jquery'], function ( $ ) {
         $outpage.attr( 'class', $outpage.data( 'originClassList' ) );
         $inpage.attr( 'class', $inpage.data( 'originClassList' ) + ' ' + _this.activeClassName );
         _this.isAnimating = false;
-        console.log('transition End');
     };
 
     Transition.prototype.go = function( nextPageIndex , styleNum ){

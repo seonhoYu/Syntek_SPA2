@@ -23,9 +23,11 @@ require.config({
 		signalrcore: "assets/js/vendor/jquery.signalR-2.2.1",
 		signalrhubs : "http://localhost:8080/signalr/hubs?",
 		signalSync: "assets/js/common/SignalSync",
-
+	
         //weather
 		weather: "assets/js/common/weather",
+
+		commonTimer: "assets/js/common/commonTimer",
 
         // template js add
         templateJs : "Template/assets/js/main",
@@ -48,7 +50,8 @@ require.config({
 		},
 		"weather": ["jquery"],
 		"marquee" : ["jquery"],
-		"sakura" : ["jquery"],
+		"sakura": ["jquery"],
+		"commonTimer": ["jquery"],
 
 		// template
 		"templateJs": ["commonScript"],
