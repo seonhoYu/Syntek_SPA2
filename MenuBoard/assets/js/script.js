@@ -143,11 +143,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         });
 
         TimerConnection = PageCommonTimer.connect(
-            function () {
-                if (environment.isHubDevice) {
-                    TimerConnection.send(JSON.stringify(environment.screenRoller));
-                }
-            },
+            environment.isHubDevice ? JSON.stringify(environment.screenRoller) : '',
             function (message) {
                 var data = JSON.parse(message.data);
                 if (environment.screenId == data.target) {

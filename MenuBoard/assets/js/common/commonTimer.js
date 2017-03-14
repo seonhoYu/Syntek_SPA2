@@ -5,6 +5,7 @@
 define(['jquery'], function ($) {
     var connection;
     var _option;
+    var _openCallback, _receiveCallback
     
     var defaults = {
         serverAddress: '',
@@ -25,12 +26,14 @@ define(['jquery'], function ($) {
         console.log('inited');
     };
 
-    function connectToServer(openCallback, receiveCallback) {
+    function connectToServer(scheduleData, receiveCallback) {
         connection = new WebSocket(_option.serverAddress, _option.protocol);
 
         connection.onopen = function () {
             console.log('open');
-            openCallback();
+            if (scheduleData != undefined && scheduleData != '') {
+                connection.send(scheduleData);
+            }
         };
 
         connection.onerror = function (error) {
@@ -39,7 +42,7 @@ define(['jquery'], function ($) {
 
         connection.onclose = function (e) {
             console.log('retry');
-            setTimeout(function () { connectToServer(openCallback, receiveCallback) }, 5000);
+            setTimeout(function () { connectToServer(scheduleData, receiveCallback) }, 5000);
 
         };
 
