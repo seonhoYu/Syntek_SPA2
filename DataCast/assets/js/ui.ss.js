@@ -266,7 +266,6 @@ define(['jquery', 'lodash'],function( $ , _ ){
 
         clearTimeout( base.timer.item );
         base.timer.item = null;
-        console.log( _index );
         base.go( _index );
 /*
 
@@ -398,8 +397,6 @@ define(['jquery', 'lodash'],function( $ , _ ){
         //console.log( 'nextPageIndex'+ nextPageIndex );
         //nextPageIndex =  ( nextPageIndex >= _this.itemLen ) ? 0 : nextPageIndex;
 
-
-
         if( _this.initFlag  ){
 
             console.log( '최초로딩' );
@@ -412,6 +409,11 @@ define(['jquery', 'lodash'],function( $ , _ ){
 
         _this.isAnimating = true;
 
+        if ( _this.itemLen <= 1 ) {
+            return
+        }
+
+        console.log(_this.itemLen)
 
         if ( styleNum === 0 ) {
             _this.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
@@ -426,8 +428,6 @@ define(['jquery', 'lodash'],function( $ , _ ){
             _this.contentSrcToggle( $currentPage, 'off');
             console.log('['+ (nextPageIndex-1)+ '] OFF ');
         },2000);
-
-
 
 
         $currentPage.addClass( transitionGrp[styleNum].outClass ).one( _this.animEndEventName, function() {
@@ -451,6 +451,8 @@ define(['jquery', 'lodash'],function( $ , _ ){
         var _type = _this.itemTypes[ targetIndex ];
         var _duration = _target.data('time') || _this.option.itemDurationTime[ _type ];
         _duration = _duration*1000;
+
+
 
         ({
             'html': function () {
