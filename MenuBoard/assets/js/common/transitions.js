@@ -237,6 +237,7 @@ define(['jquery', 'lodash'], function($, _){
     };
 
     Transition.prototype.onEndAnimation = function ( $outpage, $inpage , targetIndex ){
+        console.log('transition end start');
         var that = this;
 
         that.nCurrent = targetIndex;
@@ -246,11 +247,12 @@ define(['jquery', 'lodash'], function($, _){
         $outpage.attr( 'class', $outpage.data( 'originClassList' ) );
         $inpage.attr( 'class', $inpage.data( 'originClassList' ) + ' ' + that.activeClassName );
         that.isAnimating = false;
-
+        console.log('transition end');
     };
 
     //TODO : 트랜지션 테스트
-    Transition.prototype.start = function( nextPageIndex , styleNum ){
+    Transition.prototype.start = function (nextPageIndex, styleNum) {
+        
         var animation = (typeof animation == 'undefined');
         nextPageIndex = nextPageIndex-1;
 
@@ -265,12 +267,13 @@ define(['jquery', 'lodash'], function($, _){
         if( that.isAnimating  || ( that.nCurrent == nextPageIndex ) )  {
             return false;
         }
-        that.isAnimating = true;
-
-
+        
         if( styleNum == undefined ){
             return;
         }
+
+        that.isAnimating = true;
+        console.log('transition start');
 
         $currentPage.addClass( transitionGrp[styleNum].outClass ).one( that.animEndEventName, function() {
             that.endCurrPage = true;
@@ -278,7 +281,6 @@ define(['jquery', 'lodash'], function($, _){
                 that.onEndAnimation( $currentPage, $nextPage , nextPageIndex );
             }
         });
-
 
         that.$video.each(function(){
             $(this).get(0).pause();

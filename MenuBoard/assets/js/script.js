@@ -49,14 +49,46 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
     $.getJSON("environment.json", function (data) {
         environment = data;
 
+        var param = getUrlParameter('template');
+        if (param == 'pt001') {
+            environment.screenId = 1;
+            environment.isHubDevice = true;
+        }
+        else if (param == 'pt002') {
+            environment.screenId = 2;
+            environment.isHubDevice = false;
+        }
+        else if (param == 'pt003') {
+            environment.screenId = 3;
+            environment.isHubDevice = false;
+        }
+        else if (param == 'pt004') {
+            environment.screenId = 4;
+            environment.isHubDevice = false;
+        }
+
         PageTransition = new Transition();
 
+        var rollingSetting;
+        
+        $(environment.screenRoller).each(function (idx, obj) {
+            if (obj.target == environment.screenId) {
+                rollingSetting = obj;
+            }
+        });
+
+
+        PageTransition.start(environment.screenId, environment.styleNumber);
         if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
-            transition();
+            transition(rollingSetting);
         }
-        else {
-            PageTransition.start(environment.screenId);
-        }
+
+        //if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
+        //    transition(rollingSetting);
+        //}
+        //else {
+        //    PageTransition.start(environment.screenId);
+        //}
     });
 
 	
@@ -80,27 +112,9 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	
 	$(document).ready(function(){
 		setTimeout(function(){
-		    var param = getUrlParameter('template');
-		    if (param == 'pt001') {
-		        environment.screenId = 1;
-		        environment.isHubDevice = true;
-		    }
-		    else if (param == 'pt002') {
-		        environment.screenId = 2;
-		        environment.isHubDevice = false;
-		    }
-		    else if (param == 'pt003') {
-		        environment.screenId = 3;
-		        environment.isHubDevice = false;
-		    }
-		    else if (param == 'pt004') {
-		        environment.screenId = 4;
-		        environment.isHubDevice = false;
-		    }
-
+		    
             PageUiAnimation = new UiAnimation();
             PageWeather = new Weather();
-
 
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
@@ -118,18 +132,42 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         list.append(theTemplate(data));
     }
 
-    function transition() {
-        if (screenRollNo >= environment.screenRoller.length) {
-            screenRollNo = 0;
-        }
-		
-        PageTransition.start(environment.screenRoller[screenRollNo].id, environment.styleNumber);
+    function transition(rollingSetting) {
 
+        //node.js websocket을 통한 타이머를 사용한 경우
+        window.WebSocket = window.WebSocket || window.MozWebSocket;
+
+        var connection = new WebSocket('ws://localhost:8989/', 'echo-protocol');
+
+        connection.onopen = function () {
+            console.log('open');
+            if (environment.isHubDevice) {
+                connection.send(JSON.stringify(environment.screenRoller));
+            }
+        };
+
+        connection.onerror = function (error) {
+            console.log('error');
+        };
+
+        connection.onmessage = function (message) {
+            var data = JSON.parse(message.data);
+            if (environment.screenId == data.target) {
+                PageTransition.start(data.page, environment.styleNumber);
+            }
+        };
+
+        //단독으로 실행할 경우
+        //if (screenRollNo >= rollingSetting.schedule.length) {
+        //    screenRollNo = 0;
+        //}
+		
+        //PageTransition.start(rollingSetting.schedule[screenRollNo].id, environment.styleNumber);
+
+        //setTimeout(function () { transition(rollingSetting) }, rollingSetting.schedule[screenRollNo].interval + 1000);
+        //clearTimeout(transition);
         
-        setTimeout(transition, environment.screenRoller[screenRollNo].interval + 1000);
-        clearTimeout(transition);
-        
-        screenRollNo++;
+        //screenRollNo++;
     }
 	
 	function getUrlParameter(sParam) {

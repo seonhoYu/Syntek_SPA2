@@ -54,7 +54,6 @@ define(['jquery'], function ($) {
             data.windDegree = curRsp.wind.deg;
             data.icon = getWeatherIcon(curRsp.weather[0].id, true);
             data.weekly = [];
-            debugger;
             apiUrl = weeklyUrl + getParameter();
             $.getJSON(apiUrl, function (weekRsp) {
                 $(weekRsp.list).each(function (idx) {
@@ -70,7 +69,6 @@ define(['jquery'], function ($) {
 
                     data.weekly.push(forecast);
                 });
-                debugger;
             });
         });
     }
@@ -88,7 +86,7 @@ define(['jquery'], function ($) {
     function setWeeklyWeather() {
         var apiUrl = weeklyUrl + getParameter();
         var result = $.getJSON(apiUrl, function (rsp) {
-            debugger;
+            
         });
         console.log(apiUrl);
     }
