@@ -5,30 +5,27 @@
 define(['jquery'], function ($) {
     var connection;
     var _option;
-    var _openCallback, _receiveCallback
     var connected = false;
-    var scheduleData;
-    
+    var _retryOnFail = false;
+    var _retryCount = 0;
+    var retryInterval = 5000;
+
     var defaults = {
         serverAddress: '',
         protocol : '',
-        retryOnFail: true
+        retryOnFail: true,
+        retryCount : 2
     };
 
     function CommonTimer(option) {
         var _this = this;
         _option = $.extend({}, defaults, option);
+        _retryOnFail = _option.retryOnFail;
 
         this.init();
     }
 
-    CommonTimer.prototype.init = function () {
-        var _this = this;
-        window.WebSocket = window.WebSocket || window.MozWebSocket;
-        console.log('inited');
-    };
-
-    function connectToServer(openCallback, receiveCallback) {
+    function connectToServer(openCallback, receiveCallback, failCallback) {
         connection = new WebSocket(_option.serverAddress, _option.protocol);
 
         connection.onopen = function () {
@@ -46,10 +43,25 @@ define(['jquery'], function ($) {
         connection.onclose = function (e) {
             console.log('retry');
             connected = false;
-            setTimeout(function ()
+            if (_retryOnFail) {
+                if (_retryCount >= _option.retryCount) {
+                    _retryOnFail = false;
+                    failCallback();
+                }
+            }
+
+            if(_option.retryOnFail)
             {
-                connectToServer(openCallback, receiveCallback);
-            }, 5000);
+                if (_retryOnFail == false)
+                    retryInterval = 60000;
+                
+                setTimeout(function () {
+                    connectToServer(openCallback, receiveCallback, failCallback);
+                    if (_retryOnFail) {
+                        _retryCount++;
+                    }
+                }, retryInterval);
+            }
         };
 
         connection.onmessage = function (message) {
@@ -65,14 +77,18 @@ define(['jquery'], function ($) {
         }
 
         if (type == 'schedule') {
-            scheduleData = data;
             connection.send(data);
         }
     }
+
+    CommonTimer.prototype.init = function () {
+        var _this = this;
+        window.WebSocket = window.WebSocket || window.MozWebSocket;
+        console.log('inited');
+    };
 
     CommonTimer.prototype.connect = connectToServer;
     CommonTimer.prototype.send = sendData;
 
     return CommonTimer;
-
 });

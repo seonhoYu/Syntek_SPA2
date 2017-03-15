@@ -15,6 +15,8 @@ var PageCommonTimer, TimerConnection;
 define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPlayer', 'weather', 'commonTimer', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, PageVideoController, Weather, Timer) {
     
     var contents = [];
+    var transitionInLocal = false;
+
     $.getJSON("contents.json", function (data) {
         contents = data;
         generateAllContentsHTML(contents);
@@ -69,15 +71,6 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         }
 
         PageTransition = new Transition();
-
-        var rollingSetting;
-        
-        $(environment.screenRoller).each(function (idx, obj) {
-            if (obj.target == environment.screenId) {
-                rollingSetting = obj;
-            }
-        });
-
         PageTransition.start(environment.screenId, environment.styleNumber);
         
     });
@@ -108,9 +101,6 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
             PageWeather = new Weather();
             
             connectToTimerServer();
-            //if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
-            //    transitionSync(rollingSetting);
-            //}
 
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
@@ -128,23 +118,27 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         list.append(theTemplate(data));
     }
 
-    function transigionLocal(rollingSetting) {
+    function transitionLocal() {
+        var rollingSetting;
+
+        $(environment.screenRoller).each(function (idx, obj) {
+            if (obj.target == environment.screenId) {
+                rollingSetting = obj;
+            }
+        });
+
         if (screenRollNo >= rollingSetting.schedule.length) {
             screenRollNo = 0;
         }
 
         PageTransition.start(rollingSetting.schedule[screenRollNo].id, environment.styleNumber);
-
-        setTimeout(function () { transition(rollingSetting) }, rollingSetting.schedule[screenRollNo].interval + 1000);
-        clearTimeout(transition);
+        
+        setTimeout(function () { transitionLocal() }, rollingSetting.schedule[screenRollNo].interval + 1000);
+        clearTimeout(transitionLocal);
 
         screenRollNo++;
     }
 
-    function transitionSync(rollingSetting) {
-        PageCommonTimer.send('schedule', environment.isHubDevice ? JSON.stringify(environment.screenRoller) : '');
-    }
-	
 	function getUrlParameter(sParam) {
 		var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 			sURLVariables = sPageURL.split('&'),
@@ -164,17 +158,24 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	    PageCommonTimer = new Timer({
 	        serverAddress: 'ws://localhost:8989/',
 	        protocol: 'echo-protocol'
-
 	    });
 
 	    TimerConnection = PageCommonTimer.connect(
-            function () {
-                if (environment.isHubDevice) {
-                    PageCommonTimer.send('schedule', JSON.stringify(environment.screenRoller));
-                }
-            },
-            timerReceiveFn
+            timerOpenFn,
+            timerReceiveFn,
+            function(){
+                transitionInLocal = true;
+                transitionLocal();
+            }
+            
         );
+	}
+
+	function timerOpenFn() {
+	    transitionInLocal = false;
+	    if (environment.isHubDevice) {
+	        PageCommonTimer.send('schedule', JSON.stringify(environment.screenRoller));
+	    }
 	}
 
     //Timer 에서 리턴된 메시지를 처리하는 함수
