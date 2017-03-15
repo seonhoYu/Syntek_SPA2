@@ -6,6 +6,8 @@ define(['jquery'], function ($) {
     var connection;
     var _option;
     var _openCallback, _receiveCallback
+    var connected = false;
+    var scheduleData;
     
     var defaults = {
         serverAddress: '',
@@ -26,13 +28,14 @@ define(['jquery'], function ($) {
         console.log('inited');
     };
 
-    function connectToServer(scheduleData, receiveCallback) {
+    function connectToServer(openCallback, receiveCallback) {
         connection = new WebSocket(_option.serverAddress, _option.protocol);
 
         connection.onopen = function () {
             console.log('open');
-            if (scheduleData != undefined && scheduleData != '') {
-                connection.send(scheduleData);
+            connected = true;
+            if (openCallback) {
+                openCallback();
             }
         };
 
@@ -42,8 +45,11 @@ define(['jquery'], function ($) {
 
         connection.onclose = function (e) {
             console.log('retry');
-            setTimeout(function () { connectToServer(scheduleData, receiveCallback) }, 5000);
-
+            connected = false;
+            setTimeout(function ()
+            {
+                connectToServer(openCallback, receiveCallback);
+            }, 5000);
         };
 
         connection.onmessage = function (message) {
@@ -52,8 +58,21 @@ define(['jquery'], function ($) {
         return connection;
     }
 
+    function sendData(type, data) {
+        if (connected == false) {
+            console.log('not connect server');
+            return;
+        }
+
+        if (type == 'schedule') {
+            scheduleData = data;
+            connection.send(data);
+        }
+    }
+
     CommonTimer.prototype.connect = connectToServer;
-    
+    CommonTimer.prototype.send = sendData;
+
     return CommonTimer;
 
 });

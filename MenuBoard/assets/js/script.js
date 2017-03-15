@@ -78,18 +78,8 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
             }
         });
 
-
         PageTransition.start(environment.screenId, environment.styleNumber);
-        if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
-            transition(rollingSetting);
-        }
-
-        //if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
-        //    transition(rollingSetting);
-        //}
-        //else {
-        //    PageTransition.start(environment.screenId);
-        //}
+        
     });
 
 	
@@ -111,12 +101,16 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 		});
 	} 
 	
-	$(document).ready(function(){
-		setTimeout(function(){
+	$(document).ready(function () {
+        setTimeout(function(){
 		    
             PageUiAnimation = new UiAnimation();
             PageWeather = new Weather();
             
+            connectToTimerServer();
+            //if (environment.screenRoller != undefined && environment.screenRoller.length > 1) {
+            //    transitionSync(rollingSetting);
+            //}
 
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
@@ -134,35 +128,21 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         list.append(theTemplate(data));
     }
 
-    function transition(rollingSetting) {
-        //node.js websocket을 통한 타이머를 사용한 경우
-        PageCommonTimer = new Timer({
-            serverAddress: 'ws://localhost:8989/',
-            protocol: 'echo-protocol'
+    function transigionLocal(rollingSetting) {
+        if (screenRollNo >= rollingSetting.schedule.length) {
+            screenRollNo = 0;
+        }
 
-        });
+        PageTransition.start(rollingSetting.schedule[screenRollNo].id, environment.styleNumber);
 
-        TimerConnection = PageCommonTimer.connect(
-            environment.isHubDevice ? JSON.stringify(environment.screenRoller) : '',
-            function (message) {
-                var data = JSON.parse(message.data);
-                if (environment.screenId == data.target) {
-                    PageTransition.start(data.page, environment.styleNumber);
-                }
-            }
-        );
+        setTimeout(function () { transition(rollingSetting) }, rollingSetting.schedule[screenRollNo].interval + 1000);
+        clearTimeout(transition);
 
-        //단독으로 실행할 경우
-        //if (screenRollNo >= rollingSetting.schedule.length) {
-        //    screenRollNo = 0;
-        //}
-		
-        //PageTransition.start(rollingSetting.schedule[screenRollNo].id, environment.styleNumber);
+        screenRollNo++;
+    }
 
-        //setTimeout(function () { transition(rollingSetting) }, rollingSetting.schedule[screenRollNo].interval + 1000);
-        //clearTimeout(transition);
-        
-        //screenRollNo++;
+    function transitionSync(rollingSetting) {
+        PageCommonTimer.send('schedule', environment.isHubDevice ? JSON.stringify(environment.screenRoller) : '');
     }
 	
 	function getUrlParameter(sParam) {
@@ -179,6 +159,31 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 			}
 		}
 	};
+
+	function connectToTimerServer() {
+	    PageCommonTimer = new Timer({
+	        serverAddress: 'ws://localhost:8989/',
+	        protocol: 'echo-protocol'
+
+	    });
+
+	    TimerConnection = PageCommonTimer.connect(
+            function () {
+                if (environment.isHubDevice) {
+                    PageCommonTimer.send('schedule', JSON.stringify(environment.screenRoller));
+                }
+            },
+            timerReceiveFn
+        );
+	}
+
+    //Timer 에서 리턴된 메시지를 처리하는 함수
+	function timerReceiveFn(message) {
+	    var data = JSON.parse(message.data);
+	    if (environment.screenId == data.target) {
+	        PageTransition.start(data.page, environment.styleNumber);
+	    }
+	}
 
 	Handlebars.registerHelper('ifvalue', function (conditional, options) {
 	    if (options.hash.value === conditional) {
