@@ -1,4 +1,4 @@
 ﻿{
-  "background" :  "Template/assets/source/board_a_bg.jpg",
-  "videoUrl": "Template/assets/source/veloster.mp4"
+  "background" :  "../../Pages/assets/source/board_a_bg.jpg",
+  "videoUrl": "../../Pages/assets/source/veloster.mp4"
 }

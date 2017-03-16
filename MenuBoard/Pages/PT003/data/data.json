@@ -1,24 +1,24 @@
 ﻿{
-  "Background" :  "Template/assets/source/board_c_bg.mp4",
+  "Background" :  "../../Pages/assets/source/board_c_bg.mp4",
   "PromotionList": [
     {
-      "MenuImage": "Template/assets/source/board_c_drink_img1.png",
-      "TextImage": "Template/assets/source/board_c_drink_name1.gif"
+      "MenuImage": "../../Pages/assets/source/board_c_drink_img1.png",
+      "TextImage": "../../Pages/assets/source/board_c_drink_name1.gif"
     },
     {
-      "MenuImage": "Template/assets/source/board_c_drink_img2.png",
-      "TextImage": "Template/assets/source/board_c_drink_name2.gif"
+      "MenuImage": "../../Pages/assets/source/board_c_drink_img2.png",
+      "TextImage": "../../Pages/assets/source/board_c_drink_name2.gif"
     },
     {
-      "MenuImage": "Template/assets/source/board_c_drink_img3.png",
-      "TextImage": "Template/assets/source/board_c_drink_name3.gif"
+      "MenuImage": "../../Pages/assets/source/board_c_drink_img3.png",
+      "TextImage": "../../Pages/assets/source/board_c_drink_name3.gif"
     },
     {
-      "MenuImage": "Template/assets/source/board_c_drink_img4.png",
-      "TextImage": "Template/assets/source/board_c_drink_name4.gif"
+      "MenuImage": "../../Pages/assets/source/board_c_drink_img4.png",
+      "TextImage": "../../Pages/assets/source/board_c_drink_name4.gif"
     }
   ],
-  "PlateGroup1Image": "Template/assets/source/title_coffee.png",
+  "PlateGroup1Image": "../../Pages/assets/source/title_coffee.png",
   "PlateGroup1": [
     {
       "MenuList": [
@@ -111,7 +111,7 @@
       ]
     }
   ],
-  "PlateGroup2Image": "Template/assets/source/title_choco.png",
+  "PlateGroup2Image": "../../Pages/assets/source/title_choco.png",
   "PlateGroup2": [
     {
       "MenuList": [

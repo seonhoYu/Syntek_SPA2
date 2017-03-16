@@ -1,6 +1,6 @@
 ﻿{
-  "Background": "Template/assets/source/board_c_bg.mp4",
-  "PlateGroupImage": "Template/assets/source/title_cool.png",
+  "Background": "../../Pages/assets/source/board_c_bg.mp4",
+  "PlateGroupImage": "../../Pages/assets/source/title_cool.png",
   "PlateGroup": [
     {
       "MenuList": [

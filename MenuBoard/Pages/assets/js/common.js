@@ -51,7 +51,7 @@ define(['jquery'], function($){
             TweenMax.to($content.eq(index).find("figure > img"), 0.8, { y: 0, ease: Bounce.easeOut });
             TweenMax.delayedCall(delayTime, img_change);
 
-            $content.find(".balloon").attr("src", "Template/assets/source/empty.png");
+            $content.find(".balloon").attr("src", "../../Pages/assets/source/empty.png");
             balloon();
         }
 
@@ -59,9 +59,9 @@ define(['jquery'], function($){
 
             if ($content.eq(index).find(".balloon")[0]) {
                 var $balloon = $content.eq(index).find(".balloon");
-                $balloon.attr("src", "Template/assets/source/combo_balloon1.gif");
+                $balloon.attr("src", "../../Pages/assets/source/combo_balloon1.gif");
                 TweenMax.delayedCall(2.2, function () {
-                    $balloon.attr("src", "Template/assets/source/combo_balloon2.gif");
+                    $balloon.attr("src", "../../Pages/assets/source/combo_balloon2.gif");
                 });
             }
         }

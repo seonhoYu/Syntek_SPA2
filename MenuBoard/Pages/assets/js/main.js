@@ -3,4 +3,4 @@
 * @brief import Subpage javascript file
 */
 
-require(['Template/assets/js/common'], function(TemplateCommon){})
+require(['../../Pages/assets/js/common'], function (TemplateCommon) { })

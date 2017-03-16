@@ -17,7 +17,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
     var contents = [];
     var transitionInLocal = false;
 
-    $.getJSON("contents.json", function (data) {
+    $.getJSON("../../contents.json", function (data) {
         contents = data;
         generateAllContentsHTML(contents);
 
@@ -29,7 +29,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         $('section.page-content').each(function (idx) {
             var template = $(this).attr('template');
             var list = $('#section' + template);
-            var prefix = 'Template/' + template;
+            var prefix = '../../Pages/' + template;
 
             $.get(prefix + "/index.html", function (html) {
                 var theTemplate = Handlebars.compile(html);
@@ -49,7 +49,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
         })
     });
 
-    $.getJSON("environment.json", function (data) {
+    $.getJSON("../../environment.json", function (data) {
         environment = data;
 
         var param = getUrlParameter('template');
@@ -79,7 +79,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	var template = getUrlParameter("template");
 	if(template != undefined){
 		var list = $('#section1');
-		var prefix = 'Template/' + template;
+		var prefix = '../../Pages/' + template;
 
 		$.get(prefix + "/index.html", function (html) {
 			var theTemplate = Handlebars.compile(html);
@@ -159,7 +159,6 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	        serverAddress: 'ws://localhost:8989/',
 	        protocol: 'echo-protocol'
 	    });
-
 	    TimerConnection = PageCommonTimer.connect(
             timerOpenFn,
             timerReceiveFn,
