@@ -12,10 +12,14 @@ var PageWeather;
 var PageVideo;
 var PageCommonTimer, TimerConnection;
 
+
+
 define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPlayer', 'weather', 'commonTimer', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, PageVideoController, Weather, Timer) {
     
     var contents = [];
     var transitionInLocal = false;
+    var transitionCnt = 0;
+    var transitionInitCnt = 100;
 
     $.getJSON("../../contents.json", function (data) {
         contents = data;
@@ -182,6 +186,14 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	    var data = JSON.parse(message.data);
 	    if (environment.screenId == data.target) {
 	        PageTransition.start(data.page, environment.styleNumber);
+
+	        if (environment.isHubDevice && transitionCnt > transitionInitCnt) {
+	            transitionCnt = 0;
+	            PageCommonTimer.send('schedule', JSON.stringify(environment.screenRoller));
+	            return;
+	        }
+
+	        transitionCnt++;
 	    }
 	}
 
