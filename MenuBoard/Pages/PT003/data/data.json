@@ -1,0 +1,225 @@
+﻿{
+  "Background" :  "Template/assets/source/board_c_bg.mp4",
+  "PromotionList": [
+    {
+      "MenuImage": "Template/assets/source/board_c_drink_img1.png",
+      "TextImage": "Template/assets/source/board_c_drink_name1.gif"
+    },
+    {
+      "MenuImage": "Template/assets/source/board_c_drink_img2.png",
+      "TextImage": "Template/assets/source/board_c_drink_name2.gif"
+    },
+    {
+      "MenuImage": "Template/assets/source/board_c_drink_img3.png",
+      "TextImage": "Template/assets/source/board_c_drink_name3.gif"
+    },
+    {
+      "MenuImage": "Template/assets/source/board_c_drink_img4.png",
+      "TextImage": "Template/assets/source/board_c_drink_name4.gif"
+    }
+  ],
+  "PlateGroup1Image": "Template/assets/source/title_coffee.png",
+  "PlateGroup1": [
+    {
+      "MenuList": [
+        {
+          "Name": "아메리카노",
+          "SubName": "Americano",
+          "Price1": "3,500",
+          "Price2": "3,500",
+          "Description": "15 | 15 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "카페라떼",
+          "SubName": "Cafe Latte",
+          "Price1": "3,800",
+          "Price2": "3,800",
+          "Description": "165 | 105 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "카푸치노",
+          "SubName": "Cappuccino",
+          "Price1": "3,300",
+          "Price2": "&nbsp;",
+          "Description": "165 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "카페모카",
+          "SubName": "Cafe Mocha",
+          "Price1": "3,900",
+          "Price2": "4,200",
+          "Description": "310 | 270 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "카라멜마끼아또",
+          "SubName": "Caramel Macchiato",
+          "Price1": "3,900",
+          "Price2": "4,200",
+          "Description": "260 | 307 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "쿠앤크라떼",
+          "SubName": "Cookie & Cream Latte",
+          "Price1": "3,900",
+          "Price2": "4,200",
+          "Price3": "",
+          "Description": "340 | 300 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "솔티크림 아메리카노",
+          "SubName": "Salty Cream Americano",
+          "Price1": "4,000",
+          "Price2": "4,500",
+          "Description": "175 | 175 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "맨하탄드립커피",
+          "SubName": "Manhattan Drip Coffee",
+          "Price1": "2,300",
+          "Price2": "3,000",
+          "Price3": "3,700",
+          "Description": "15 / 20 / 25 Kcal"
+        }
+      ]
+    }
+  ],
+  "PlateGroup2Image": "Template/assets/source/title_choco.png",
+  "PlateGroup2": [
+    {
+      "MenuList": [
+        {
+          "Name": "초코",
+          "SubName": "Choco",
+          "Price1": "3,000",
+          "Price2": "3,500",
+          "Description": "290 | 255 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "쿠앤크초코",
+          "SubName": "Cookie & Cream Choco",
+          "Price1": "3,500",
+          "Price2": "4,000",
+          "Description": "455 | 360 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "티라떼 <sup>(밀크티)</sup>",
+          "SubName": "Milk Tea Latte",
+          "Price1": "3,000",
+          "Price2": "3,500",
+          "Description": "300 | 265 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "버블 밀크티 라떼",
+          "SubName": "Bubble Milk Tea Latte",
+          "Price1": "3,600",
+          "Price2": "4,100",
+          "Description": "364 | 329 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "버블킹라떼 <sup>(잉글리쉬블랙퍼스트)</sup>",
+          "SubName": "Bubble King Latte <sup>(English Breakfast)</sup>",
+          "Price1": "4,500",
+          "Description": "260 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "국화차",
+          "SubName": "Chrysanthemum",
+          "Price1": "3,000",
+          "Price2": "3,500",
+          "Description": "14 | 14 Kcal"
+        },
+        {
+          "Name": "녹차",
+          "SubName": "Green Tea",
+          "Price1": "3,000",
+          "Price2": "3,500",
+          "Description": "2 | 2 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "핫프룻티 <sup>(자몽)</sup>",
+          "SubName": "Hot Fruit Tea <sup>(GrapeFruit)</sup>",
+          "Price1": "3,900",
+          "Price2": "&#160;",
+          "Description": "115 Kcal"
+        },
+        {
+          "Name": "핫프룻티 <sup>(오렌지)",
+          "SubName": "Hot Fruit Tea <sup>(Orange)</sup>",
+          "Price1": "3,900",
+          "Price2": "&#160;",
+          "Description": "185 Kcal"
+        },
+        {
+          "Name": "핫프룻티 <sup>(유자)</sup>",
+          "SubName": "Hot Fruit Tea <sup>(Citron)",
+          "Price1": "3,900",
+          "Price2": "&#160;",
+          "Description": "290 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "아이스티 복숭아",
+          "SubName": "Ice Tea Peach",
+          "Price1": "&nbsp;",
+          "Price2": "3,000",
+          "Description": "160 Kcal"
+        }
+      ]
+    }
+  ]
+}

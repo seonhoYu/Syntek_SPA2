@@ -1,0 +1,56 @@
+﻿<!-- 보드 D -->
+<div class="comp_board">
+    <video class="bg" autoplay loop>
+        <source type="video/mp4" data-src="{{Background}}">
+    </video>
+    
+    <!-- 내용 -->
+    <div class="content">
+        <!-- cool -->
+        <section class="comp_menu">
+            <h2><img src="{{PlateGroupImage}}" alt="COOL BEVERAGE"></h2>
+            <p class="option">
+                <span>SMALL</span>
+                <span>REGULAR</span>
+            </p>
+            <ul class="list">
+                {{#each this.PlateGroup}}
+                <li>
+                    <div class="inner">
+                        {{#each this.MenuList}}
+                        <dl>
+                            <dt>
+                                <span class="kor">{{{Name}}}</span>
+                                <span class="eng">{{{SubName}}}</span>
+                            </dt>
+                            <dd>
+                                {{#if Price3}}
+                                <ul class="price small">
+                                    <li><sub>S</sub> {{Price1}}</li>
+                                    <li><sub>R</sub> {{Price2}}</li>
+                                    <li><sub>L</sub> {{Price3}}</li>
+                                </ul>
+                                {{else}}
+                                <ul class="price">
+                                    {{#if Price1 }}
+                                    <li>{{{Price1}}}</li>
+                                    {{/if}}
+                                    {{#if Price2}}
+                                    <li>{{{Price2}}}</li>
+                                    {{/if}}
+                                </ul>
+                                {{/if}}
+                                <span class="kcal">{{{Description}}}</span>
+                            </dd>
+                        </dl>
+                        {{/each}}
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        <!-- // cool -->
+    </div>
+    <!-- // 내용 -->
+</div>
+<!-- // 보드 D -->
