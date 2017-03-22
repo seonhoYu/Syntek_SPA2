@@ -1,8 +1,5 @@
 ﻿<link href="../../Pages/assets/css/weather.css" rel="stylesheet">
 <div class="comp_board">
-    <!-- <video class="bg" autoplay loop>
-        <source type="video/mp4" src="{{Background}}">
-    </video> -->
     <div class="content">
         <div class="weather-wrapper">
             <div class="weather-wrapper-mask"></div>
@@ -17,27 +14,27 @@
                             <img src="../../Pages/assets/source/seoul-sm.jpg" alt="">
                             <div class="img-area-front">
                                 <div class="weather-icon">
-                                    <i class="wi wi-day-sunny"></i>
+                                    <i class="{{icon}}"></i>
                                 </div>
 
                                 <div class="weather-area">
-                                    <h5 class="location">금천구</h5>
-                                    <p class="today">화요일, 2월 28일, 18:20</p>
+                                    <h5 class="location">{{location}}</h5>
+                                    <p class="today">{{date}}</p>
                                 </div>
                                 
                                 <div class="weather-desc">
-                                    <span>맑음</span>
+                                    <span>{{description}}</span>
                                 </div>
                                 
                                 <ul class="weather-block-info">
                                     <li>
-                                        <p class="temperature" id="temperature">25<span class="temperature-feels">최저 -2 / 최고 20</span></p>
+                                        <p class="temperature" id="temperature">{{temp}}<span class="temperature-feels">최저 {{minTemp}} / 최고 {{maxTemp}}</span></p>
                                     </li>
                                     <li>
                                         <ul class="weather-params" id="weather-params">
-                                            <li><i class="wi wi-barometer"></i> <span>743 hPa</span></li>
-                                            <li><i class="wi wi-humidity"></i><span>46% 습도</span></li>
-                                            <li><i class="wi wi-windy"></i> <span>2m/s</span></li>
+                                            <li><i class="wi wi-barometer"></i> <span>{{pressure}} hPa</span></li>
+                                            <li><i class="wi wi-humidity"></i><span>{{humidity}}% 습도</span></li>
+                                            <li><i class="wi wi-windy"></i> <span>{{windSpeed}}m/s</span></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -46,7 +43,16 @@
                         <!-- /MAIN AREA -->
                         <!-- WEATHER FORECAST -->
                         <ul class="week-forecast" id="week-forecast">
-                            <li class="sun">
+                            {{#each this.weekly}}
+                                <li class="sun">
+                                    <div class="inner">
+                                        <h5 class="week-day">{{date}}</h5>
+                                        <i class="{{icon}}"></i>
+                                        <p class="week-day-temperature">{{minTemp}}/{{maxTemp}}</p>
+                                    </div>
+                                </li>
+                            {{/each}}
+                            <!--<li class="sun">
                                 <div class="inner">
                                     <h5 class="week-day">월요일</h5>
                                     <i class="wi wi-day-sunny"></i>
@@ -94,7 +100,7 @@
                                     <i class="wi wi-day-rain-mix"></i>
                                     <p class="week-day-temperature">22</p>
                                 </div>
-                            </li>
+                            </li>-->
                         </ul>
                         <!-- /WEATHER FORECAST -->
                     </div>

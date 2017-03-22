@@ -103,12 +103,12 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 		    
             PageUiAnimation = new UiAnimation();
             PageWeather = new Weather();
-            
+
             connectToTimerServer();
 
             $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
 		    
-		}, 1000);		
+		}, 1000);
 	});
 
 	

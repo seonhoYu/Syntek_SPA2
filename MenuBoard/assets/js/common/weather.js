@@ -10,6 +10,8 @@ define(['jquery'], function ($) {
 
     var latitude, longitude;
 
+    var weekday = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    
     function Weather(el, option) {
         var _this = this;
     }
@@ -18,36 +20,40 @@ define(['jquery'], function ($) {
         var _this = this;
     };
 
-    Weather.prototype.setWeather = function () {
-        setCurrentLocation();
+    Weather.prototype.setWeather = function (callback) {
+        setCurrentLocation(callback);
     }
 
-    function setCurrentLocation() {
+    function setCurrentLocation(callback) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(setLocation);
+            navigator.geolocation.getCurrentPosition(function (position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+
+                getWeatherData(callback);
+            }, function (error) {
+                console.log('get geolocation error. Error code: ' + error.code);
+            }, { timeout: 5000 });
         } else {
             console.log("Geolocation is not supported by this browser.");
         }
     }
-    function setLocation(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-
-        getWeatherData();
-    }
 
 
 
-    function getWeatherData() {
+    function getWeatherData(callback) {
         var stdTemp = 273.15;
         var apiUrl = currentUrl + getParameter();
         var data = {};
         
         $.getJSON(apiUrl, function (curRsp) {
+            debugger;
+            data.location = curRsp.name;
+            data.date = getReadableDate(curRsp.dt);
             data.description = curRsp.weather[0].main;
-            data.temp = curRsp.main.temp - stdTemp;
-            data.minTemp = curRsp.main.temp_min - stdTemp;
-            data.maxTemp = curRsp.main.temp_max - stdTemp;
+            data.temp = Math.round(curRsp.main.temp);
+            //data.minTemp = Math.round(curRsp.temp.min);
+            //data.maxTemp = Math.round(curRsp.temp.max);
             data.pressure = curRsp.main.pressure;
             data.humidity = curRsp.main.humidity;
             data.windSpeed = curRsp.wind.speed;
@@ -57,19 +63,31 @@ define(['jquery'], function ($) {
             apiUrl = weeklyUrl + getParameter();
             $.getJSON(apiUrl, function (weekRsp) {
                 $(weekRsp.list).each(function (idx) {
-                    var forecast = {};
+                    if (idx == 0) {
+                        data.minTemp = Math.round(this.temp.min);
+                        data.maxTemp = Math.round(this.temp.max);
+                    }
+                    else {
+                        var forecast = {};
 
-                    forecast.date = this.dt;
-                    forecast.minTemp = this.temp.min - stdTemp;
-                    forecast.maxTemp = this.temp.max - stdTemp;
-                    forecast.pressure = this.pressure;
-                    forecast.humidity = this.humidity;
-                    forecast.description = this.weather[0].main;
-                    forecast.icon = getWeatherIcon(this.weather[0].id);
+                        forecast.date = weekday[getDateFromApi(this.dt).getDay()];// weekday[this.dt.getDay()];
+                        forecast.minTemp = Math.round(this.temp.min);
+                        forecast.maxTemp = Math.round(this.temp.max);
+                        forecast.pressure = this.pressure;
+                        forecast.humidity = this.humidity;
+                        forecast.description = this.weather[0].main;
+                        forecast.icon = getWeatherIcon(this.weather[0].id);
 
-                    data.weekly.push(forecast);
+                        data.weekly.push(forecast);
+                    }
                 });
+
+                if (callback) {
+                    callback(data);
+                }
             });
+
+           
         });
     }
 
@@ -101,7 +119,9 @@ define(['jquery'], function ($) {
             'appid':appId,
             'lat':latitude,
             'lon': longitude,
-            'lang': 'kr'
+            'lang': 'kr',
+            'units': 'metric',
+            'cnt' : 8
         };
         return $.param(data);
     }
@@ -127,6 +147,27 @@ define(['jquery'], function ($) {
         iconD = prefix + "owm-" + dorn + id;
         console.log(iconD);
         return iconD;
+    }
+
+    function getDateFromApi(unix_timestamp) {
+        return new Date(unix_timestamp * 1000);
+    }
+
+    function getReadableDate(unix_timestamp) {
+        
+        var date = getDateFromApi(unix_timestamp);
+        
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var week = weekday[date.getDay()];
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        var seconds = "0" + date.getSeconds();
+
+        // Will display time in 10:30:23 format
+        var formattedTime = month + '월 '  + day + '일 ' + week +', ' + hours + ':' + minutes.substr(-2);
+
+        return formattedTime;
     }
 
     return Weather;

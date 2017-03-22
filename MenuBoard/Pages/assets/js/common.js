@@ -3,7 +3,7 @@
 * @brief Subpage motion
 */
 
-define(['jquery'], function($){
+define(['jquery', 'handlebars'], function ($, Handlebars) {
 
     $("img.new").each(function () {
         var $ui = $(this);
@@ -139,35 +139,47 @@ define(['jquery'], function($){
     });
 
     setTimeout(function () {
-        PageWeather.setWeather();
-
-        var forecast = $('#week-forecast');
-        var params = $('#weather-params');
-        var temp = $('#temperature');
-        $(document).ready(function () {
-            var i = 1000;
-            forecast.children('li').each(function () {
-                $(this).delay(i).queue(function () {
-                    $(this).addClass('active');
-                    $(this).dequeue();
-                });
-                i += 250;
-            });
-
-            var ii = 600;
-            params.children('li').each(function () {
-                $(this).delay(ii).queue(function () {
-                    $(this).addClass('active');
-                    $(this).dequeue();
-                });
-                ii += 200;
-            });
-
-            $(temp).delay(400).queue(function () {
-                $(this).addClass('active');
-                $(this).dequeue();
+        PageWeather.setWeather(function (data) {
+            $.get('../../Pages/PT005/index.html', function (html) {
+                var theTemplate = Handlebars.compile(html);
+                var compiledHtml = theTemplate(data);
+                $('#sectionPT005').html(compiledHtml);
+                weatherAnimation();
             });
         });
 
+        function weatherAnimation() {
+            var forecast = $('#week-forecast');
+            var params = $('#weather-params');
+            var temp = $('#temperature');
+            $(document).ready(function () {
+                var i = 1000;
+                forecast.children('li').each(function () {
+                    $(this).delay(i).queue(function () {
+                        $(this).addClass('active');
+                        $(this).dequeue();
+                    });
+                    i += 250;
+                });
+
+                var ii = 600;
+                params.children('li').each(function () {
+                    $(this).delay(ii).queue(function () {
+                        $(this).addClass('active');
+                        $(this).dequeue();
+                    });
+                    ii += 200;
+                });
+
+                $(temp).delay(400).queue(function () {
+                    $(this).addClass('active');
+                    $(this).dequeue();
+                });
+            });
+        }
+
+        
     }, 2000);
+    
+
 })
