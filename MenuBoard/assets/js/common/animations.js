@@ -273,6 +273,26 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
             return;
         }
 
+        function CallbackTimeCheck() {
+            _callbackTime = that.$el.find('#' + that.$id + aniType).data('callback-time') * 1000;
+            $target.addClass(animationGrp[aniType]).one(that.animStartEventName, function () {
+                console.log('event start', _callbackTime);
+
+                //if (callback) {
+                //    setTimeout(function () {
+                //        callback();
+                //    }, _callbackTime);
+                //}
+
+            }).one(that.animEndEventName, function () {
+                $target.removeClass(animationGrp[aniType]);
+
+                console.log('event end');
+            });
+
+            return CallbackTimeCheck;
+        }
+
         switch ( aniType ) {
             // left start moving
             case 1:

@@ -47,7 +47,6 @@ define(['jquery'], function ($) {
         var data = {};
         
         $.getJSON(apiUrl, function (curRsp) {
-            debugger;
             data.location = curRsp.name;
             data.date = getReadableDate(curRsp.dt);
             data.description = curRsp.weather[0].main;
