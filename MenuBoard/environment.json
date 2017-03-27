@@ -1,35 +1,24 @@
 {
-  "screenId": 1,
+  "screenId": 2,
   "isHubDevice": true,
-  "styleNumber" : 27,
+  "styleNumber": 27,
+  "syncServer": "http://localhost:8080/signalr",
+  "timerServer" :  "ws://localhost:8989/",
   "screenRoller": [
-    {
-      "target": 1,
-      "schedule": [
-        {
-          "id": 5,
-          "interval": 10000
-        },
-        {
-          "id": 1,
-          "interval": 10000
-        }
-      ]
-    },
     {
       "target": 2,
       "schedule": [
         {
           "id": 2,
-          "interval": 2000
+          "interval": 10000
         },
         {
           "id": 3,
-          "interval": 2000
+          "interval": 10000
         },
         {
           "id": 4,
-          "interval": 2000
+          "interval": 10000
         }
       ]
     }
@@ -40,40 +29,19 @@
       "list": [
         {
           "id": "1",
-          "src": "assets/source/fullvideo1.mp4"
+          "src": "../../assets/source/fullvideo1.mp4"
         },
         {
           "id": "2",
-          "src": "assets/source/fullvideo2.mp4"
+          "src": "../../assets/source/fullvideo2.mp4"
         },
         {
           "id": "3",
-          "src": "assets/source/fullvideo3.mp4"
+          "src": "../../assets/source/fullvideo3.mp4"
         },
         {
           "id": "4",
-          "src": "assets/source/fullvideo4.mp4"
-        }
-      ]
-    },
-    {
-      "groupId": "2",
-      "list": [
-        {
-          "id": "1",
-          "src": "../../Pages/assets/source/board_b_bg.mp4"
-        },
-        {
-          "id": "2",
-          "src": "../../Pages/assets/source/board_c_bg.mp4"
-        },
-        {
-          "id": "3",
-          "src": "../../Pages/assets/source/board_d_bg.mp4"
-        },
-        {
-          "id": "4",
-          "src": "../../Pages/assets/source/board_b_bg.mp4"
+          "src": "../../assets/source/fullvideo4.mp4"
         }
       ]
     }

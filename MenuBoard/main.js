@@ -1,4 +1,4 @@
-/**
+ /**
 * @file  main.js
 * @brief import common javascript file
 */

@@ -272,6 +272,7 @@ define(['jquery', 'lodash'], function($, _){
 
         that.isAnimating = true;
 
+        
         $currentPage.addClass( transitionGrp[styleNum].outClass ).one( that.animEndEventName, function() {
             that.endCurrPage = true;
             if( that.endNextPage ) {

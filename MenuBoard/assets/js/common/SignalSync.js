@@ -20,7 +20,6 @@ require(["jquery", "signalrhubs"], function($){
 
         $.connection.hub.url = hubUrl;
         
-
         aniHub = $.connection.animation;
 
         aniHub.client.startAnimation = function (screenId, animationNo, direction, timer) {

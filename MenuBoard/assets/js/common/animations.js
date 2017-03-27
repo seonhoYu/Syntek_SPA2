@@ -74,6 +74,8 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
         return that.$notice, that.$noticeTarget, that.$noticeLayer, that.isNoticeText, that.isNoticeRelay, that.isNoticeLayer;
     };
 
+
+
     UiAnimation.prototype.start = function( aniType, timer, callback ) {
         var that = this,
             $target = that.$el.find('#' + that.$id + aniType),

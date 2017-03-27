@@ -12,8 +12,6 @@ var PageWeather;
 var PageVideo;
 var PageCommonTimer, TimerConnection;
 
-
-
 define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPlayer', 'weather', 'commonTimer', 'signalSync'], function ($, Handlebars, Transition, UiAnimation, PageVideoController, Weather, Timer) {
     
     var contents = [];
@@ -56,24 +54,6 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
     $.getJSON("../../environment.json", function (data) {
         environment = data;
 
-        var param = getUrlParameter('template');
-        if (param == 'pt001') {
-            environment.screenId = 1;
-            environment.isHubDevice = true;
-        }
-        else if (param == 'pt002') {
-            environment.screenId = 2;
-            environment.isHubDevice = false;
-        }
-        else if (param == 'pt003') {
-            environment.screenId = 3;
-            environment.isHubDevice = false;
-        }
-        else if (param == 'pt004') {
-            environment.screenId = 4;
-            environment.isHubDevice = false;
-        }
-
         PageTransition = new Transition();
         PageTransition.start(environment.screenId, environment.styleNumber);
         
@@ -106,7 +86,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 
             connectToTimerServer();
 
-            $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, "http://localhost:8080/signalr");
+            $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, environment.syncServer);
 		    
 		}, 1000);
 	});
@@ -160,7 +140,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 
 	function connectToTimerServer() {
 	    PageCommonTimer = new Timer({
-	        serverAddress: 'ws://localhost:8989/',
+	        serverAddress: environment.timerServer,
 	        protocol: 'echo-protocol'
 	    });
 	    TimerConnection = PageCommonTimer.connect(
@@ -185,6 +165,7 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	function timerReceiveFn(message) {
 	    var data = JSON.parse(message.data);
 	    if (environment.screenId == data.target) {
+	        activeAnimation(data.page);
 	        PageTransition.start(data.page, environment.styleNumber);
 
 	        if (environment.isHubDevice && transitionCnt > transitionInitCnt) {
