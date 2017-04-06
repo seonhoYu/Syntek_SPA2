@@ -1,0 +1,105 @@
+﻿{
+  "Background": "../../Pages/assets/source/board_c_bg.mp4",
+  "PlateGroupImage": "../../Pages/assets/source/title_cool.png",
+  "PlateGroup": [
+    {
+      "MenuList": [
+        {
+          "Name": "레드온더비치",
+          "SubName": "Red On The Beach",
+          "Price1": "&nbsp;",
+          "Price2": "3,900",
+          "Description": "213 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "레드 오렌지 에이드",
+          "SubName": "Red Orange Ade",
+          "Price1": "&nbsp;",
+          "Price2": "4,200",
+          "Description": "240 Kcal"
+        },
+        {
+          "Name": "블루 레몬 에이드",
+          "SubName": "Blue Lemon Ade",
+          "Price1": "&nbsp;",
+          "Price2": "4,200",
+          "Description": "229 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "스파클링 에이드 <sup>(자몽)</sup>",
+          "SubName": "sparkling Ade <sup>(Grapefruit)</sup>",
+          "Price1": "4,200",
+          "Price2": "4,700",
+          "Description": "225 | 270 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "요거트 스무디 <sup>(딸기)</sup>",
+          "SubName": "Yogurt Smoothie <sup>(Strawberry)</sup>",
+          "Price1": "5,200",
+          "Price2": "&nbsp;",
+          "Description": "365 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "젤리에이드 <sup>(라임모히또)</sup>",
+          "SubName": "Jelly Ade <sup>(Lime Mojito)</sup>",
+          "Price1": "4,900",
+          "Description": "165 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "마시멜로 초코치노",
+          "SubName": "Mashmellow Chococcino",
+          "Price1": "4,900",
+          "Description": "340 | 300 Kcal"
+        },
+        {
+          "Name": "피칸치노",
+          "SubName": "Pecanccino",
+          "Price1": "4,900",
+          "Description": "349 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "생과일 주스 <sup>(청포도)</sup>",
+          "SubName": "Fruit Juice <sup>(Muscat)</sup>",
+          "Price1": "5,000",
+          "Price2": "&nbsp;",
+          "Description": "205 Kcal"
+        }
+      ]
+    },
+    {
+      "MenuList": [
+        {
+          "Name": "휴롬주스 <sup>(오렌지)</sup>",
+          "SubName": "Hurom Juice <sup>(Orange)</sup>",
+          "Price1": "5,500",
+          "Price2": "&nbsp;",
+          "Description": "150 Kcal"
+        }
+      ]
+    }
+  ]
+}
