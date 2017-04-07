@@ -18,6 +18,26 @@
   {
     "pageId": 5,
     "template": "PT005"
+  },
+  {
+    "pageId": 6,
+    "template": "PT006"
+  },
+  {
+    "pageId": 7,
+    "template": "PT007"
+  },
+  {
+    "pageId": 8,
+    "template": "PT008"
+  },
+  {
+    "pageId": 9,
+    "template": "PT009"
+  },
+  {
+    "pageId": 10,
+    "template": "PT010"
   }
 
 ]
