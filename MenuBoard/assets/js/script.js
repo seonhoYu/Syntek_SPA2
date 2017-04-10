@@ -86,7 +86,13 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 
             connectToTimerServer();
 
-            $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, environment.syncServer);
+            try {
+                $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, environment.syncServer);
+            }
+            catch (ex) {
+                console.log('syncServer connection fail');
+            }
+            
 		    
 		}, 1000);
 	});

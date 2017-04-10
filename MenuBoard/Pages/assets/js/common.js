@@ -4,7 +4,6 @@
 */
 
 var animationList = [];
-var tweenMaxList = [];
 
 function activeAnimation(page) {
     TweenMax.killAll();
@@ -25,6 +24,7 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
         }
     };
 
+    //페이지 애니메이션 초기화 함수 호출
     setAnimation(2, function () {
         $("img.new").each(function () {
             var $ui = $(this);
