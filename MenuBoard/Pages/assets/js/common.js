@@ -5,6 +5,7 @@
 
 var animationList = [];
 
+
 function activeAnimation(page) {
     TweenMax.killAll();
     
@@ -13,10 +14,14 @@ function activeAnimation(page) {
             obj.fn();
         }
     });
-
 }
 
-define(['jquery', 'handlebars'], function ($, Handlebars) {
+define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/js/uiMenuGalleryRolling', '../../assets/js/uiNormalGalleryRolling'], function ($, Handlebars, VideoPlayer, GalleryRolling, NormalRolling) {
+    
+    var GalleryRoll = new GalleryRolling($(".page-current .roll"));
+    var NormalRoll = new NormalRolling($(".page-current .gallery"));
+    var VideoRoll = new VideoPlayer($(".page-current .video-frame"));
+
     function setAnimation(id, fn) {
         animationList.push({ id: id, fn: fn });
         if (environment.screenId == id) {
@@ -173,6 +178,19 @@ define(['jquery', 'handlebars'], function ($, Handlebars) {
                 TweenMax.delayedCall(delayTime, menu_change);
             }
         });
+    });
+
+    setAnimation(7, function () {
+        GalleryRoll.on();
+    });
+
+    setAnimation(8, function () {
+        NormalRoll.on();
+    });
+
+    setAnimation(10, function () {
+        NormalRoll.on();
+        VideoRoll.on();
     });
 
     setTimeout(function () {
