@@ -85,7 +85,7 @@ define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/j
                     $balloon.attr("src", "../../Pages/assets/source/combo_balloon1.gif");
 
                     TweenMax.delayedCall(2.2, function () {
-                        $balloon.attr("src", "../../Pages/assets/source/combo_balloon2.gif");
+                        $balloon.attr("src", "../../Pages/assets/source/combo_balloon2.png");
                     });
                 }
             }
