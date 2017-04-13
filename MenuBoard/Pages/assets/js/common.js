@@ -82,10 +82,10 @@ define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/j
 
                 if ($content.eq(index).find(".balloon")[0]) {
                     var $balloon = $content.eq(index).find(".balloon");
-                    $balloon.attr("src", "../../Pages/assets/source/combo_balloon1.gif");
+                    $balloon.attr("src", "../../Pages/assets/source/combo_balloon2.png");
 
                     TweenMax.delayedCall(2.2, function () {
-                        $balloon.attr("src", "../../Pages/assets/source/combo_balloon2.gif");
+                        $balloon.attr("src", "../../Pages/assets/source/combo_balloon2.png");
                     });
                 }
             }
