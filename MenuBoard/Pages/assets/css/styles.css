@@ -51,12 +51,61 @@
 .aside section.combo figure > img{position:absolute; bottom:85px; left:50%; -webkit-transform:translateX(-50%); transform:translateX(-50%);}
 .aside section.combo figcaption{position:absolute; bottom:32px; left:0; width:100%; color:#fff; font-size:28px;}
 .aside section.combo figcaption span{vertical-align:0; font-size:23px;}
-.aside section.combo img.balloon{position:absolute; z-index:1; top:0; left:-100px;}
+.aside section.combo img.balloon{
+    position:absolute;
+    z-index:1;
+    top:0;
+    left: -60px;
+    animation: tweenImg 2s infinite;
+    transform : rotate(0deg);
+    transform-origin: 50% 50%;
+    -webkit-animation: tweenImg 2s infinite;
+    -webkit-transform : rotate(0deg);
+    -webkit-transform-origin: 50% 50%;
+    -ms-animation: tweenImg 2s infinite;
+    -ms-transform : rotate(0deg);
+    -ms-transform-origin: 50% 50%;
+    max-width: 320px;
+    height: auto;
+}
+
 .aside div.info{padding:24px 0 0 23px; border-top:5px solid #fff;}
 .aside div.info p{margin-top:13px; color:#fff; font-size:30px;}
 .aside div.info p strong{display:inline-block; margin:8px 0 0 -1px; font-size:59px; line-height:63px; letter-spacing:-0.5px;}
-.aside img.happypoint{position:absolute; bottom:-220px; left:-82px;}
+.aside img.happypoint{
 
+    position:absolute;
+    bottom: -215px;
+    left: -60px;
+    animation: tweenImg 3s infinite;
+    transform : rotate(0deg);
+    transform-origin: 50% 50%;
+    -webkit-animation: tweenImg 3s infinite;
+    -webkit-transform : rotate(0deg);
+    -webkit-transform-origin: 50% 50%;
+    -ms-animation: tweenImg 3s infinite;
+    -ms-transform : rotate(0deg);
+    -ms-transform-origin: 50% 50%;
+    max-width: 350px;
+}
+
+@keyframes tweenImg {
+    0% {transform : rotate(-5deg)}
+    50% {transform : rotate(5deg)}
+    100% {transform : rotate(-5deg)}
+}
+
+@-webkit-keyframes tweenImg {
+    0% {-webkit-transform : rotate(-5deg)}
+    50% {-webkit-transform : rotate(5deg)}
+    100% {-webkit-transform : rotate(-5deg)}
+}
+
+@-ms-keyframes tweenImg {
+    0% {-ms-transform : rotate(-5deg)}
+    50% {-ms-transform : rotate(5deg)}
+    100% {-ms-transform : rotate(-5deg)}
+}
 
 /* ==================================================
 // 보드 C
