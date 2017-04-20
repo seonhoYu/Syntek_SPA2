@@ -1,31 +1,14 @@
 {
-  "screenId": 2,
+  "screenId": 1,
   "isHubDevice": true,
-  "styleNumber": 27,
+  "styleNumber": 2,
   "syncServer": "http://localhost:8080/signalr",
   "timerServer" :  "ws://localhost:8989/",
-  "screenRoller": [
-    {
-      "target": 2,
-      "schedule": [
-        {
-          "id": 2,
-          "interval": 10000
-        },
-        {
-          "id": 3,
-          "interval": 10000
-        },
-        {
-          "id": 4,
-          "interval": 10000
-        }
-      ]
-    }
-  ],
+  "screenRoller": null,
   "videoPlayList": [
     {
       "groupId": "1",
+      "groupName" :  "Winter Holliday",
       "list": [
         {
           "id": "1",

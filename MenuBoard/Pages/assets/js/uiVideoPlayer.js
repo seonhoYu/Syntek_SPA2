@@ -35,6 +35,10 @@ define( ['jquery'], function ( $ ){
     VideoPlayer.prototype.play = function() {
         var _this = this;
 
+        if (_this.itemLen <= 0) {
+            return;
+        }
+
         if( _this.currIdx >= _this.itemLen ){
             _this.currIdx = 0;
         }

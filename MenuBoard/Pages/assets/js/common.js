@@ -18,9 +18,9 @@ function activeAnimation(page) {
 
 define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/js/uiMenuGalleryRolling', '../../assets/js/uiNormalGalleryRolling'], function ($, Handlebars, VideoPlayer, GalleryRolling, NormalRolling) {
     
-    var GalleryRoll = new GalleryRolling($(".page-current .roll"));
-    var NormalRoll = new NormalRolling($(".page-current .gallery"));
-    var VideoRoll = new VideoPlayer($(".page-current .video-frame"));
+    var GalleryRoll = new GalleryRolling($(".roll"));
+    var NormalRoll = new NormalRolling($(".gallery"));
+    var VideoRoll = new VideoPlayer($(".video-frame"));
 
     function setAnimation(id, fn) {
         animationList.push({ id: id, fn: fn });
@@ -180,18 +180,9 @@ define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/j
         });
     });
 
-    setAnimation(7, function () {
-        GalleryRoll.on();
-    });
-
-    setAnimation(8, function () {
-        NormalRoll.on();
-    });
-
-    setAnimation(10, function () {
-        NormalRoll.on();
-        VideoRoll.on();
-    });
+    GalleryRoll.on();
+    NormalRoll.on();
+    VideoRoll.on();
 
     setTimeout(function () {
         PageWeather.setWeather(function (data) {

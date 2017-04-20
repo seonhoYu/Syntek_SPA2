@@ -11,25 +11,29 @@
             <h2><img src="{{TitleImage}}" alt="HOT SANDWICHES"></h2>
             <ul class="list">
                 {{#each this.Menu}}
-                    <li>
+                    
+                    <li menu-id="{{Id}}">
                         <span class="num">{{Id}}</span>
                         <figure>
-                            <img src="{{Image}}" alt="">
+                            <img data-id="Image" src="{{Image}}" alt="">
                             <figcaption>
                                 <dl>
                                     <dt>
-                                        <span class="kor">{{Title1}}</span>
-                                        <span class="eng">{{Title2}}</span>
+                                        <span data-id="Title1" class="kor">{{Title1}}</span>
+                                        <span data-id="Title2" class="eng">{{Title2}}</span>
                                     </dt>
-                                    <dd>{{PriceTitle1}} <strong>{{Price1}}</strong></dd>
-                                    <dd>{{PriceTitle2}} <strong>{{Price2}}</strong></dd>
+                                    <dd><span data-id="PriceTitle1">{{PriceTitle1}}</span> <strong data-id="Price1">{{Price1}}</strong></dd>
+                                    <dd><span data-id="PriceTitle2">{{PriceTitle2}}</span> <strong data-id="Price2">{{Price2}}</strong></dd>
                                 </dl>
-                                <span class="kcal">{{Description1}}<br>{{Description2}}</span>
+                                <span class="kcal" data-id="Description1">{{Description1}}<br>{{Description2}}</span>
                             </figcaption>
                         </figure>
+                        <input type="hidden" data-id="Tag" value="{{Tag}}" />
+
                         {{#ifvalue Tag value = "new"}}
-                            <img class="new" src="../../Pages/assets/source/new_out.gif" alt="new" data-in="../../Pages/assets/source/new_in.gif" data-out="../../Pages/assets/source/new_out.gif">
+                            <img data-id="tag" class="new" src="../../Pages/assets/source/new_out.gif" alt="new" data-in="../../Pages/assets/source/new_in.gif" data-out="../../Pages/assets/source/new_out.gif">
                         {{/ifvalue}}
+
                     </li>
                 {{/each}}
             </ul>

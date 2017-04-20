@@ -1,103 +1,119 @@
 ﻿{
-  "Background": "../../Pages/assets/source/board_c_bg.mp4",
-  "PlateGroupImage": "../../Pages/assets/source/title_cool.png",
-  "PlateGroup": [
+  "Background": "../../Pages/assets/source/menu/bg_menu_03_left.jpg",
+  "FloatingIcon": "../../Pages/assets/source/menu/img_floating_03.png",
+  "MenuGroup": [
     {
+      "GroupTitle" :  "FLATCCINO",
       "MenuList": [
         {
-          "Name": "레드온더비치",
-          "SubName": "Red On The Beach",
-          "Price1": "&nbsp;",
-          "Price2": "3,900",
-          "Description": "213 Kcal"
-        }
-      ]
-    },
-    {
-      "MenuList": [
-        {
-          "Name": "레드 오렌지 에이드",
-          "SubName": "Red Orange Ade",
-          "Price1": "&nbsp;",
-          "Price2": "4,200",
-          "Description": "240 Kcal"
+          "Name": "커피 플랫치노",
+          "Price": "3,500",
+          "Tag": "best"
         },
         {
-          "Name": "블루 레몬 에이드",
-          "SubName": "Blue Lemon Ade",
-          "Price1": "&nbsp;",
-          "Price2": "4,200",
-          "Description": "229 Kcal"
-        }
-      ]
-    },
-    {
-      "MenuList": [
-        {
-          "Name": "스파클링 에이드 <sup>(자몽)</sup>",
-          "SubName": "sparkling Ade <sup>(Grapefruit)</sup>",
-          "Price1": "4,200",
-          "Price2": "4,700",
-          "Description": "225 | 270 Kcal"
-        }
-      ]
-    },
-    {
-      "MenuList": [
-        {
-          "Name": "요거트 스무디 <sup>(딸기)</sup>",
-          "SubName": "Yogurt Smoothie <sup>(Strawberry)</sup>",
-          "Price1": "5,200",
-          "Price2": "&nbsp;",
-          "Description": "365 Kcal"
-        }
-      ]
-    },
-    {
-      "MenuList": [
-        {
-          "Name": "젤리에이드 <sup>(라임모히또)</sup>",
-          "SubName": "Jelly Ade <sup>(Lime Mojito)</sup>",
-          "Price1": "4,900",
-          "Description": "165 Kcal"
-        }
-      ]
-    },
-    {
-      "MenuList": [
-        {
-          "Name": "마시멜로 초코치노",
-          "SubName": "Mashmellow Chococcino",
-          "Price1": "4,900",
-          "Description": "340 | 300 Kcal"
+          "Name": "모카 플랫치노",
+          "Price": "3,800",
+          "Tag": ""
         },
         {
-          "Name": "피칸치노",
-          "SubName": "Pecanccino",
-          "Price1": "4,900",
-          "Description": "349 Kcal"
+          "Name": "카라멜 플랫치노",
+          "Price": "3,800",
+          "Tag": "soldout"
+        },
+        {
+          "Name": "망고 플랫치노",
+          "Price": "4,000",
+          "Tag": "new"
+        },
+        {
+          "Name": "자몽 플랫치노",
+          "Price": "4,000",
+          "Tag": ""
+        },
+        {
+          "Name": "유자 플랫치노",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "블루베리 플랫치노",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "딸기 플랫치노",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "그린애플 플랫치노",
+          "Price": "4,200",
+          "Tag": ""
+        },
+        {
+          "Name": "녹차 플랫치노",
+          "Price": "4,200",
+          "Tag": ""
+        },      
+        {
+          "Name": "초콜릿 칩 플랫치노",
+          "Price": "4,200",
+          "Tag": ""
+        },
+        {
+          "Name": "요거트 플랫치노",
+          "Price": "4,200",
+          "Tag": ""
         }
       ]
     },
     {
+      "GroupTitle" :  "JUICE",
       "MenuList": [
         {
-          "Name": "생과일 주스 <sup>(청포도)</sup>",
-          "SubName": "Fruit Juice <sup>(Muscat)</sup>",
-          "Price1": "5,000",
-          "Price2": "&nbsp;",
-          "Description": "205 Kcal"
-        }
-      ]
-    },
-    {
-      "MenuList": [
+          "Name": "골드키위 주스",
+          "Price": "3,600",
+          "Tag": ""
+        },
         {
-          "Name": "휴롬주스 <sup>(오렌지)</sup>",
-          "SubName": "Hurom Juice <sup>(Orange)</sup>",
-          "Price1": "5,500",
-          "Price2": "&nbsp;",
-          "Description": "150 Kcal"
+          "Name": "딸기 주스",
+          "Price": "3,600",
+          "Tag": ""
+        },
+        {
+          "Name": "망고 주스",
+          "Price": "3,600",
+          "Tag": ""
+        },
+        {
+          "Name": "비트 & 사과주스",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "오렌지 & 자몽주스",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "케일 & 사과주스",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "토마토 주스",
+          "Price": "3,800",
+          "Tag": ""
+        },
+        {
+          "Name": "한라봉 주스",
+          "Price": "4,000",
+          "Tag": ""
+        },
+        {
+          "Name": "블루베리 요거트",
+          "Price": "4,000",
+          "Tag": ""
         }
       ]
     }

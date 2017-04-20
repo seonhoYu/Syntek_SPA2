@@ -58,6 +58,8 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
 
     UiAnimation.prototype.init = function(){
         var that = this;
+        that.$activeAnimation = [];
+        that.$activeTimeouts = [];
     };
 
     UiAnimation.prototype.isNotice = function( aniType ){
@@ -155,9 +157,10 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
                 console.log('event start', _callbackTime);
 
                 if ( callback ) {
-                    setTimeout(function(){
+                    var nextCall = setTimeout(function(){
                         callback();
                     }, _callbackTime);
+                    that.$activeTimeouts.push(nextCall);
                 }
 
             }).one(that.animEndEventName, function(){
@@ -169,6 +172,7 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
             return CallbackTimeCheck;
         }
 
+        that.$activeAnimation.push(aniType);
         switch ( aniType ) {
             // left start moving
             case 1:
@@ -298,13 +302,15 @@ define( ['jquery', 'marquee', 'sakura'], function ( $, marquee, sakura  ){
         switch ( aniType ) {
             // left start moving
             case 1:
-                CallbackTimeCheck();
+                $target.empty();
+                //CallbackTimeCheck();
 
                 break;
 
              // right start moving
             case 2:
-                CallbackTimeCheck();
+                $target.empty();
+                //CallbackTimeCheck();
 
                 break;
 

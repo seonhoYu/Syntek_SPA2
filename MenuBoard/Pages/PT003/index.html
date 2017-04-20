@@ -29,38 +29,38 @@
                 <span>ICED</span>
             </p>
             <ul class="list">
-                {{#each this.PlateGroup1}}
-                <li>
-                    <div class="inner">
-                        {{#each this.MenuList}}
-                        <dl>
-                            <dt>
-                                <span class="kor">{{{Name}}}</span>
-                                <span class="eng">{{{SubName}}}</span>
-                            </dt>
-                            <dd>
-                                {{#if Price3}}
-                                <ul class="price small">
-                                    <li><sub>S</sub> {{Price1}}</li>
-                                    <li><sub>R</sub> {{Price2}}</li>
-                                    <li><sub>L</sub> {{Price3}}</li>
-                                </ul>
-                                {{else}}
-                                <ul class="price">
-                                    {{#if Price1 }}
-                                    <li>{{{Price1}}}</li>
-                                    {{/if}}
-                                    {{#if Price2}}
-                                    <li>{{{Price2}}}</li>
-                                    {{/if}}
-                                </ul>
-                                {{/if}}
-                                <span class="kcal">{{{Description}}}</span>
-                            </dd>
-                        </dl>
-                        {{/each}}
-                    </div>
-                </li>
+                {{#each this.Menu}}
+                    {{#ifsmaller Id value = 9}}
+                        <li menu-id="{{Id}}">
+                            <div class="inner">
+                                <dl>
+                                    <dt>
+                                        <span class="kor" data-id="Name">{{{Name}}}</span>
+                                        <span class="eng" data-id="SubName">{{{SubName}}}</span>
+                                    </dt>
+                                    <dd>
+                                        {{#if Price3}}
+                                        <ul class="price small">
+                                            <li><sub>S</sub> <span data-id="Price1">{{Price1}}</span></li>
+                                            <li><sub>R</sub> <span data-id="Price2">{{Price2}}</span></li>
+                                            <li><sub>L</sub> <span data-id="Price3">{{Price3}}</span></li>
+                                        </ul>
+                                        {{else}}
+                                        <ul class="price">
+                                            {{#if Price1 }}
+                                            <li data-id="Price1">{{{Price1}}}</li>
+                                            {{/if}}
+                                            {{#if Price2}}
+                                            <li data-id="Price2">{{{Price2}}}</li>
+                                            {{/if}}
+                                        </ul>
+                                        {{/if}}
+                                        <span class="kcal" data-id="Description">{{{Description}}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    {{/ifsmaller}}
                 {{/each}}
             </ul>
         </section>
@@ -74,38 +74,38 @@
                 <span>ICED</span>
             </p>
             <ul class="list">
-                {{#each this.PlateGroup2}}
-                    <li>
-                        <div class="inner">
-                            {{#each this.MenuList}}
-                            <dl>
-                                <dt>
-                                    <span class="kor">{{{Name}}}</span>
-                                    <span class="eng">{{{SubName}}}</span>
-                                </dt>
-                                <dd>
-                                    {{#if Price3}}
-                                        <ul class="price small">
-                                            <li><sub>S</sub> {{Price1}}</li>
-                                            <li><sub>R</sub> {{Price2}}</li>
-                                            <li><sub>L</sub> {{Price3}}</li>
-                                        </ul>
-                                    {{else}}
-                                        <ul class="price">
-                                            {{#if Price1 }}
-                                            <li>{{{Price1}}}</li>
-                                            {{/if}}
-                                            {{#if Price2}}
-                                            <li>{{{Price2}}}</li>
-                                            {{/if}}
-                                        </ul>
-                                    {{/if}}
-                                    <span class="kcal">{{{Description}}}</span>
-                                </dd>
-                            </dl>
-                            {{/each}}
-                        </div>
-                    </li>
+                {{#each this.Menu}}
+                    {{#ifbigger Id value = 8}}
+                        <li menu-id="{{Id}}">
+                            <div class="inner">
+                                <dl>
+                                    <dt>
+                                        <span class="kor" data-id="Name">{{{Name}}}</span>
+                                        <span class="eng" data-id="SubName">{{{SubName}}}</span>
+                                    </dt>
+                                    <dd>
+                                        {{#if Price3}}
+                                            <ul class="price small">
+                                                <li><sub>S</sub> <span data-id="Price1">{{Price1}}</span></li>
+                                                <li><sub>R</sub> <span data-id="Price2">{{Price2}}</span></li>
+                                                <li><sub>L</sub> <span data-id="Price3">{{Price3}}</span></li>
+                                            </ul>
+                                        {{else}}
+                                            <ul class="price">
+                                                {{#if Price1 }}
+                                                <li data-id="Price1">{{{Price1}}}</li>
+                                                {{/if}}
+                                                {{#if Price2}}
+                                                <li data-id="Price2">{{{Price2}}}</li>
+                                                {{/if}}
+                                            </ul>
+                                        {{/if}}
+                                        <span class="kcal" data-id="Description">{{{Description}}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    {{/ifbigger}}
                 {{/each}}
             </ul>
         </section>

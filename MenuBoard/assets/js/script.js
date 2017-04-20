@@ -54,12 +54,29 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
     $.getJSON("../../environment.json", function (data) {
         environment = data;
 
+        var param = getUrlParameter('template');
+        if (param == 'pt001') {
+            environment.screenId = 1;
+            environment.isHubDevice = true;
+        }
+        else if (param == 'pt002') {
+            environment.screenId = 2;
+            environment.isHubDevice = false;
+        }
+        else if (param == 'pt003') {
+            environment.screenId = 3;
+            environment.isHubDevice = false;
+        }
+        else if (param == 'pt004') {
+            environment.screenId = 4;
+            environment.isHubDevice = false;
+        }
+
         PageTransition = new Transition();
         PageTransition.start(environment.screenId, environment.styleNumber);
         
     });
-
-	
+    
 	var template = getUrlParameter("template");
 	if(template != undefined){
 		var list = $('#section1');
@@ -79,12 +96,16 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	} 
 	
 	$(document).ready(function () {
-        setTimeout(function(){
-		    
+	    setTimeout(function () {
+	        
+
+
             PageUiAnimation = new UiAnimation();
             PageWeather = new Weather();
-
-            connectToTimerServer();
+			
+			//transitionLocal();
+			
+            //connectToTimerServer();
 
             try {
                 $.signalClient(environment.isHubDevice, environment.screenId, environment.videoPlayList, environment.syncServer);
@@ -117,10 +138,15 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
             }
         });
 
+        if (rollingSetting == undefined || rollingSetting.schedule == undefined) {
+            return;
+        }
+
         if (screenRollNo >= rollingSetting.schedule.length) {
             screenRollNo = 0;
         }
 
+        activeAnimation(rollingSetting.schedule[screenRollNo].id);
         PageTransition.start(rollingSetting.schedule[screenRollNo].id, environment.styleNumber);
         
         setTimeout(function () { transitionLocal() }, rollingSetting.schedule[screenRollNo].interval + 1000);
@@ -186,6 +212,23 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 
 	Handlebars.registerHelper('ifvalue', function (conditional, options) {
 	    if (options.hash.value === conditional) {
+	        return options.fn(this)
+	    } else {
+	        return options.inverse(this);
+	    }
+	});
+
+	Handlebars.registerHelper('ifbigger', function (conditional, options) {
+	    if (options.hash.value < conditional) {
+	        return options.fn(this)
+	    } else {
+	        return options.inverse(this);
+	    }
+	});
+
+	Handlebars.registerHelper('ifsmaller', function (conditional, options) {
+	    debugger;
+	    if (options.hash.value > conditional) {
 	        return options.fn(this)
 	    } else {
 	        return options.inverse(this);
