@@ -1,17 +1,17 @@
 ﻿<div class="prom-type1">
     <div class="menu">
-        {{#each this.MenuGroup}}
-    	<div class="menu-grp">
-    		<h1 class="menu-grp_tit">{{GroupTitle}}</h1>
-    		<ul class="menu-grp_list">
-                {{#each this.MenuList}}
-    			<li class="menu-item">
-    				<strong class="menu-item_name">{{Name}}</strong>
-    				
+        <div class="menu-grp">
+            <h1 class="menu-grp_tit">{{MenuGroup1Title}}</h1>
+            <ul class="menu-grp_list">
+                {{#each this.Menu}}
+                {{#ifvalue GroupId value = 1 }}
+                <li class="menu-item">
+                    <strong class="menu-item_name">{{Name}}</strong>
+
                     {{#ifvalue Tag value = "best"}}
-    				<span class="menu-item_status" data-type="best">
-    					<img src="../assets/source/menu/ico-best.png" alt="best">
-    				</span>
+                    <span class="menu-item_status" data-type="best">
+                        <img src="../assets/source/menu/ico-best.png" alt="best">
+                    </span>
                     {{/ifvalue}}
                     {{#ifvalue Tag value = "soldout"}}
                     <span class="menu-item_status" data-type="soldout">
@@ -23,14 +23,46 @@
                         <img src="../assets/source/menu/ico-new.png" alt="new">
                     </span>
                     {{/ifvalue}}
-    				
-    				<em class="menu-item_sort">{{Price}}</em>
-    				
-    			</li>
+
+                    <em class="menu-item_sort">{{Price}}</em>
+
+                </li>
+                {{/ifvalue}}
                 {{/each}}
-    		</ul>
-    	</div>
-        {{/each}}
+            </ul>
+        </div>
+
+        <div class="menu-grp">
+            <h1 class="menu-grp_tit">{{MenuGroup1Title}}</h1>
+            <ul class="menu-grp_list">
+                {{#each this.Menu}}
+                {{#ifvalue GroupId value = 1 }}
+                <li class="menu-item">
+                    <strong class="menu-item_name">{{Name}}</strong>
+
+                    {{#ifvalue Tag value = "best"}}
+                    <span class="menu-item_status" data-type="best">
+                        <img src="../assets/source/menu/ico-best.png" alt="best">
+                    </span>
+                    {{/ifvalue}}
+                    {{#ifvalue Tag value = "soldout"}}
+                    <span class="menu-item_status" data-type="soldout">
+                        <img src="../assets/source/menu/ico-soldout.png" alt="soldout">
+                    </span>
+                    {{/ifvalue}}
+                    {{#ifvalue Tag value = "new"}}
+                    <span class="menu-item_status" data-type="new">
+                        <img src="../assets/source/menu/ico-new.png" alt="new">
+                    </span>
+                    {{/ifvalue}}
+
+                    <em class="menu-item_sort">{{Price}}</em>
+
+                </li>
+                {{/ifvalue}}
+                {{/each}}
+            </ul>
+        </div>
 
     	<span class="menu-floating">
     		<img src="{{FloatingIcon}} " alt="" style="display: inline;">

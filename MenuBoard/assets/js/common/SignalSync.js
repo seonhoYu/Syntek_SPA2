@@ -192,8 +192,6 @@ require(["jquery", "signalrhubs"], function($){
                 for (var property in data) {
                     $(menuEl).find('[data-id=' + property + ']').text(data[property]);
                 }
-                //TO DO : 업데이트 로직을 구현해야 한다.
-                
             }
         }
 

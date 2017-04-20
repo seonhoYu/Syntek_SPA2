@@ -59,16 +59,16 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
             environment.screenId = 1;
             environment.isHubDevice = true;
         }
-        else if (param == 'pt002') {
-            environment.screenId = 2;
+        else if (param == 'pt010') {
+            environment.screenId = 10;
             environment.isHubDevice = false;
         }
-        else if (param == 'pt003') {
-            environment.screenId = 3;
+        else if (param == 'pt011') {
+            environment.screenId = 11;
             environment.isHubDevice = false;
         }
-        else if (param == 'pt004') {
-            environment.screenId = 4;
+        else {
+            environment.screenId = param.substring(param.length - 1, param.length);
             environment.isHubDevice = false;
         }
 
@@ -227,7 +227,6 @@ define(['jquery', 'handlebars', 'contentTransition', 'uiAnimation', 'pageVideoPl
 	});
 
 	Handlebars.registerHelper('ifsmaller', function (conditional, options) {
-	    debugger;
 	    if (options.hash.value > conditional) {
 	        return options.fn(this)
 	    } else {

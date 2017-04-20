@@ -38,6 +38,10 @@
   {
     "pageId": 10,
     "template": "PT010"
+  },
+  {
+    "pageId": 11,
+    "template": "PT011"
   }
 
 ]

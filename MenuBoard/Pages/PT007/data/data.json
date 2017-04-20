@@ -1,121 +1,155 @@
 ﻿{
   "Background": "../../Pages/assets/source/menu/bg_menu_03_left.jpg",
   "FloatingIcon": "../../Pages/assets/source/menu/img_floating_03.png",
-  "MenuGroup": [
+  "MenuGroup1Title": "FLATCCINO",
+  "MenuGroup2Title": "JUICE",
+  "Menu": [
     {
-      "GroupTitle" :  "FLATCCINO",
-      "MenuList": [
-        {
-          "Name": "커피 플랫치노",
-          "Price": "3,500",
-          "Tag": "best"
-        },
-        {
-          "Name": "모카 플랫치노",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "카라멜 플랫치노",
-          "Price": "3,800",
-          "Tag": "soldout"
-        },
-        {
-          "Name": "망고 플랫치노",
-          "Price": "4,000",
-          "Tag": "new"
-        },
-        {
-          "Name": "자몽 플랫치노",
-          "Price": "4,000",
-          "Tag": ""
-        },
-        {
-          "Name": "유자 플랫치노",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "블루베리 플랫치노",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "딸기 플랫치노",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "그린애플 플랫치노",
-          "Price": "4,200",
-          "Tag": ""
-        },
-        {
-          "Name": "녹차 플랫치노",
-          "Price": "4,200",
-          "Tag": ""
-        },      
-        {
-          "Name": "초콜릿 칩 플랫치노",
-          "Price": "4,200",
-          "Tag": ""
-        },
-        {
-          "Name": "요거트 플랫치노",
-          "Price": "4,200",
-          "Tag": ""
-        }
-      ]
+      "Id": 1,
+      "GroupId": 1,
+      "Name": "커피 플랫치노",
+      "Price": "3,500",
+      "Tag": "best"
     },
     {
-      "GroupTitle" :  "JUICE",
-      "MenuList": [
-        {
-          "Name": "골드키위 주스",
-          "Price": "3,600",
-          "Tag": ""
-        },
-        {
-          "Name": "딸기 주스",
-          "Price": "3,600",
-          "Tag": ""
-        },
-        {
-          "Name": "망고 주스",
-          "Price": "3,600",
-          "Tag": ""
-        },
-        {
-          "Name": "비트 & 사과주스",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "오렌지 & 자몽주스",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "케일 & 사과주스",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "토마토 주스",
-          "Price": "3,800",
-          "Tag": ""
-        },
-        {
-          "Name": "한라봉 주스",
-          "Price": "4,000",
-          "Tag": ""
-        },
-        {
-          "Name": "블루베리 요거트",
-          "Price": "4,000",
-          "Tag": ""
-        }
-      ]
+      "Id": 2,
+      "GroupId": 1,
+      "Name": "모카 플랫치노",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 3,
+      "GroupId": 1,
+      "Name": "카라멜 플랫치노",
+      "Price": "3,800",
+      "Tag": "soldout"
+    },
+    {
+      "Id": 4,
+      "GroupId": 1,
+      "Name": "망고 플랫치노",
+      "Price": "4,000",
+      "Tag": "new"
+    },
+    {
+      "Id": 5,
+      "GroupId": 1,
+      "Name": "자몽 플랫치노",
+      "Price": "4,000",
+      "Tag": ""
+    },
+    {
+      "Id": 6,
+      "GroupId": 1,
+      "Name": "유자 플랫치노",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 7,
+      "GroupId": 1,
+      "Name": "블루베리 플랫치노",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 8,
+      "GroupId": 1,
+      "Name": "딸기 플랫치노",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 9,
+      "GroupId": 1,
+      "Name": "그린애플 플랫치노",
+      "Price": "4,200",
+      "Tag": ""
+    },
+    {
+      "Id": 10,
+      "GroupId": 1,
+      "Name": "녹차 플랫치노",
+      "Price": "4,200",
+      "Tag": ""
+    },
+    {
+      "Id": 11,
+      "GroupId": 1,
+      "Name": "초콜릿 칩 플랫치노",
+      "Price": "4,200",
+      "Tag": ""
+    },
+    {
+      "Id": 12,
+      "GroupId": 1,
+      "Name": "요거트 플랫치노",
+      "Price": "4,200",
+      "Tag": ""
+    },
+    {
+      "Id": 13,
+      "GroupId": 2,
+      "Name": "골드키위 주스",
+      "Price": "3,600",
+      "Tag": ""
+    },
+    {
+      "Id": 14,
+      "GroupId": 2,
+      "Name": "딸기 주스",
+      "Price": "3,600",
+      "Tag": ""
+    },
+    {
+      "Id": 15,
+      "GroupId": 2,
+      "Name": "망고 주스",
+      "Price": "3,600",
+      "Tag": ""
+    },
+    {
+      "Id": 16,
+      "GroupId": 2,
+      "Name": "비트 & 사과주스",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 17,
+      "GroupId": 2,
+      "Name": "오렌지 & 자몽주스",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 18,
+      "GroupId": 2,
+      "Name": "케일 & 사과주스",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 19,
+      "GroupId": 2,
+      "Name": "토마토 주스",
+      "Price": "3,800",
+      "Tag": ""
+    },
+    {
+      "Id": 20,
+      "GroupId": 2,
+      "Name": "한라봉 주스",
+      "Price": "4,000",
+      "Tag": ""
+    },
+    {
+      "Id": 21,
+      "GroupId": 2,
+      "Name": "블루베리 요거트",
+      "Price": "4,000",
+      "Tag": ""
     }
   ]
 }

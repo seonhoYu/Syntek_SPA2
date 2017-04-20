@@ -19,8 +19,8 @@ function activeAnimation(page) {
 define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/js/uiMenuGalleryRolling', '../../assets/js/uiNormalGalleryRolling'], function ($, Handlebars, VideoPlayer, GalleryRolling, NormalRolling) {
     
     var GalleryRoll = new GalleryRolling($(".roll"));
-    var NormalRoll = new NormalRolling($(".gallery"));
-    var VideoRoll = new VideoPlayer($(".video-frame"));
+    var NormalRoll = new NormalRolling($(".prom-type3 .gallery"));
+    var VideoRoll = new VideoPlayer($(".prom-type5 .video-frame"));
 
     function setAnimation(id, fn) {
         animationList.push({ id: id, fn: fn });
@@ -180,9 +180,17 @@ define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/j
         });
     });
 
-    GalleryRoll.on();
-    NormalRoll.on();
-    VideoRoll.on();
+    var page1ImageRolling = new GalleryRolling($(".prom-type1 .roll"));
+    page1ImageRolling.on();
+
+    debugger;
+    var page9ImageRolling = new NormalRolling($(".prom-type3 .gallery"));
+    page9ImageRolling.on();
+
+    var page11ImageRolling = new NormalRolling($(".prom-type5 .gallery"));
+    var page11VideoRolling = new VideoPlayer($(".prom-type5 .video-frame"));
+    page11ImageRolling.on();
+    page11VideoRolling.on();
 
     setTimeout(function () {
         PageWeather.setWeather(function (data) {

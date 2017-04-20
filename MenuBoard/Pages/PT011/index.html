@@ -1,14 +1,14 @@
 ﻿<div class="prom-type5">
-	<ul class="gallery gallery-half" data-interval="5000">
-        <li class="gallery-item active"><img src="../assets/source/tmp/prom1_1080x1313.jpg" width="1080" height="1313" alt=""></li>
-        <li class="gallery-item"><img src="../assets/source/tmp/prom2_1080x1313.jpg" width="1080" height="1313" alt=""></li>
-        <li class="gallery-item"><img src="../assets/source/tmp/prom3_1080x1313.jpg" width="1080" height="1313" alt=""></li>
+	<ul class="gallery gallery-half" data-interval="{{Interval}}">
+        {{#each this.ImageItem}}
+            <li class="gallery-item"><img src="{{MainImage}}" width="1080" height="1313" alt=""></li>
+        {{/each}}
 	</ul>
 	<div class="video-frame">
 	    <ol class="sr-only video-playlist">
-	        <li data-src="../assets/source/video/1.mp4"></li>
-	        <li data-src="../assets/source/video/2.mp4"></li>
-	        <li data-src="../assets/source/video/3.mp4"></li>
+            {{#each this.VideoItem}}
+	            <li data-src="{{Source}}"></li>
+            {{/each}}
 	    </ol>
 	    <video class="video-player" src="../assets/source/video/1.mp4"></video>
 	</div>
