@@ -1,4 +1,17 @@
 ﻿{
   "background" :  "../../Pages/assets/source/board_a_bg.jpg",
-  "videoUrl": "../../Pages/assets/source/veloster.mp4"
+  "VideoItem": [
+    {
+      "Source": "../../Pages/assets/source/veloster.mp4"
+    },
+    {
+      "Source": "../assets/source/video/1.mp4"
+    },
+    {
+      "Source": "../assets/source/video/2.mp4"
+    },
+    {
+      "Source": "../assets/source/video/3.mp4" 
+    }
+  ]
 }

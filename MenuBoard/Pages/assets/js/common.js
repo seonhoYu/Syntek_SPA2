@@ -18,9 +18,6 @@ function activeAnimation(page) {
 
 define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/js/uiMenuGalleryRolling', '../../assets/js/uiNormalGalleryRolling'], function ($, Handlebars, VideoPlayer, GalleryRolling, NormalRolling) {
     
-    var GalleryRoll = new GalleryRolling($(".roll"));
-    var NormalRoll = new NormalRolling($(".prom-type3 .gallery"));
-    var VideoRoll = new VideoPlayer($(".prom-type5 .video-frame"));
 
     function setAnimation(id, fn) {
         animationList.push({ id: id, fn: fn });
@@ -28,6 +25,9 @@ define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/j
             fn(id);
         }
     };
+
+    var page1VideoRolling = new VideoPlayer($(".page1 .video-frame"));
+    page1VideoRolling.on();
 
     //페이지 애니메이션 초기화 함수 호출
     setAnimation(2, function () {
@@ -180,10 +180,9 @@ define(['jquery', 'handlebars', '../../assets/js/uiVideoPlayer', '../../assets/j
         });
     });
 
-    var page1ImageRolling = new GalleryRolling($(".prom-type1 .roll"));
-    page1ImageRolling.on();
+    var page8ImageRolling = new GalleryRolling($(".prom-type1 .roll"));
+    page8ImageRolling.on();
 
-    debugger;
     var page9ImageRolling = new NormalRolling($(".prom-type3 .gallery"));
     page9ImageRolling.on();
 

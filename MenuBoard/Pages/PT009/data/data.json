@@ -3,25 +3,19 @@
   "TitleImage" :  "../assets/source/promotion/prom_autumn_head.png",
   "ImageItem": [
     {
-      "Id": 1,
       "Title": "카페모카, 카페라떼",
-      "MainImage": "../assets/source/promotion/prom_autumn1_1080x1920.jpg",
-       "ThumbOnImage": "",
-      "ThumbOffImage": ""
+      "Image1": "../assets/source/promotion/prom_autumn1_1080x1920.jpg",
+      "Image2": ""
     },
     {
-      "Id": 2,
       "Title": "코코넛모카",
-      "MainImage": "../assets/source/promotion/prom_autumn2_1080x1920.jpg",
-      "ThumbOnImage": "",
-      "ThumbOffImage": ""
+      "Image1": "../assets/source/promotion/prom_autumn2_1080x1920.jpg",
+      "Image2": ""
     },
     {
-      "Id": 3,
       "Title": "초코라떼 모카",
-      "MainImage": "../assets/source/promotion/prom_autumn3_1080x1920.jpg",
-       "ThumbOnImage": "",
-      "ThumbOffImage": ""
+      "Image1": "../assets/source/promotion/prom_autumn3_1080x1920.jpg",
+      "Image2": ""
     }
   ]
 }

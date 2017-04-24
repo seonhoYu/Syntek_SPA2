@@ -2,32 +2,46 @@
   "Interval" :  5000,
   "ImageItem": [
     {
-      "Id": 1,
       "Title": "아메리카노",
-      "MainImage": "../assets/source/tmp/today4_1080x1920.jpg",
-      "ThumbOnImage": "../assets/source/tmp/today_thum4_on.jpg",
-      "ThumbOffImage": "../assets/source/tmp/today_thum4_off.jpg"
+      "Image1": "../assets/source/tmp/today4_1080x1920.jpg",
+      "Image2": ""
     },
     {
-      "Id": 2,
       "Title": "콜드브루 커피",
-      "MainImage": "../assets/source/tmp/today1_1080x1920.jpg",
-      "ThumbOnImage": "../assets/source/tmp/today_thum1_on.jpg",
-      "ThumbOffImage": "../assets/source/tmp/today_thum1_off.jpg"
+      "Image1": "../assets/source/tmp/today1_1080x1920.jpg",
+      "Image2": ""
     },
     {
-      "Id": 3,
       "Title": "초코라떼 모카",
-      "MainImage": "../assets/source/tmp/today2_1080x1920.jpg",
-      "ThumbOnImage": "../assets/source/tmp/today_thum2_on.jpg",
-      "ThumbOffImage": "../assets/source/tmp/today_thum2_off.jpg"
+      "Image1": "../assets/source/tmp/today2_1080x1920.jpg",
+      "Image2": ""
     },
     {
-      "Id": 4,
       "Title": "카페모카",
-      "MainImage": "../assets/source/tmp/today3_1080x1920.jpg",
-      "ThumbOnImage": "../assets/source/tmp/today_thum3_on.jpg",
-      "ThumbOffImage": "../assets/source/tmp/today_thum3_off.jpg"
+      "Image1": "../assets/source/tmp/today3_1080x1920.jpg",
+      "Image2": ""
+    }
+  ],
+  "ThumbnailItem": [
+    {
+      "Title": "아메리카노",
+      "Image1": "../assets/source/tmp/today_thum4_on.jpg",
+      "Image2": "../assets/source/tmp/today_thum4_off.jpg"
+    },
+    {
+      "Title": "콜드브루 커피",
+      "Image1": "../assets/source/tmp/today_thum1_on.jpg",
+      "Image2": "../assets/source/tmp/today_thum1_off.jpg"
+    },
+    {
+      "Title": "초코라떼 모카",
+      "Image1": "../assets/source/tmp/today_thum2_on.jpg",
+      "Image2": "../assets/source/tmp/today_thum2_off.jpg"
+    },
+    {
+      "Title": "카페모카",
+      "Image1": "../assets/source/tmp/today_thum3_on.jpg",
+      "Image2": "../assets/source/tmp/today_thum3_off.jpg"
     }
   ]
 }

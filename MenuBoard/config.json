@@ -1,0 +1,140 @@
+﻿{
+  "AppSetting": {
+  },
+  "PageSetting": [
+    {
+      "Page": 1,
+      "setting": {
+        "schema": {
+          "type": "object",
+          "title": "1번 탬플릿",
+          "properties": {
+            "VideoItem": {
+              "type": "array",
+              "format": "table",
+              "minItems" :  1,
+              "maxItems" :  5,
+              "title": "Video List",
+              "items": {
+                "type": "object",
+                "title": "Video",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "title" :  "비디오 경로"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "Page": 8,
+      "setting": {
+        "schema": {
+          "type": "object",
+          "title": "8번 탬플릿",
+          "properties": {
+            "Interval": {
+              "type": "number",
+              "title" :  "슬라이드 주기"
+            },
+            "ImageItem": {
+              "type": "array",
+              "format": "table",
+              "minItems" :  1,
+              "maxItems" :  5,
+              "title": "전체 이미지",
+              "items": {
+                "type": "object",
+                "title": "Image",
+                "properties": {
+                  "Title": {
+                    "type": "string",
+                    "title": "메뉴명",
+                    "input_width": "100px",
+                    "maxLength": 10,
+                    "minLength" :  1
+                  },
+                  "Image1": {
+                    "type": "string",
+                    "title": "이미지",
+                    "format": "url",
+                    "storage" :  true
+                  }
+                }
+              }
+            },
+            "ThumbnailItem": {
+              "type": "array",
+              "format": "table",
+              "minItems" :  1,
+              "maxItems" :  5,
+              "title": "썸네일 이미지",
+              "items": {
+                "type": "object",
+                "title": "Thumbnail",
+                "properties": {
+                  "Title": {
+                    "type": "string",
+                    "title": "메뉴명"
+                  },
+                  "Image1": {
+                    "type": "string",
+                    "title": "온 이미지"
+                  },
+                  "Image2": {
+                    "type": "string",
+                    "title": "오프 이미지"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "Page": 9,
+      "setting": {
+        "schema": {
+          "type": "object",
+          "title": "9번 탬플릿",
+          "properties": {
+            "ImageItem": {
+              "type": "array",
+              "format": "table",
+              "min" :  1,
+              "max" :  5,
+              "title": "이미지 목록",
+              "items": {
+                "type": "object",
+                "title": "Image",
+                "properties": {
+                  "Title": {
+                    "type": "string",
+                    "title": "메뉴명"
+                  },
+                  "MainImage": {
+                    "type": "string",
+                    "title": "메인 이미지"
+                  },
+                  "ThumbnailOnImage": {
+                    "type": "string",
+                    "title": "썸네일 온 이미지"
+                  },
+                  "ThumbnailOffImage": {
+                    "type": "string",
+                    "title": "썸네일 오프 이미지"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

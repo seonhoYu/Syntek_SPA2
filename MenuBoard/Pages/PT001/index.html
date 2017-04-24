@@ -1,14 +1,22 @@
 ﻿<!-- 보드 A -->
-<div class="comp_board">
+<div class="page1 comp_board">
     <div class="bg" style="background-image:url('{{background}}');"></div>
     
     <!-- 내용 -->
     <div class="content">
-        <div class="movie_area">
+        <div class="video-frame movie_area">
+            <ol class="sr-only video-playlist">
+                {{#each this.VideoItem}}
+                    <li data-src="{{Source}}"></li>
+                {{/each}}
+            </ol>
+            <video class="video-player video-mask"></video>
+        </div>
+        <!--<div class="movie_area">
             <video class="video-mask" data-type="video" loop control>
             	 <source type="video/mp4" data-src="{{videoUrl}}">
             </video>
-        </div>
+        </div>-->
     </div>
     <!-- // 내용 -->
 </div>
