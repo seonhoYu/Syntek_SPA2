@@ -4,10 +4,39 @@
   "PageSetting": [
     {
       "Page": 1,
-      "PageName" :  "페이지1",
+      "PageName": "페이지1",
       "setting": {
         "schema": {
           "type": "object",
+          "title": "1번 탬플릿",
+          "properties": {
+            "VideoItem": {
+              "type": "array",
+              "format": "table",
+              "minItems": 1,
+              "maxItems": 5,
+              "title": "Video List",
+              "items": {
+                "type": "object",
+                "title": "Video",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "title": "비디오 경로"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "Page": 2,
+      "PageName" :  "페이지2",
+      "setting": {
+        "schema": {
+          "type": "menu",
           "title": "1번 탬플릿",
           "properties": {
             "VideoItem": {

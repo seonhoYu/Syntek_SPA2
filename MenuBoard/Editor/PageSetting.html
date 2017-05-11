@@ -17,10 +17,10 @@
 </head>
 <body>
     <div style="width:100%;" >
-        <button type="button" title="Back" class="button tiny" onclick="history.back();"><i class="fa fa-arrow-left"></i> Back</button>
+        <button type="button" title="Back" class="button tiny" style="margin:10px;" onclick="history.back();"><i class="fa fa-arrow-left"></i> 뒤로</button>
     </div>
     <div id='editor_holder'></div>
-    <button id='submit'>Submit (console.log)</button>
+    <button id='submit'  style="margin:10px;" onclick="savePageSetting();">저장</button>
 
     <script>
         var editor;
@@ -48,10 +48,10 @@
         });
 
         // Hook up the submit button to log to the console
-        document.getElementById('submit').addEventListener('click', function () {
-            // Get the value from the editor
-            console.log(editor.getValue());
-        });
+        //document.getElementById('submit').addEventListener('click', function () {
+        //    // Get the value from the editor
+        //    console.log(editor.getValue());
+        //});
 
         function getUrlParameter(sParam) {
             var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -67,6 +67,14 @@
                 }
             }
         };
+
+        function savePageSetting() {
+            var pageId = getUrlParameter('page');
+            var value = editor.getValue();
+            localStorage.setItem('pageSetting' + pageId, JSON.stringify(value));
+            alert(pageId + " 페이지 정보가 저장되었습니다.");
+            history.back();
+        }
     </script>
 </body>
 </html>
