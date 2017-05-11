@@ -1,14 +1,14 @@
 ﻿<!-- 보드 B -->
 <div class="comp_board">
     <video class="bg" autoplay loop>
-        <source type="video/mp4" data-src="{{Background}}">
+        <source type="video/mp4" data-src="../../Pages/assets/source/board_b_bg.mp4">
     </video>
     
     <!-- 내용 -->
     <div class="content">
         <!-- hot sandwiches -->
         <section class="hot_menu">
-            <h2><img src="{{TitleImage}}" alt="HOT SANDWICHES"></h2>
+            <h2><img src="../../Pages/assets/source/title_hot.png" alt="HOT SANDWICHES"></h2>
             <ul class="list">
                 {{#each this.Menu}}
                     
@@ -22,8 +22,8 @@
                                         <span data-id="Title1" class="kor">{{Title1}}</span>
                                         <span data-id="Title2" class="eng">{{Title2}}</span>
                                     </dt>
-                                    <dd><span data-id="PriceTitle1">{{PriceTitle1}}</span> <strong data-id="Price1">{{Price1}}</strong></dd>
-                                    <dd><span data-id="PriceTitle2">{{PriceTitle2}}</span> <strong data-id="Price2">{{Price2}}</strong></dd>
+                                    <dd><span data-id="PriceTitle1">단품</span> <strong data-id="Price1">{{Price1}}</strong></dd>
+                                    <dd><span data-id="PriceTitle2">콤보</span> <strong data-id="Price2">{{Price2}}</strong></dd>
                                 </dl>
                                 <span class="kcal" data-id="Description1">{{Description1}}<br>{{Description2}}</span>
                             </figcaption>
@@ -43,31 +43,42 @@
         <!-- aside -->
         <div class="aside">
             <section class="combo">
-                <h3>{{SideMenuText}}</h3>
+                <h3>콤보 음료를 선택해 주세요!</h3>
                 <ul>
-                    {{#each this.SideMenu}}
-                        <li>
-                            <figure>
-                                <img src="{{Image}}" alt="">
-                                <figcaption>{{Text1}}<span>{{Text2}}</span></figcaption>
-                            </figure>
-                            {{#if BallonImage}}
-                                <img class="balloon" src="{{BallonImage}}" alt="사이드 메뉴 이미지">
-                            {{/if}}
-                        </li>
-                    {{/each}}
-              
+                    <li>
+                        <figure>
+                            <img src="../../Pages/assets/source/combo_img1.png" alt="">
+                            <figcaption>핫아메리카노<span>(220㎖)</span></figcaption>
+                        </figure>
+                        <img class="balloon" src="../../Pages/assets/source/combo_balloon1.gif" alt="사이드 메뉴 이미지">
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="../../Pages/assets/source/combo_img2.png" alt="">
+                            <figcaption>아이스 아메리카노<span>(260㎖)</span></figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="../../Pages/assets/source/combo_img3.png" alt="">
+                            <figcaption>오렌지 주스<span>(260㎖)</span></figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="../../Pages/assets/source/combo_img4.png" alt="">
+                            <figcaption>콜라<span>(355㎖)</span></figcaption>
+                        </figure>
+                    </li>
                 </ul>
             </section>
             <div class="info">
-                <img src="{{PromotionImage}}" alt="프로모션 이미지">
+                <img src="../../Pages/assets/source/txt_open.png" alt="프로모션 이미지">
                 <p>
-                    {{{PromotionText}}}
+                    해피포인트 앱만 보여주면<br /><strong>단품가격으로<br>콤보제공</strong>
                 </p>
             </div>
-            {{#if PointInfoImage}}
-                <img class="happypoint" src="{{PointInfoImage}}" alt="">
-            {{/if}}
+            <img class="happypoint" src="../../Pages/assets/source/happypoint.png" alt="">
         </div>
         <!-- // aside -->
     </div>

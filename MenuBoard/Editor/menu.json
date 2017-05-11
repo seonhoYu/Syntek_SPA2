@@ -1,12 +1,12 @@
 ﻿{
-  "Menu": [
+  "menu":[
     {
       "Id": 1,
       "Name": "아메리카노",
       "SubName": "Americano",
       "Price1": "3,500",
       "Price2": "3,500",
-      "Description1": "15 | 15 Kcal"
+      "Description": "15 | 15 Kcal"
     },
     {
       "Id": 2,
@@ -14,7 +14,7 @@
       "SubName": "Cafe Latte",
       "Price1": "3,800",
       "Price2": "3,800",
-      "Description1": "165 | 105 Kcal"
+      "Description": "165 | 105 Kcal"
     },
     {
       "Id": 3,
@@ -22,7 +22,7 @@
       "SubName": "Cappuccino",
       "Price1": "3,300",
       "Price2": "&nbsp;",
-      "Description1": "165 Kcal"
+      "Description": "165 Kcal"
     },
     {
       "Id": 4,
@@ -30,7 +30,7 @@
       "SubName": "Cafe Mocha",
       "Price1": "3,900",
       "Price2": "4,200",
-      "Description1": "310 | 270 Kcal"
+      "Description": "310 | 270 Kcal"
     },
     {
       "Id": 5,
@@ -38,7 +38,7 @@
       "SubName": "Caramel Macchiato",
       "Price1": "3,900",
       "Price2": "4,200",
-      "Description1": "260 | 307 Kcal"
+      "Description": "260 | 307 Kcal"
     },
     {
       "Id": 6,
@@ -47,7 +47,7 @@
       "Price1": "3,900",
       "Price2": "4,200",
       "Price3": "",
-      "Description1": "340 | 300 Kcal"
+      "Description": "340 | 300 Kcal"
     },
     {
       "Id": 7,
@@ -55,7 +55,7 @@
       "SubName": "Salty Cream Americano",
       "Price1": "4,000",
       "Price2": "4,500",
-      "Description1": "175 | 175 Kcal"
+      "Description": "175 | 175 Kcal"
     },
     {
       "Id": 8,
@@ -64,7 +64,7 @@
       "Price1": "2,300",
       "Price2": "3,000",
       "Price3": "3,700",
-      "Description1": "15 / 20 / 25 Kcal"
+      "Description": "15 / 20 / 25 Kcal"
     },
     {
       "Id": 9,
@@ -72,7 +72,7 @@
       "SubName": "Choco",
       "Price1": "3,000",
       "Price2": "3,500",
-      "Description1": "290 | 255 Kcal"
+      "Description": "290 | 255 Kcal"
     },
     {
       "Id": 10,
@@ -80,7 +80,7 @@
       "SubName": "Cookie & Cream Choco",
       "Price1": "3,500",
       "Price2": "4,000",
-      "Description1": "455 | 360 Kcal"
+      "Description": "455 | 360 Kcal"
     },
     {
       "Id": 11,
@@ -88,7 +88,7 @@
       "SubName": "Milk Tea Latte",
       "Price1": "3,000",
       "Price2": "3,500",
-      "Description1": "300 | 265 Kcal"
+      "Description": "300 | 265 Kcal"
     },
     {
       "Id": 12,
@@ -96,14 +96,14 @@
       "SubName": "Bubble Milk Tea Latte",
       "Price1": "3,600",
       "Price2": "4,100",
-      "Description1": "364 | 329 Kcal"
+      "Description": "364 | 329 Kcal"
     },
     {
       "Id": 13,
       "Name": "버블킹라떼 <sup>(잉글리쉬블랙퍼스트)</sup>",
       "SubName": "Bubble King Latte <sup>(English Breakfast)</sup>",
       "Price1": "4,500",
-      "Description1": "260 Kcal"
+      "Description": "260 Kcal"
     },
     {
       "Id": 14,
@@ -111,7 +111,7 @@
       "SubName": "Chrysanthemum",
       "Price1": "3,000",
       "Price2": "3,500",
-      "Description1": "14 | 14 Kcal"
+      "Description": "14 | 14 Kcal"
     },
     {
       "Id": 15,
@@ -119,7 +119,7 @@
       "SubName": "Hot Fruit Tea <sup>(GrapeFruit)</sup>",
       "Price1": "3,900",
       "Price2": "&#160;",
-      "Description1": "115 Kcal"
+      "Description": "115 Kcal"
     }
   ]
 }

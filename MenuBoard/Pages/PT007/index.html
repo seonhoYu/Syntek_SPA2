@@ -1,10 +1,9 @@
 ﻿<div class="prom-type1">
     <div class="menu">
         <div class="menu-grp">
-            <h1 class="menu-grp_tit">{{MenuGroup1Title}}</h1>
+            <h1 class="menu-grp_tit">FLATCCINO</h1>
             <ul class="menu-grp_list">
-                {{#each this.Menu}}
-                {{#ifvalue GroupId value = 1 }}
+                {{#each this.Menu1}}
                 <li class="menu-item">
                     <strong class="menu-item_name">{{Name}}</strong>
 
@@ -24,19 +23,17 @@
                     </span>
                     {{/ifvalue}}
 
-                    <em class="menu-item_sort">{{Price}}</em>
+                    <em class="menu-item_sort">{{Price1}}</em>
 
                 </li>
-                {{/ifvalue}}
                 {{/each}}
             </ul>
         </div>
 
         <div class="menu-grp">
-            <h1 class="menu-grp_tit">{{MenuGroup1Title}}</h1>
+            <h1 class="menu-grp_tit">JUICE</h1>
             <ul class="menu-grp_list">
-                {{#each this.Menu}}
-                {{#ifvalue GroupId value = 1 }}
+                {{#each this.Menu2}}
                 <li class="menu-item">
                     <strong class="menu-item_name">{{Name}}</strong>
 
@@ -56,18 +53,17 @@
                     </span>
                     {{/ifvalue}}
 
-                    <em class="menu-item_sort">{{Price}}</em>
+                    <em class="menu-item_sort">{{Price1}}</em>
 
                 </li>
-                {{/ifvalue}}
                 {{/each}}
             </ul>
         </div>
 
     	<span class="menu-floating">
-    		<img src="{{FloatingIcon}} " alt="" style="display: inline;">
+    		<img src="../../Pages/assets/source/menu/img_floating_03.png" alt="" style="display: inline;">
     	</span>
 
-    	<div class="menu__bg"><img src="{{Background}}" alt=""></div>
+    	<div class="menu__bg"><img src="../../Pages/assets/source/menu/bg_menu_03_left.jpg" alt=""></div>
     </div>
 </div>

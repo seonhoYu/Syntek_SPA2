@@ -1,6 +1,5 @@
 ﻿{
   "Interval": 5000,
-  "TitleImage" :  "../assets/source/promotion/prom_autumn_head.png",
   "ImageItem": [
     {
       "Id": 1,

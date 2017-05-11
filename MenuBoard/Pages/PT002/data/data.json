@@ -1,15 +1,10 @@
 ﻿{
-  "Background": "../../Pages/assets/source/board_b_bg.mp4",
-  "TitleImage": "../../Pages/assets/source/title_hot.png",
-  "MenuBackground": "../../Pages/assets/source/board_b_menu_img1.png",
   "Menu": [
     {
       "Id": "1",
-      "Title1": "허니 햄에그 슬라이더",
-      "Title2": "Honey Ham & Egg Slider",
+      "Name": "허니 햄에그 슬라이더",
+      "SubName": "Honey Ham & Egg Slider",
       "Image": "../../Pages/assets/source/board_b_menu_img1.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "3,900",
       "Price2": "2,900",
       "Description1": "콤보 387 - 540 ㎉",
@@ -18,11 +13,9 @@
     },
     {
       "Id": "2",
-      "Title1": "베이컨에그 잉글리쉬 머핀",
-      "Title2": "Bacon & Egg English Muffin",
+      "Name": "베이컨에그 잉글리쉬 머핀",
+      "SubName": "Bacon & Egg English Muffin",
       "Image": "../../Pages/assets/source/board_b_menu_img2.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,000",
       "Price2": "3,000",
       "Description1": "콤보 297 - 450 ㎉",
@@ -31,11 +24,9 @@
     },
     {
       "Id": "3",
-      "Title1": "BBQ 풀드 치킨",
-      "Title2": "Barbeque Pulled Chicken",
+      "Name": "BBQ 풀드 치킨",
+      "SubName": "Barbeque Pulled Chicken",
       "Image": "../../Pages/assets/source/board_b_menu_img3.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,900",
       "Price2": "3,900",
       "Description1": "콤보 442 - 595 ㎉",
@@ -44,11 +35,9 @@
     },
     {
       "Id": "4",
-      "Title1": "햄에그 잉글리쉬 머핀",
-      "Title2": "Ham & Egg English Muffin",
+      "Name": "햄에그 잉글리쉬 머핀",
+      "SubName": "Ham & Egg English Muffin",
       "Image": "../../Pages/assets/source/board_b_menu_img4.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,000",
       "Price2": "3,000",
       "Description1": "콤보 267 - 420 ㎉",
@@ -57,11 +46,9 @@
     },
     {
       "Id": "5",
-      "Title1": "스파이시 치킨 브리또",
-      "Title2": "Spicy Chicken Burrito",
+      "Name": "스파이시 치킨 브리또",
+      "SubName": "Spicy Chicken Burrito",
       "Image": "../../Pages/assets/source/board_b_menu_img5.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,500",
       "Price2": "3,500",
       "Description1": "콤보 262 - 415 ㎉",
@@ -70,11 +57,9 @@
     },
     {
       "Id": "6",
-      "Title1": "케이준 잠발라야 브리또",
-      "Title2": "Cajun Jambalaya Burrito",
+      "Name": "케이준 잠발라야 브리또",
+      "SubName": "Cajun Jambalaya Burrito",
       "Image": "../../Pages/assets/source/board_b_menu_img6.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,500",
       "Price2": "3,500",
       "Description1": "콤보 277 - 430 ㎉",
@@ -83,11 +68,9 @@
     },
     {
       "Id": "7",
-      "Title1": "그릴드 치즈 치아바타",
-      "Title2": "Grilled Cheese Ciabatta",
+      "Name": "그릴드 치즈 치아바타",
+      "SubName": "Grilled Cheese Ciabatta",
       "Image": "../../Pages/assets/source/board_b_menu_img7.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,500",
       "Price2": "3,500",
       "Description1": "콤보 357 - 510 ㎉",
@@ -96,11 +79,9 @@
     },
     {
       "Id": "8",
-      "Title1": "칠리 소시지 핫도그",
-      "Title2": "Chili Sausage Hotdog",
+      "Name": "칠리 소시지 핫도그",
+      "SubName": "Chili Sausage Hotdog",
       "Image": "../../Pages/assets/source/board_b_menu_img8.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,500",
       "Price2": "3,500",
       "Description1": "콤보 312 - 465 ㎉",
@@ -109,48 +90,14 @@
     },
     {
       "Id": "9",
-      "Title1": "스테이크 텍사스 토스트",
-      "Title2": "Steak Texas Toast",
+      "Name": "스테이크 텍사스 토스트",
+      "SubName": "Steak Texas Toast",
       "Image": "../../Pages/assets/source/board_b_menu_img9.png",
-      "PriceTitle1": "단품",
-      "PriceTitle2": "콤보",
       "Price1": "4,900",
       "Price2": "3,900",
       "Description1": "콤보 607 - 760 ㎉",
       "Description2": "단품 600 ㎉ (218g)",
       "Tag": "new"
     }
-  ],
-  "SideMenuText": "콤보 음료를 선택해 주세요!",
-  "SideMenu": [
-    {
-      "Id": "1",
-      "Image": "../../Pages/assets/source/combo_img1.png",
-      "Text1": "핫아메리카노",
-      "Text2": "(220㎖)",
-      "BallonImage": "../../Pages/assets/source/combo_balloon1.gif"
-    },
-    {
-      "Id": "2",
-      "Image": "../../Pages/assets/source/combo_img2.png",
-      "Text1": "아이스 아메리카노",
-      "Text2": "(260㎖)"
-    },
-    {
-      "Id": "3",
-      "Image": "../../Pages/assets/source/combo_img3.png",
-      "Text1": "오렌지 주스",
-      "Text2": "(260㎖)"
-    },
-    {
-      "Id": "4",
-      "Image": "../../Pages/assets/source/combo_img4.png",
-      "Text1": "콜라",
-      "Text2": "(355㎖)"
-    }
-  ],
-  "PromotionImage": "../../Pages/assets/source/txt_open.png",
-  "PromotionText": "해피포인트 앱만 보여주면<br /><strong>단품가격으로<br>콤보제공</strong>",
-  "PointInfoImage" :  "../../Pages/assets/source/happypoint.png"
-
+  ]
 }

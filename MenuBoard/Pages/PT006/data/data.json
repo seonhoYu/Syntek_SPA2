@@ -1,154 +1,131 @@
 ﻿{
-  "Background": "../../Pages/assets/source/menu/bg_menu_01_left.jpg",
-  "FloatingIcon": "../../Pages/assets/source/menu/img_floating_01.png",
-  "MenuGroup1Title": "COFFEE",
-  "MenuGroup2Title": "BEVERAGE",
-  "Menu": [
+  "Menu1": [
     {
       "Id": 1,
-      "GroupId": 1,
       "Name": "에스프레소 오리지널",
-      "Price": "4,100",
+      "Price1": "4,100",
       "Tag": "best"
     },
     {
       "Id": 2,
-      "GroupId": 1,
       "Name": "에스프레소 콘파냐",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": ""
     },
     {
       "Id": 3,
-      "GroupId": 1,
       "Name": "에스프레소 마끼아또",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": "new"
     },
     {
       "Id": 4,
-      "GroupId": 1,
       "Name": "카페 아메리카노",
-      "Price": "3,800",
+      "Price1": "3,800",
       "Tag": "soldout"
     },
     {
       "Id": 5,
-      "GroupId": 1,
       "Name": "카페 라떼",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": ""
     },
     {
       "Id": 6,
-      "GroupId": 1,
       "Name": "카푸치노",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": ""
     },
     {
       "Id": 7,
-      "GroupId": 1,
       "Name": "카페모카",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": ""
     },
     {
       "Id": 8,
-      "GroupId": 1,
       "Name": "카라멜 마끼아또",
-      "Price": "4,800",
+      "Price1": "4,800",
       "Tag": ""
     },
     {
       "Id": 9,
-      "GroupId": 1,
       "Name": "바닐라 라떼",
-      "Price": "4,800",
+      "Price1": "4,800",
       "Tag": ""
     },
     {
       "Id": 10,
-      "GroupId": 1,
       "Name": "화이트 초콜릿 모카",
-      "Price": "4,800",
+      "Price1": "4,800",
       "Tag": ""
     },
     {
       "Id": 11,
-      "GroupId": 1,
       "Name": "콜드부루",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": ""
     },
     {
       "Id": 12,
-      "GroupId": 1,
       "Name": "콜드부루 라떼",
-      "Price": "5,000",
+      "Price1": "5,000",
       "Tag": ""
-    },
+    }
+  ],
+  "Menu2": [
     {
       "Id": 13,
-      "GroupId": 2,
       "Name": "라임 모히토",
-      "Price": "4,200",
+      "Price1": "4,200",
       "Tag": "best"
     },
     {
       "Id": 14,
-      "GroupId": 2,
       "Name": "창포도 모히토",
-      "Price": "4,200",
+      "Price1": "4,200",
       "Tag": ""
     },
     {
       "Id": 15,
-      "GroupId": 2,
       "Name": "바나나 쉐이크",
-      "Price": "4,600",
+      "Price1": "4,600",
       "Tag": ""
     },
     {
       "Id": 16,
-      "GroupId": 2,
       "Name": "딸기 쉐이크",
-      "Price": "4,200",
+      "Price1": "4,200",
       "Tag": ""
     },
     {
       "Id": 17,
-      "GroupId": 2,
       "Name": "초코쿠키 쉐이크",
-      "Price": "4,200",
+      "Price1": "4,200",
       "Tag": ""
     },
     {
       "Id": 18,
-      "GroupId": 2,
       "Name": "커피쉐이크",
-      "Price": "4,100",
+      "Price1": "4,100",
       "Tag": ""
     },
     {
       "Id": 19,
-      "GroupId": 2,
       "Name": "아이스티 복숭아",
-      "Price": "4,000",
+      "Price1": "4,000",
       "Tag": ""
     },
     {
       "Id": 20,
-      "GroupId": 2,
       "Name": "블루레몬 에이드",
-      "Price": "4,300",
+      "Price1": "4,300",
       "Tag": ""
     },
     {
       "Id": 21,
-      "GroupId": 2,
       "Name": "딸기 요거트 블렌디드",
-      "Price": "4,300",
+      "Price1": "4,300",
       "Tag": ""
     }
   ]

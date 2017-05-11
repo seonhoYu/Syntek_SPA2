@@ -1,6 +1,4 @@
 ﻿{
-  "Background": "../../Pages/assets/source/board_c_bg.mp4",
-  "PlateGroupImage": "../../Pages/assets/source/title_cool.png",
   "Menu": [
     {
       "Id" :  1,
@@ -8,7 +6,7 @@
       "SubName": "Red On The Beach",
       "Price1": "&nbsp;",
       "Price2": "3,900",
-      "Description": "213 Kcal"
+      "Description1": "213 Kcal"
     },
     {
       "Id" :  2,
@@ -16,7 +14,7 @@
       "SubName": "Red Orange Ade",
       "Price1": "&nbsp;",
       "Price2": "4,200",
-      "Description": "240 Kcal"
+      "Description1": "240 Kcal"
     },
     {
       "Id" :  3,
@@ -24,7 +22,7 @@
       "SubName": "sparkling Ade <sup>(Grapefruit)</sup>",
       "Price1": "4,200",
       "Price2": "4,700",
-      "Description": "225 | 270 Kcal"
+      "Description1": "225 | 270 Kcal"
     },
     {
       "Id" :  4,
@@ -32,21 +30,21 @@
       "SubName": "Yogurt Smoothie <sup>(Strawberry)</sup>",
       "Price1": "5,200",
       "Price2": "&nbsp;",
-      "Description": "365 Kcal"
+      "Description1": "365 Kcal"
     },
     {
       "Id" :  5,
       "Name": "젤리에이드 <sup>(라임모히또)</sup>",
       "SubName": "Jelly Ade <sup>(Lime Mojito)</sup>",
       "Price1": "4,900",
-      "Description": "165 Kcal"
+      "Description1": "165 Kcal"
     },
     {
       "Id" :  6,
       "Name": "마시멜로 초코치노",
       "SubName": "Mashmellow Chococcino",
       "Price1": "4,900",
-      "Description": "340 | 300 Kcal"
+      "Description1": "340 | 300 Kcal"
     },
     {
       "Id" :  7,
@@ -54,7 +52,7 @@
       "SubName": "Fruit Juice <sup>(Muscat)</sup>",
       "Price1": "5,000",
       "Price2": "&nbsp;",
-      "Description": "205 Kcal"
+      "Description1": "205 Kcal"
     },
     {
       "Id" :  8,
@@ -62,7 +60,7 @@
       "SubName": "Hurom Juice <sup>(Orange)</sup>",
       "Price1": "5,500",
       "Price2": "&nbsp;",
-      "Description": "150 Kcal"
+      "Description1": "150 Kcal"
     }
   ]
 }

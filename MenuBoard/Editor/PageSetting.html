@@ -1,29 +1,32 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <title>Basic JSON Editor Example</title>
-    <script src="assets/js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/vendor/jquery-3.1.1.min.js"></script>
     <!-- Foundation CSS framework (Bootstrap and jQueryUI also supported) -->
     <link rel='stylesheet' href='//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css'>
     <!-- Font Awesome icons (Bootstrap, Foundation, and jQueryUI also supported) -->
-    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style type="text/css">
-       .row {
-            max-width:100%;
+        .row {
+            max-width: 100%;
         }
     </style>
     <script src="dist/jsoneditor.js"></script>
-  </head>
-  <body>
+</head>
+<body>
+    <div style="width:100%;" >
+        <button type="button" title="Back" class="button tiny" onclick="history.back();"><i class="fa fa-arrow-left"></i> Back</button>
+    </div>
     <div id='editor_holder'></div>
     <button id='submit'>Submit (console.log)</button>
-    
+
     <script>
         var editor;
         $.getJSON("config.json", function (data) {
             var schema;
-            
+
             var page = getUrlParameter('page');
 
             $(data.PageSetting).each(function (idx, obj) {
@@ -42,29 +45,28 @@
             });
 
             editor = new JSONEditor(document.getElementById('editor_holder'), schema);
-            
         });
- 
-      // Hook up the submit button to log to the console
-      document.getElementById('submit').addEventListener('click',function() {
-        // Get the value from the editor
-        console.log(editor.getValue());
-      });
 
-      function getUrlParameter(sParam) {
-          var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-              sURLVariables = sPageURL.split('&'),
-              sParameterName,
-              i;
+        // Hook up the submit button to log to the console
+        document.getElementById('submit').addEventListener('click', function () {
+            // Get the value from the editor
+            console.log(editor.getValue());
+        });
 
-          for (i = 0; i < sURLVariables.length; i++) {
-              sParameterName = sURLVariables[i].split('=');
+        function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
 
-              if (sParameterName[0] === sParam) {
-                  return sParameterName[1] === undefined ? true : sParameterName[1];
-              }
-          }
-      };
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
     </script>
-  </body>
+</body>
 </html>
