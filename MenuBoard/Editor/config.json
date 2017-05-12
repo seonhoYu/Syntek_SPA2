@@ -32,12 +32,23 @@
       }
     },
     {
-      "Page": 2,
+        "Page": 2,
       "PageName": "페이지2",
       "setting": {
         "type": "menu",
-        "listcount": 1
-      }
+        "list": [
+          {
+            "menuId": "menu1",
+            "minItems": 1,
+            "maxItems": 10
+          },
+          {
+            "menuId": "menu2",
+            "minItems": 1,
+            "maxItems": 10
+          }
+        ]
+      }    
     },
     {
       "Page": 3,

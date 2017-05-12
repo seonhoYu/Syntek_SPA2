@@ -14,7 +14,8 @@
       "SubName": "Cafe Latte",
       "Price1": "3,800",
       "Price2": "3,800",
-      "Description1": "165 | 105 Kcal"
+      "Description1": "165 | 105 Kcal",
+      "Description2":  ""
     },
     {
       "Id": 3,
