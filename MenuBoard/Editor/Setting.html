@@ -38,10 +38,19 @@
         $(document).ready(function () {
             $.getJSON("config.json", function (data) {
                 $(data.PageSetting).each(function (idx, obj) {
-                    $('#pageList').append("<li onclick='redirectPageSetting(" + obj.Page + ");'><a>" + obj.PageName + "</a></li>");
+                    if (obj.setting.type && obj.setting.type == 'menu') {
+                        $('#pageList').append("<li onclick='redirectMenuSetting(" + obj.Page + ");'><a>" + obj.PageName + "</a></li>");
+                    }
+                    else {
+                        $('#pageList').append("<li onclick='redirectPageSetting(" + obj.Page + ");'><a>" + obj.PageName + "</a></li>");
+                    }
                 });
             });
         });
+
+        function redirectMenuSetting(id) {
+            location.href = "MenuSetting.html?page=" + id;
+        }
 
         function redirectPageSetting(id) {
             location.href = "PageSetting.html?page=" + id;

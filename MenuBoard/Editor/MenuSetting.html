@@ -19,54 +19,16 @@
     <div style="width:100%;" >
         <button type="button" title="Back" class="button tiny" style="margin:10px;" onclick="history.back();"><i class="fa fa-arrow-left"></i> 뒤로</button>
     </div>
-    <div id='editor_holder'></div>
+    
+    <div>
+
+
+    </div>
+
     <button id='submit'  style="margin:10px;" onclick="savePageSetting();">저장</button>
 
     <script>
-        var editor;
-        $.getJSON("config.json", function (data) {
-            var schema;
-
-            var page = getUrlParameter('page');
-
-            $(data.PageSetting).each(function (idx, obj) {
-                if (obj.Page == page) {
-                    schema = obj.setting;
-                }
-            });
-            JSONEditor.defaults.theme = 'foundation5';
-            JSONEditor.defaults.iconlib = 'fontawesome4';
-
-            schema = $.extend(schema, {
-                disable_collapse: true,
-                disable_edit_json: true,
-                disable_properties: true,
-                storage_explorer_url: "http://localhost:8007/filemanager"
-            });
-
-            editor = new JSONEditor(document.getElementById('editor_holder'), schema);
-        });
-
-        // Hook up the submit button to log to the console
-        //document.getElementById('submit').addEventListener('click', function () {
-        //    // Get the value from the editor
-        //    console.log(editor.getValue());
-        //});
-
-        function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
+        
 
         function savePageSetting() {
             var pageId = getUrlParameter('page');
