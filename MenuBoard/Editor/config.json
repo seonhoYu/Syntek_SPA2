@@ -33,7 +33,23 @@
     },
     {
       "Page": 2,
-      "PageName" :  "페이지2",
+      "PageName": "페이지2",
+      "setting": {
+        "type": "menu",
+        "listcount": 1
+      }
+    },
+    {
+      "Page": 3,
+      "PageName": "페이지3",
+      "setting": {
+        "type": "menu",
+        "listcount": 1
+      }
+    },
+    {
+      "Page": 4,
+      "PageName" :  "페이지4",
       "setting": {
         "type": "menu",
         "listcount" :  1
