@@ -148,7 +148,7 @@
           $selectableOptgroup.append($(optgroupTpl));
           $selectionOptgroup.append($(optgroupTpl));
           if (that.options.selectableOptgroup){
-            $selectableOptgroup.find('.ms-optgroup-label').on('click', function(){
+              $selectableOptgroup.find('.ms-optgroup-label').on('click', function () {
               var values = $optgroup.children(':not(:selected, :disabled)').map(function(){ return $(this).val();}).get();
               that.select(values);
             });
@@ -518,7 +518,7 @@
         data.init();
       }
     });
-  };
+  };   
 
   $.fn.multiSelect.defaults = {
     keySelect: [32],
@@ -527,7 +527,7 @@
     dblClick : false,
     keepOrder: false,
     cssClass: ''
-  };
+  };    
 
   $.fn.multiSelect.Constructor = MultiSelect;
 
@@ -539,6 +539,7 @@
         $parent.children().eq(index - 1).after(this);
       }
     });
-};
+  };
 
+ 
 }(window.jQuery);

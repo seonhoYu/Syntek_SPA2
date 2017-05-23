@@ -2699,7 +2699,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       this.addproperty_input.style.display = 'inline-block';
       this.addproperty_add.addEventListener('click',function(e) {
         e.preventDefault();
-        e.stopPropagation();
+        e.stopPropagation();        
         if(self.addproperty_input.value) {
           if(self.editors[self.addproperty_input.value]) {
             window.alert('there is already a property with that name');
@@ -2760,7 +2760,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       this.collapsed = false;
       this.toggle_button = this.getButton('','collapse',this.translate('button_collapse'));
       this.title_controls.appendChild(this.toggle_button);
-      this.toggle_button.addEventListener('click',function(e) {
+      this.toggle_button.addEventListener('click',function(e) {alert();
         e.preventDefault();
         e.stopPropagation();
         if(self.collapsed) {
