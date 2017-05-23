@@ -8,23 +8,25 @@
     <link rel='stylesheet' href='//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css'>
     <!-- Font Awesome icons (Bootstrap, Foundation, and jQueryUI also supported) -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="dist/magnific-popup.css" rel="stylesheet" />
     <style type="text/css">
         .row {
             max-width: 100%;
         }
     </style>
+    <script src="dist/jquery.magnific-popup.js"></script>
     <script src="dist/jsoneditor.js"></script>
 </head>
 <body>
-    <div style="width:100%;" >
+    <div style="width:100%;">
         <button type="button" title="Back" class="button tiny" style="margin:10px;" onclick="history.back();"><i class="fa fa-arrow-left"></i> 뒤로</button>
     </div>
     <div id='editor_holder'></div>
-    <button id='submit'  style="margin:10px;" onclick="savePageSetting();">저장</button>
+    <button id='submit' style="margin:10px;" onclick="savePageSetting();">저장</button>
 
     <script>
         var editor;
-        $.getJSON('config.json', function (data) {
+        $.getJSON("config.json", function (data) {
             var schema;
 
             var page = getUrlParameter('page');
@@ -41,7 +43,7 @@
                 disable_collapse: true,
                 disable_edit_json: true,
                 disable_properties: true,
-                storage_explorer_url: 'http://localhost:8007/filemanager'
+                storage_explorer_url: "http://localhost:3006/"
             });
 
             editor = new JSONEditor(document.getElementById('editor_holder'), schema);
@@ -68,13 +70,28 @@
             }
         };
 
+        function setAzurePath(data) {
+            alert(data.name);
+            alert(data.path);
+        }
+
         function savePageSetting() {
             var pageId = getUrlParameter('page');
-            var value = editor.getValue();            
+            var value = editor.getValue();
+            console.log(value);
             localStorage.setItem('pageSetting' + pageId, JSON.stringify(value));
-            alert(pageId + ' 페이지 정보가 저장되었습니다.');
+            alert(pageId + " 페이지 정보가 저장되었습니다.");
             history.back();
         }
+
+        window.addEventListener("message", receiveMessage, false);
+        function receiveMessage(event) {
+            var data = JSON.parse(event.data);
+            $('input[name="' + data.name + '"]').val(data.path);
+
+            $.magnificPopup.close();
+        }
+
     </script>
 </body>
 </html>
