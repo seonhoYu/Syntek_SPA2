@@ -35,6 +35,7 @@
     <script type="text/javascript">
         var editor;
 
+        //config.json 파일을 읽어 페이지별 세팅을 읽어 설정이 필요한 페이지를 화면에 표시한다.
         $(document).ready(function () {
             $.getJSON("config.json", function (data) {
                 $(data.PageSetting).each(function (idx, obj) {
@@ -48,10 +49,12 @@
             });
         });
 
+        //페이지 세팅 화면으로 이동한다.
         function redirectMenuSetting(id) {
             location.href = "MenuSetting.html?page=" + id;
         }
 
+        //메뉴 세팅 화면으로 이동한다.
         function redirectPageSetting(id) {
             location.href = "PageSetting.html?page=" + id;
         }

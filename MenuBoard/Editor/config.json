@@ -1,6 +1,4 @@
 ﻿{
-  "AppSetting": {
-  },
   "PageSetting": [
     {
       "Page": 1,
@@ -22,7 +20,9 @@
                 "properties": {
                   "source": {
                     "type": "string",
-                    "title": "비디오 경로"
+                    "title": "비디오 경로",
+                    "format": "url",
+                    "storage" :  true
                   }
                 }
               }
