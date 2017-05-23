@@ -1,0 +1,16 @@
+﻿{
+  "menu": [
+    {
+      "Id": "menuId",
+      "Name": "menuName",
+      "SubName": "menuSubName",
+      "Image": "menuImage",
+      "Price1": "menuPrice1",
+      "Price2": "menuPrice2",
+      "Price3": "menuPrice3",
+      "Description1": "menuDescription1",
+      "Description2": "menuDescription2",
+      "Tag": "menuTag"
+    }
+  ]
+}

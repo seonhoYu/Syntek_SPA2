@@ -32,20 +32,20 @@
       }
     },
     {
-        "Page": 2,
+      "Page": 2,
       "PageName": "페이지2",
       "setting": {
         "type": "menu",
         "list": [
           {
             "menuId": "menu1",
-            "minItems": 1,
-            "maxItems": 10
+            "minItems": 2,
+            "maxItems": 4
           },
           {
             "menuId": "menu2",
-            "minItems": 1,
-            "maxItems": 10
+            "minItems": 3,
+            "maxItems": 5
           }
         ]
       }    
@@ -55,7 +55,18 @@
       "PageName": "페이지3",
       "setting": {
         "type": "menu",
-        "listcount": 1
+        "list": [
+          {
+            "menuId": "menu1",
+            "minItems": 2,
+            "maxItems": 4
+          },
+          {
+            "menuId": "menu2",
+            "minItems": 3,
+            "maxItems": 5
+          }
+        ]
       }
     },
     {
@@ -63,7 +74,14 @@
       "PageName" :  "페이지4",
       "setting": {
         "type": "menu",
-        "listcount" :  1
+        "listcount": 1,
+        "list": [
+          {
+            "menuId": "menu1",
+            "minItems": 2,
+            "maxItems": 4
+          }
+        ]
       }
     },
     {

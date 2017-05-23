@@ -26,83 +26,162 @@
     <div style="width:100%;">
         <button type="button" title="Back" class="button tiny" style="margin:10px;" onclick="history.back();"><i class="fa fa-arrow-left"></i> 뒤로</button>
     </div>
-    <!-- start -->
     <h1>메뉴 선택</h1>
-    <select id="pre-selected-options" multiple="multiple">
-        
-    </select>
-    <!-- ends -->
+    <div id="divMenus"></div>
+
+    <button id='submit' style="margin:10px;" onclick="saveMenuSetting();">저장</button>
+    <button id='submit' style="margin:10px;" onclick="refreshMenus();">초기화</button>
+    
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
-    <script src="dist/jquery.multi-select.js"></script>  
-    <script type="text/javascript">
+    <script src="dist/jquery.multi-select.js"></script>
+    <script src="dist/jquery.quicksearch.js"></script>
+    <script>
+        var saveStorage;
+        var menus;
         $(document).ready(function () {
-
-            //var menuData;
-
-            $.getJSON("config.json", function (data) {
-                var menus;
-
+            $.getJSON('config.json', function (data) {
+                
                 var page = getUrlParameter('page');
-
                 $(data.PageSetting).each(function (idx, obj) {
                     if (obj.Page == page) {
                         menus = obj.setting.list;
                     }
                 });
-                
-                $.getJSON("menu.json", function (data) {
-                    $(menus).each(function (idx, obj) {
 
+                $.getJSON('menu.json', function (data) {
+                    $(menus).each(function (listIdx, listObj) {
                         //select박스 동적 생성
-
-                        $(data.menu).each(function (idx, obj) {
-                            //위에서 만든 셀렉스 박스에다가 옵션 추가
-                            $('#pre-selected-options').append("<option value='" + obj.Id + "'>" + obj.Name + "</option>");
+                        var select = $('<select></select>').attr('id', listObj.menuId).attr('max', listObj.maxItems).attr('min', listObj.minItems).attr('multiple', 'multiple');
+                                            
+                        $(data.menu).each(function (menuIdx, menuObj) {
+                            $(select).append("<option value='" + menuObj.Id + "'>" + menuObj.Name + "</option>");
                         });
 
-                        $('#pre-selected-options').multiSelect();
+                        $('#divMenus').append(select);
+                        $(select).multiSelect({
+                            keepOrder: true,
+                            selectableFooter: "<div class='custom-header'><br><br></div>",  
+                            selectionFooter: "<div class='custom-header'><br><br></div>",
+                            selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='검색'>",
+                            selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='검색'>",
+                            afterInit: function (ms) {
+                                var that = this,
+                                    $selectableSearch = that.$selectableUl.prev(),
+                                    $selectionSearch = that.$selectionUl.prev(),
+                                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+                                that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                                .on('keydown', function (e) {
+                                    if (e.which === 40) {
+                                        that.$selectableUl.focus();
+                                        return false;
+                                    }
+                                });
+                                that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                                .on('keydown', function (e) {
+                                    if (e.which == 40) {
+                                        that.$selectionUl.focus();
+                                        return false;
+                                    }
+                                });
+                            },
+                            afterSelect: function () {
+                                this.qs1.cache();
+                                this.qs2.cache();
+                                var maxId = $(select).attr('id');
+                                var maxItems = $(select).attr('max');
+
+                                if (maxItems < $('#ms-' + $(select).attr('id') + ' > .ms-selection > ul.ms-list > li.ms-selected').length) {
+                                    $('#divMenus').find(select).multiSelect('deselect_all');
+                                    alert("더이상 추가할 수 없습니다." + " (" + maxItems + "개 항목까지 추가 가능)");
+                                    return false;                                   
+                                }
+                            }                            
+                        });
                     });
-                    
                 });
-
             });
+        }); 
 
-        });
+            function getUrlParameter(sParam) {
+                var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
 
-        function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : sParameterName[1];
+                    }
                 }
-            }
-        };
+            };
 
-        function redirectPageSetting(id) {
-            location.href = "PageSetting.html?page=" + id;
-        }
+            function createJSON(page) {
+                $.getJSON('menu.json', function (data) {
+                    $(menus).each(function (menuIdx, menuObj) {
+                        var select = $('<select></select>').attr('Id', menuObj.menuId).attr('Name', menuObj.Name).attr('SubName', menuObj.Image).attr('Price1', menuObj.Price1).attr('Price2', menuObj.Price2).attr('Price3', menuObj.Price3).attr('Description1', menuObj.Description1).attr('Description2', menuObj.Description2).attr('Tag', menuObj.Tag);
+                    })
+                        $.getJSON('../Pages/PT00' + page + '/data/menuData.json', function (data) {
+                            $(data).$('#ms-' + $(select).attr('id') + ' > .ms-selection > ul.ms-list > li.ms-selected').each(function (idx, obj) {
+                                $(data.menu).add('Id', menuObj.menuId).add('Name', menuObj.Name).add('SubName', menuObj.Image).add('Price1', menuObj.Price1).add('Price2', menuObj.Price2).add('Price3', menuObj.Price3).add('Description1', menuObj.Description1).add('Description2', menuObj.Description2).add('Tag', menuObj.Tag);
+                            })
 
-        function savePageSetting() {
-            var pageId = getUrlParameter('page');
-            var value = editor.getValue();
-            localStorage.setItem('pageSetting' + pageId, JSON.stringify(value));
-            alert(pageId + " 페이지 정보가 저장되었습니다.");
-            history.back();
-        }
+                            localStorage.setItem = ('Id', 'data.menu.Id');
+                            saveStorage = localStorage.getItem('Id');
+                        })
+                })
+            };
+
+            function refreshMenus() {
+                $('#divMenus').find('select').each(function (Idx) {
+                    $(this).multiSelect('deselect_all');
+                });
+            };
+
+            function saveMenuSetting() {
+                $.getJSON('config.json', function (data) {
+                    var menus;
+                    var page = getUrlParameter('page');
+
+                    $(data.PageSetting).each(function (idx, obj) {
+                        if (obj.Page == page) {
+                            menus = obj.setting.list;
+                        }
+                    });
+
+                    $.getJSON('menu.json', function (data) {
+                        $(menus).each(function (listIdx, listObj) {
+                            var select = $('<select></select>').attr('id', listObj.menuId).attr('min', listObj.minItems);
+                            var minItems = $(select).attr('min');
+                            var menuId = $(select).attr('id');
+                            var lastIdx = menus.length;
+
+                            if (menuId == 'menu' + (listIdx + 1) && (minItems > $('#ms-' + $(select).attr('id') + ' > .ms-selection > ul.ms-list > li.ms-selected').length)) {
+                                alert(menuId + " 에 " + minItems + " 가지 이상 파일을 추가 해주세요. ");
+                            } else if
+                                ($(menus).each(function (listIdx, listObj) {
+                                menuId == 'menu' + (lastIdx - 1) && (minItems <= $('#ms-' + $(select).attr('id') + ' > .ms-selection > ul.ms-list > li.ms-selected').length)
+                            })) {
+                                if (menuId == 'menu' + lastIdx && (minItems <= $('#ms-' + $(select).attr('id') + ' > .ms-selection > ul.ms-list > li.ms-selected').length)) {
+                                    var pageId = getUrlParameter('page');
+                                    var menuInfo = createJSON(pageId);
+                                    var value = $(saveStorage).getValue;
+                                    
+                                    localStorage.setItem('pageSetting' + pageId, JSON.stringify(value));
+                                    alert(pageId + " 페이지 정보가 저장되었습니다.");
+                                    //history.back();                                    
+                                }
+                            }
+                        });
+                    });
+                });
+            };
     </script>
-        
-        
-    <button id='submit' style="margin:10px;" onclick="savePageSetting();">저장</button>
-
 </body>
-
 </html>
